@@ -1,35 +1,36 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.28)  13 OCT 2024 21:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  23 NOV 2024 19:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/chulf/Desktop/Final Project/Discover/planning.tex"
-(c:/Users/chulf/Desktop/Final Project/Discover/planning.tex
-LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2021-11-22> (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+**c:/Code/CS/fp/Final-Project-main/Discover/planning.tex
+(c:/Code/CS/fp/Final-Project-main/Discover/planning.tex
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-11>
+(c:/Code/texlive/2023/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(c:/Code/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count183
-\c@section=\count184
-\c@subsection=\count185
-\c@subsubsection=\count186
-\c@paragraph=\count187
-\c@subparagraph=\count188
-\c@figure=\count189
-\c@table=\count190
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen138
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/cite/cite.sty
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count191
-\l__pdf_internal_box=\box50
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count193
+\l__pdf_internal_box=\box51
 ) (./planning.aux)
 \openout1 = `planning.aux'.
 
@@ -59,21 +60,26 @@ LaTeX Warning: Citation `demaine2002tetrishardapproximate' on page 1 undefined o
 
 (./planning.bbl) [1
 
-{e:/LatexLive/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./planning.aux)
+{c:/Code/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./planning.aux)
+ ***********
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-11>
+ ***********
+
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 543 strings out of 478353
- 9653 string characters out of 5847090
- 307088 words of memory out of 5000000
- 18732 multiletter control sequences out of 15000+600000
- 407985 words of font info for 42 fonts, out of 8000000 for 9000
+ 573 strings out of 475189
+ 10441 string characters out of 5765340
+ 1919248 words of memory out of 5000000
+ 21925 multiletter control sequences out of 15000+600000
+ 562624 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,6n,38p,189b,191s stack positions out of 5000i,500n,10000p,200000b,80000s
-<e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on planning.pdf (1 page, 82524 bytes).
+ 38i,6n,50p,183b,197s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
+Output written on planning.pdf (1 page, 82149 bytes).
 PDF statistics:
  43 PDF objects out of 1000 (max. 8388607)
  25 compressed objects within 1 object stream

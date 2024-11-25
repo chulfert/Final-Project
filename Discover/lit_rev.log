@@ -1,95 +1,103 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.28)  11 NOV 2024 16:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.27)  23 NOV 2024 21:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/chulf/Desktop/Final Project/Discover/lit_rev.tex"
-(c:/Users/chulf/Desktop/Final Project/Discover/lit_rev.tex
-LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2021-11-22> (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+**c:/Code/CS/fp/Final-Project-main/Discover/lit_rev.tex
+(c:/Code/CS/fp/Final-Project-main/Discover/lit_rev.tex
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-11>
+(c:/Code/texlive/2023/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(c:/Code/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count183
-\c@section=\count184
-\c@subsection=\count185
-\c@subsubsection=\count186
-\c@paragraph=\count187
-\c@subparagraph=\count188
-\c@figure=\count189
-\c@table=\count190
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen138
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/cite/cite.sty
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
- (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
+ (c:/Code/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (c:/Code/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+ (c:/Code/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen139
-\Gin@req@width=\dimen140
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count191
-\l__pdf_internal_box=\box50
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen143
+\WF@size=\dimen144
+\c@WF@wrappedlines=\count193
+\WF@box=\box51
+\WF@everypar=\toks18
+Package: wrapfig 2003/01/31  v 3.6
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-04-19 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count194
+\l__pdf_internal_box=\box52
 ) (./lit_rev.aux)
 \openout1 = `lit_rev.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
-LaTeX Font Info:    ... okay on input line 10.
- (e:/LatexLive/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+ (c:/Code/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count192
-\scratchdimen=\dimen141
-\scratchbox=\box51
-\nofMPsegments=\count193
-\nofMParguments=\count194
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count195
-\MPscratchDim=\dimen142
-\MPnumerator=\count196
-\makeMPintoPDFobject=\count197
-\everyMPtoPDFconversion=\toks18
-) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+\scratchcounter=\count195
+\scratchdimen=\dimen145
+\scratchbox=\box53
+\nofMPsegments=\count196
+\nofMParguments=\count197
+\everyMPshowfont=\toks19
+\MPscratchCnt=\count198
+\MPscratchDim=\dimen146
+\MPnumerator=\count199
+\makeMPintoPDFobject=\count266
+\everyMPtoPDFconversion=\toks20
+) (c:/Code/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+ (c:/Code/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 12.
+(Font)              <12> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 12.
+(Font)              <8> on input line 13.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 12.
+(Font)              <6> on input line 13.
  (./lit_rev.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 2.
@@ -102,24 +110,71 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 <polynominoes.png, id=1, 316.93407pt x 408.02437pt>
 File: polynominoes.png Graphic file (type png)
 <use polynominoes.png>
-Package pdftex.def Info: polynominoes.png  used on input line 29.
+Package pdftex.def Info: polynominoes.png  used on input line 30.
 (pdftex.def)             Requested size: 207.0021pt x 266.50146pt.
  [1
 
-{e:/LatexLive/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./lit_rev.bbl [2 <./polynominoes.png>]) [3] (./lit_rev.aux) ) 
+{c:/Code/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2 <./polynominoes.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 41--46
+
+ []
+
+<frac4d.png, id=15, 642.4pt x 351.3125pt>
+File: frac4d.png Graphic file (type png)
+<use frac4d.png>
+Package pdftex.def Info: frac4d.png  used on input line 59.
+(pdftex.def)             Requested size: 207.0021pt x 113.20494pt.
+[3]
+<4dtris.png, id=19, 1776.6375pt x 998.9822pt>
+File: 4dtris.png Graphic file (type png)
+<use 4dtris.png>
+Package pdftex.def Info: 4dtris.png  used on input line 72.
+(pdftex.def)             Requested size: 207.0021pt x 116.38199pt.
+ [4 <./frac4d.png> <./4dtris.png>]
+<Dali_Crucifixion_hypercube.jpg, id=26, 30.3534pt x 47.4573pt>
+File: Dali_Crucifixion_hypercube.jpg Graphic file (type jpg)
+<use Dali_Crucifixion_hypercube.jpg>
+Package pdftex.def Info: Dali_Crucifixion_hypercube.jpg  used on input line 90.
+(pdftex.def)             Requested size: 207.0021pt x 323.74802pt.
+
+Overfull \hbox (103.50105pt too wide) in paragraph at lines 90--91
+[][] 
+ []
+
+
+Underfull \hbox (badness 2359) in paragraph at lines 91--91
+[]\OT1/cmr/m/n/10 Figure 4: The Cru-
+ []
+
+
+Underfull \hbox (badness 7796) in paragraph at lines 91--91
+\OT1/cmr/m/n/10 ci-fix-ion (Cor-pus Hy-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--92
+\OT1/cmr/m/n/10 in the de-vel-op-ment of the game.
+ []
+
+[5 <./Dali_Crucifixion_hypercube.jpg>] (./lit_rev.bbl [6]) [7] (./lit_rev.aux)
+ ***********
+LaTeX2e <2023-06-01> patch level 1
+L3 programming layer <2023-08-11>
+ ***********
+ ) 
 Here is how much of TeX's memory you used:
- 1408 strings out of 478353
- 22999 string characters out of 5847090
- 325636 words of memory out of 5000000
- 19559 multiletter control sequences out of 15000+600000
- 408332 words of font info for 43 fonts, out of 8000000 for 9000
+ 1541 strings out of 475189
+ 25088 string characters out of 5765340
+ 1926248 words of memory out of 5000000
+ 22854 multiletter control sequences out of 15000+600000
+ 562971 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,7n,62p,612b,232s stack positions out of 5000i,500n,10000p,200000b,80000s
-<e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on lit_rev.pdf (3 pages, 117827 bytes).
+ 57i,7n,65p,685b,234s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Code/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on lit_rev.pdf (7 pages, 717617 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

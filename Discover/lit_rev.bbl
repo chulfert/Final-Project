@@ -1,9 +1,55 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{4d_vis_1}
+{\em Four-Space Visualization of 4D Objects}.
+\newblock PhD thesis, Arizona State University, 1991.
 
 \bibitem{polyominoes}
 {\sc Barequet, G., Rote, G., and Shalah, M.}
-\newblock ${\lambda >}$ 4: an improved lower bound on the growth constant of
-  polyominoes.
+\newblock ${\lambda >}$ 4: an improved lower bound on the growth constant of polyominoes.
 \newblock {\em Commun. ACM 59}, 7 (June 2016), 88–95.
+
+\bibitem{rot_n_1}
+{\sc Cole, F.}
+\newblock On rotations in space of four dimensions.
+\newblock {\em American Journal of Mathematics 10}, 4 (1888), 377--385.
+
+\bibitem{tetris_np}
+{\sc Demaine, E.~D., Hohenberger, S., and Liben-Nowell, D.}
+\newblock Tetris is hard, even to approximate, 2002.
+
+\bibitem{tiling2}
+{\sc DeSantis, D.~F., and Smith, C.~J.}
+\newblock Tetris in the nervous system: What principles of neuronal tiling can tell us about how glia play the game.
+\newblock {\em Frontiers in Cellular Neuroscience 15\/} (2021).
+
+\bibitem{geo_alg}
+{\sc Dorst, L., Fontijne, D., and Mann, S.}
+\newblock {\em Geometric Algebra for Computer Science}.
+\newblock Morgan Kaufmann, San Francisco, CA, 2007.
+
+\bibitem{4d_vis_3}
+{\sc Hanson, A.~J., and Heng, P.~A.}
+\newblock Illuminating the fourth dimension.
+\newblock {\em IEEE Computer Graphics and Applications 12}, 4 (1992), 54--62.
+
+\bibitem{cliff_alg}
+{\sc Jr., J.~V., and da~Rocha~Jr., R.}
+\newblock {\em An Introduction to Clifford Algebras and Spinors}.
+\newblock Oxford University Press, Oxford, UK, 2016.
+
+\bibitem{4d_vis_2}
+{\sc Snyder, B.}
+\newblock Interactive 4d handbook.
+
+\bibitem{rucker}
+{\sc v.~B.~Rucker, R.}
+\newblock {\em The Fourth Dimension: Toward a geometry of higher reality}.
+\newblock Dover Publications, Inc., New York, NY, 2014.
+
+\bibitem{tiling1}
+{\sc Veerajagadheswar, P., Elara, M.~R., Pathmakumar, T., and Ayyalusami, V.}
+\newblock A tiling-theoretic approach to efficient area coverage in a tetris-inspired floor cleaning robot.
+\newblock {\em IEEE Access 6\/} (2018), 35260--35271.
 
 \end{thebibliography}

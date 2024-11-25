@@ -1,10 +1,19 @@
 \contentsline {section}{\numberline {1}Existing work}{1}{}%
 \contentsline {subsection}{\numberline {1.1}Tetris}{1}{}%
 \contentsline {paragraph}{Introduction}{1}{}%
-\contentsline {paragraph}{Gameplay}{1}{}%
+\contentsline {paragraph}{Gameplay}{2}{}%
+\contentsline {paragraph}{Mathematics}{2}{}%
+\contentsline {paragraph}{User Interface}{3}{}%
+\contentsline {paragraph}{Conclusion}{3}{}%
 \contentsline {subsection}{\numberline {1.2}Frac 4D}{3}{}%
-\contentsline {subsection}{\numberline {1.3}4DTris}{3}{}%
-\contentsline {section}{\numberline {2}Literature}{3}{}%
-\contentsline {subsection}{\numberline {2.1}}{3}{}%
-\contentsline {section}{\numberline {3}Algorithms}{3}{}%
-\contentsline {subsection}{\numberline {3.1}}{3}{}%
+\contentsline {subsection}{\numberline {1.3}4DTris}{4}{}%
+\contentsline {subsection}{\numberline {1.4}BlockOut}{5}{}%
+\contentsline {subsection}{\numberline {1.5}This project}{5}{}%
+\contentsline {section}{\numberline {2}Literature}{5}{}%
+\contentsline {subsection}{\numberline {2.1}The Fourth Dimension}{5}{}%
+\contentsline {subsection}{\numberline {2.2}Geometric algebra for computer science}{5}{}%
+\contentsline {subsection}{\numberline {2.3}An Introduction to Clifford Algebras and Spinors}{6}{}%
+\contentsline {subsection}{\numberline {2.4}On Rotations in Space of Four Dimensions}{6}{}%
+\contentsline {subsection}{\numberline {2.5}Conclusion}{6}{}%
+\contentsline {section}{\numberline {3}Visualization}{6}{}%
+\contentsline {subsection}{\numberline {3.1}Illuminating the fourth dimension}{6}{}%
