@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: prelim_report.aux
+The style file: acm.bst
+Database file #1: references.bib
+Warning--to sort, need author or key in 4d_vis_1
+Warning--empty author in 4d_vis_1
+You've used 17 entries,
+            2253 wiz_defined-function locations,
+            634 strings with 6141 characters,
+and the built_in function-call counts, 4760 in all, are:
+= -- 453
+> -- 173
+< -- 0
++ -- 77
+- -- 56
+* -- 342
+:= -- 775
+add.period$ -- 49
+call.type$ -- 17
+change.case$ -- 73
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 190
+empty$ -- 425
+format.name$ -- 56
+if$ -- 1011
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 19
+newline$ -- 85
+num.names$ -- 32
+pop$ -- 87
+preamble$ -- 1
+purify$ -- 62
+quote$ -- 0
+skip$ -- 124
+stack$ -- 0
+substring$ -- 275
+swap$ -- 51
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 58
+warning$ -- 2
+while$ -- 41
+width$ -- 19
+write$ -- 171
+(There were 2 warnings)

@@ -1,0 +1,49 @@
+\contentsline {section}{\numberline {1}Overview of the Project}{3}{section.1}%
+\contentsline {section}{\numberline {2}Project Template Used}{3}{section.2}%
+\contentsline {section}{\numberline {3}Existing work}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Tetris}{3}{subsection.3.1}%
+\contentsline {paragraph}{Introduction}{3}{section*.2}%
+\contentsline {paragraph}{Gameplay}{3}{section*.3}%
+\contentsline {paragraph}{Mathematics}{3}{section*.5}%
+\contentsline {paragraph}{User Interface}{5}{section*.8}%
+\contentsline {paragraph}{Conclusion}{5}{section*.9}%
+\contentsline {subsection}{\numberline {3.2}Frac 4D}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}4DTris}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}BlockOut}{5}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}This project}{6}{subsection.3.5}%
+\contentsline {section}{\numberline {4}Literature}{6}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Fourth Dimension}{6}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Geometric algebra for computer science}{6}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}An Introduction to Clifford Algebras and Spinors}{6}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}On Rotations in Space of Four Dimensions}{6}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Conclusion}{8}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Visualization}{8}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Illuminating the fourth dimension}{8}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Domain and Users of the Project}{9}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Gamers}{9}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Research}{9}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Justification of Design Choices}{9}{section.7}%
+\contentsline {subsection}{\numberline {7.1}4D}{9}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Gameplay}{10}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}User Interface}{10}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Scoring}{10}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Art Style}{10}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Overall Structure of the Project}{10}{section.8}%
+\contentsline {subsection}{\numberline {8.1}GameManager}{10}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}HyperCube}{10}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Piece}{10}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Block}{10}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Level}{10}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}User Interface}{10}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}InputManager}{11}{subsection.8.7}%
+\contentsline {subsection}{\numberline {8.8}AudioManager}{11}{subsection.8.8}%
+\contentsline {section}{\numberline {9}Important Technologies and Methods}{11}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Unity}{11}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}C\#}{11}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Plan of Work}{12}{section.10}%
+\contentsline {section}{\numberline {11}Testing and Evaluation Plan}{12}{section.11}%
+\contentsline {section}{\numberline {12}Prototype}{13}{section.12}%
+\contentsline {paragraph}{Description}{13}{section*.18}%
+\contentsline {paragraph}{Rotations}{13}{section*.19}%
+\contentsline {paragraph}{Basic movement}{13}{section*.20}%
+\contentsline {paragraph}{Conclusion}{13}{section*.21}%

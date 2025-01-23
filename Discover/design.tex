@@ -30,7 +30,8 @@ CM3030 Games Development Project Idea Title 1: Arcade Game
 \section{Domain and Users of the Project}
 % Approximate Word Count: 300 words
 \subsection{Gamers}
-I will try to capture a wide audience for this game. Tetris is played by young and old, people from different educational backgrounds and different cultures.
+I will try to capture a wide audience for this game. 
+Tetris is played by young and old, people from different educational backgrounds and different cultures.
 As described by Csikszentmihalyi \cite{flow} this can be done by creating a state of flow. To induce this state several things must be true.
 \begin{enumerate}
     \item A challenging activity that requires skill
@@ -41,7 +42,9 @@ As described by Csikszentmihalyi \cite{flow} this can be done by creating a stat
     \item A loss of self-consciousness
     \item An altered sense of time
 \end{enumerate}
-When looking at this list, it is clear that Tetris succeeded in all of them. The biggest chalange for this project will be to make it easy enough so users of all backgrounds can achieve 'flow'. As Chen \cite{flow_2} stated this can be achieved, by unlocking additional choices (pieces) when the player has obtaines some suffiency. Some users will struggle with the basic concept of higher dimensions, and the game is required to ease them into a basic understanding of how the rotations work. Others will have no issues getting into the game but will require additional challanges to be sucked into the game and keep engaged. The game needs to create a sense of reward in users playing it for 5 minutes during a short break as well as users that are willing to invest several hours to achieve higher scores. Due to the nature of the game it is expected that it will have a somewhat larger appeal on users with advanced education, so these will be the primary focus group during evauation, however, previous projects into the same realm have shown that focussing solely on this group will not be enough to create a successful game. Targeted testing will be carried out, and I will try to include at least 25\% of the testers from a group with a lower educational background.
+When looking at this list, it is clear that Tetris succeeded in all of them. The biggest challenge for this project will be to make it easy enough so users of all backgrounds can achieve 'flow'. As Chen \cite{flow_2} stated this can be achieved, by unlocking additional choices (pieces) when the player has obtaines some suffiency. Some users will struggle with the basic concept of higher dimensions, and the game is required to ease them into a basic understanding of how the rotations work. Others will have no issues getting into the game but will require additional challanges to be sucked into the game and keep engaged. The game needs to create a sense of reward in users playing it for 5 minutes during a short break as well as users that are willing to invest several hours to achieve higher scores. Due to the nature of the game it is expected that it will have a somewhat larger appeal on users with advanced education, so these will be the primary focus group during evauation, however, previous projects into the same realm have shown that focussing solely on this group will not be enough to create a successful game. Targeted testing will be carried out, and I will try to include at least 25\% of the testers from a group with a lower educational background.
+\newline
+While these are the target audiences for the game we have to accomodate the fact the the main group of users will be male, between 20-40 years old and most likely with a higher educational background. This will be the primary target group and affect marketing and pricing strategies.
 \subsection{Research}
 A secondary target user group will be the academic community. Tetris has been widely used as a research subject. Our variant will rely heavily on mental rotation and spatial reasoning, both have been an important part of psychological reasearch \cite{COOPER197520} \cite{CORBALLIS1997100} \cite{Kornhaber_2020} \cite{Lau_zhu}. This could be a very interested target audience if the game itself implements features that aid researchers in experiment design. Voice of customer will be conducted in advance of development to gain insights into what specific features would be suitable to engange the scientific community.
 This might be as simple as exporting pieces spawned + keystrokes into a csv file.
@@ -96,6 +99,8 @@ Will take care of the audio. Will be very basic in the MVP.
 
 \section{Important Technologies and Methods}
 % Approximate Word Count: 300 words
+\subsection{Unity} is a requirement of the course. We will use the powerful game engine to handle everything from rendering, through audio for us. It is of yet undecided if the built in physics, collision and math modules are sufficient for this project or will need to be implemented.
+\subsection{C\#} is an object oriented programming language that abstracts away a lot of the details one has to deal with in lower level leanguages such as C++ and adds garbage collection. The downside is less fine detail control.
 
 % Identify key technologies, algorithms, and justify their use.
 
@@ -103,18 +108,54 @@ Will take care of the audio. Will be very basic in the MVP.
 % Approximate Word Count: 250 words
 
 % Outline major tasks and timeline.
-
+The Main activity in developing the project are going to be testing and developing. The additional task of writing the report will be done in parallel throughout the development. The most important features are outlined in the following Gantt chart, with ample amount of time included for unexpected challanges.
+In addition, due to a full time job, weeks that require business travel are included as well, as it is highly unlikely that any development can happen during those times.
 % Include Gantt chart (not counted in word limit).
 \begin{figure}[H]
     \centering
-    %\includegraphics[width=\textwidth]{gantt_chart.png}
+    \includegraphics[width=\textwidth]{gantt.png}
     \caption{Project Timeline Gantt Chart}
     \label{fig:gantt}
 \end{figure}
 
 \section{Testing and Evaluation Plan}
 % Approximate Word Count: 250 words
+Recurring Testing is key to a successful completion of this project. Given the limited time available for development there will be a total of 3 main test phases.
+\begin{enumerate}
+    \item \textbf{Voice of customer} - This primary testing phase will not test the actual software, but the assumptions I have taken so far. This is meant to inform me on different aspects before starting the development phase:
+            \begin{enumerate}
+                \item Is the idea interesting
+                \item Are the keybindings to complicated
+                \item Is the chosen graphical style appropriate 
+                \item Does the concept sound interesting
+                \item How would you like level progression to go
+                \begin{enumerate}
+                    \item faster speed
+                    \item more complicated pieces
+                    \item ...
+                \end{enumerate}
+            \end{enumerate}
+    \item \textbf{Gameplay testing} - After having created a feasible prototype, most likelz with limited audiovisual appeal. We will try to get some information from the users whether the gameplay eorks.
+            \begin{enumerate}
+                \item Do you understand what you have to Do
+                \item Do you understand the basic visuals
+                \item Are you aware how to line up the pieces
+                \item Is the speed ok
+                \item Is the point system rewarding
+            \end{enumerate}
+            In addition we will have some UX/UI related questions
+    \item \textbf{Deliverable testing} - This final testing run will be used to test if the deliverable is up to spec. I will use the 'outstanding' criteria in the template as a reference and get metrics on how close we are to that goal. In addition users will be asked to rate different features of the game on a scale from 0 to 5 to identify any outliers. The goal is not to reach 5 in every categorz, but to identify components that perform below the average of the game. These might include:
+            \begin{enumerate}
+                \item Visual appeal
+                \item Audio effects
+                \item enjoyability
+                \item Difficulty
+                \item complexity
+                \item Ease of use (UI)
+            \end{enumerate}
 
+    
+\end{enumerate}
 % Describe how you will test and evaluate the project.
 
 \newpage
@@ -122,15 +163,8 @@ Will take care of the audio. Will be very basic in the MVP.
 \appendix
 
 \section{References}
-% Include any references used (not counted in word count).
-%\begin{thebibliography}{9}
-%\bibitem{ref1} Author Name, \textit{Book Title}, Publisher, Year.
-%\bibitem{ref2} Article Author, ``Article Title,'' \textit{Journal Name}, vol., pp., Year.
-%\end{thebibliography}
+
 \bibliographystyle{acm}
 \bibliography{references}
-
-\section{Additional Figures and Diagrams}
-% Include any additional images or diagrams here.
 
 \end{document}

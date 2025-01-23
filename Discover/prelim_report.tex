@@ -1,0 +1,270 @@
+\documentclass{article}
+\usepackage[margin=2cm]{geometry}
+
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{setspace}
+
+\title{Preliminary Report}
+\author{Christian Ulfert}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents   
+\section{Overview of the Project}
+% Approximate Word Count: 200 words
+
+In this project I will try to develop a 4 dimensional variant of Tetris. The game will try to capture the essence of the original Tetris gameplay as well as the endless replayability while enhancing it with innovative new features. To find a balance in between the increased complexity provided by moving into higher dimensional spaces and the actual playability end enjoyability of the game, I will be limiting the 4 dimensional aspect to the Tetris pieces only. The player will see a 3 dimensional playing field that pieces fall into. Once they start rotating the 3 dimensional pieces they will notice that they are actually 3 dimensional slices of 4 dimensional collections of hypercubes. This will essentially just increase the number of possible rotations of the pieces and remove the rotational symmetry that is present in classic Tetris.
+The goal is to create a fun fut complex game that lends itself to endless replayability as well as scientific exploration, just as Tetris did.
+
+\section{Project Template Used}
+% Approximate Word Count: 50 words
+CM3030 Games Development Project Idea Title 1: Arcade Game
+
+\section{Existing work}
+\subsection{Tetris}
+\paragraph{Introduction}
+Tetris is one of the most popular games in the history of computer gaming. Developed in 1984 by Alexey Pajitnov, as a testbed for emerging computing hardware it has trancended its initial purpose and become a cultural icon. 
+After initial struggles to leave the UDSSR the big break came when Nintendo bundled it with the original Gameboy in 1989. 
+Through capturing a whole generation of newly computer-affine people it has cemented its place in gaming history. The total estimated sales of Tetris are over 500 million copies, most of them in digital form, which only came reality 3 decades after the inital game was developed.
+It has also captured the imagination of countless scientists and mathematicians, who have studied the game from a variety of perspectives (computer science, psychology, medicine, mathematics...).
+\paragraph{Gameplay}
+The staple of tetris is the tetrominoe. A collection of 4 squares arranged in different shapes. The tetrominoes fall from the top of the screen into a 10x20 playing field, they can not be stopped. The player rotates and moves these shapes to arrange them at the bottom of the playing field in a way such they cover a whole row. A full row will be removed from the playing field, giving the player more room to place blocks, and changing the arrangement of the blocks, potentially opening new positions for the next blocks.
+In addition the player receives a score for each row removed. The score is higher for removing multiple rows at once. The game ends when the playing field is full and no more blocks can be placed.
+\begin{figure}
+    \label{fig:poly}
+    \centering
+    \includegraphics[width=0.6\textwidth]{polynominoes.png}
+    \caption{The single monomino (A(1) = 1),
+    the two dominoes (A(2) = 2), the A(3) = 6
+    triominoes, and the A(4) = 19 tetrominoes
+    (Tetris pieces) \cite{polyominoes}}  
+\end{figure}
+Tetrominoes are a special case of polyominoes (A(4)), which are shapes made up of squares. This is another interesting field of study, and a possible route to increase complexity in tetris, as the number of possible shapes increases dramatically as discussed in Barequet et al.\cite{polyominoes} and visualized in Figure \ref{fig:poly}.
+This path however will not be followed in this project.
+\paragraph{Mathematics}
+There are few computer games whose mathematical properties have been research to the same degree as Tetrises. The following section will give a short but incomplete overview.
+\subparagraph*{Tiling} is a funamental problem in mathematics. It deals with the problem of covering a plane with a set of geometric shapes. While this relates directly to the gamesplay, it has also found interes in scientific research such as robotics \cite{tiling1} or neuroscience \cite{tiling2}. While these articles do not require the existence of Tetris, it has certainly sparked intereset in the domain and helped with visualiing and understanding the problem.
+\subparagraph*{Complexity - } One of the most renowned scientific papers in game-related computer science is a proof by Demaine et al. that Tetris is NP-complete \cite{tetris_np}. 
+Beeing NP-complete means that Tetris is at least as hard as the hardest problems in NP, which are the problems that can be solved in polynomial time by a non-deterministic Turing machine. This means Tetris is one of the hardest problems in computer science.
+\newline
+\newline
+While all this does not influence the development of our 4D Tetris variant, it does inspire how far such a simple game can grow. And there is a hope that a variant in a more complex space will intice similar research.
+
+\paragraph{User Interface}
+Part of the success of Tetris is its accessability. There is no need to explain anything. The main menu features a button named "Start" and the game is controlled. The game screen shows the playing field and the rest of the screen is used to display the next block, the score, the level and the lines cleared. 
+There is no explanation needed. This is a feature that needs to be replicated to make the game accessible to a broad audience. The difficulty will be to translate the increased compelxity of this project into an accessable product.
+\paragraph{Conclusion}
+Tetris was a pivotal work. There is a reason it is displayed in the Museum of Modern Art in New York. It has inspired so many different fields and captured millions of players. This all needs to be kept in mind during developemtn as I want to capture a similar feeling of simplicity and complexity in our game.
+
+
+\subsection{Frac 4D}
+This is a game developed in the early 90's and never completed. It featured 4 distinct, but connected 3 dimensional playing fields. Pieces can be rotated and due to their underlying 4 dimensional structure this will reveal different configurations, the can exist in some of the fields but not in others, which can lead to unexpected 'collisions'. The game was apparently very hard to play and in the end failed to provide an easy access into 4 dimenesion.
+\begin{figure}
+    \label{fig:frac4d}
+    \centering
+    \includegraphics[width=0.6\textwidth]{frac4d.png}
+    \caption{The 4 playing fields of Frac 4D. Image from myabandonware.com}
+\end{figure}
+
+\subparagraph*{Conclusion}
+This game was probably the first 4D adaption of Tetris, and while featuring interesting concepts failed to succeed. There is however features that can be taken from this attempt, especially the highlighting of the corresponding position in the playing field to help the player as seen in Figure \ref{fig:frac4d}.
+\subsection{4DTris}
+This was another venture into the 4th dimension with Tetris. The concept however is completely different. This time the actual playing field exists in 4 dimensions and the pieces do as well. The playing field is projected into a hypercube, as are the pieces, which ends up looking at a cube the is beeing filled from the inside with different cubes. Development was stopped in 2012 and the author moved on, eventually trying to revive it in 2018, failing. The concept is very interesting, but very hard to imagine. While playing the game might make on proficient, the learning curve would be to steep for most.
+\subparagraph*{Conclusion}
+For me this is an example of a variant that went to far. While very intersting in concept, the sheer complexity of the gameplay automatically limits the addressable market. In this project falling into the same trap needs to be avoided by creating something fun for many different audiences.
+\begin{figure}
+    \label{fig:4dtris}
+    \centering
+    \includegraphics[width=0.6\textwidth]{4dtris.png}
+    \caption{4DTris in action. Still from a video on youtube, posted by the autor Simon Laszlo, https://www.youtube.com/watch?v=WO9SNW5Tp7A}
+\end{figure}
+\subsection{BlockOut}
+BlockOut is a 3D Tetris variant. The playing field is a 3D cube and the pieces are 3D shapes. 
+The playing field is projected from above. Individual layers are color coded. In any other way the game is very similar to Tetris. The game was moderately successful and can be played online for free nowadays.
+\subparagraph*{Conclusion}
+This is a great example of a Tetris variant and something that my version will largely be based on. I want to take large parts of the visualization style but enhance on UI/UX.
+
+\subsection{This project}
+will be an amalgamation of all the above. Taking the best features from every item. Looks from BlockOut, physics from 4DTris, UX features from Frac4D and general greatness from Tetris.
+\section{Literature}
+Understanding 4 dimensional space and its implications is a very challenging undertaking, however there is some literature out there that can help with the process. 
+
+\subsection{The Fourth Dimension} by Rudy Rucker \cite{rucker} takes us through a wild journey from ancient mathematics to conteporary philosphy and the other way round. This can create great insights on how it is possible to understnad
+and even visualize 4 dimensional object within reality that is confined to 3 dimensions. This work does greatly help with becoming comfortable with the concept of 4 dimensions and will be a great help in the development of the game.
+\begin{figure}
+    \label{fig:4d}
+    \includegraphics[width=0.6\textwidth]{Dali_Crucifixion_hypercube.jpg}
+    \caption{The Crucifixion (Corpus Hypercubus) by Salvador Dali. A representation of a hypercube unfolded into 3 dimensions.}
+\end{figure}
+\subsection{Geometric algebra for computer science} by Leo Dorst, Daniel Fontijne and Stephen Mann \cite{geo_alg} serves as a great introduction into geometric algebra, which might be a solution to the problem of representing, and especially rotation 4 dimensional ojects. While no final decision has been made on the technique that will be used, a decent understanding of the topice is necessery to finally choose the correct one. 
+\subsection{An Introduction to Clifford Algebras and Spinors} by Jayme Vaz Jr. and Roldao da Rocha Jr. \cite{cliff_alg} is another great resource into the topic, especially as Cliffor algebras are widely used in n-dimensional geometry. The chapter on spinors is especially interesting as they are one of the ways to represent rotations in higher dimensions and might be the foundation of the techniques we will use.
+\subsection{On Rotations in Space of Four Dimensions} by Cole \cite{rot_n_1} is an article from 1888 that deals with the problem of rotations in 4 dimensions. The article proofs a general rotation matrix for 4 dimensions. The most important feature however is the date of publication, prooving the persistant human interest in the topic of higher dimensions and therefore (somewhat) validating the project.
+\subsection{Conclusion}
+This is just a small outtake on literature that can help understand the topic of higher dimensions which is necessary for this project. Especially the decision on which mathematical representation and technique will be chosen is heavily informed by these books/articles.
+\section{Visualization}
+
+Visualization of 4 dimensional objects is a very challenging but interesting task.
+
+There is a large amount of great resources available to help understanding how this can be done. A very good overview over the techniques is presented in the PhD thesis by Hallasch \cite{4d_vis_1}. In extension to this the website "https://baileysnyder.com/interactive-4d/4d-cubes/" \cite{4d_vis_2} offers great interactive tools to generate an understanding of how to get to 4d dimensions and back.
+\subsection{Illuminating the fourth dimension} by Hanson et al. \cite{4d_vis_3} describes multiple techniques on how to render 4d objects into 3d space onto a 2d screen. This includes advanced shadowing and shading techniques which exceed the necessitiy of this project since unity will be used.
+\newpage
+
+
+
+\section{Domain and Users of the Project}
+% Approximate Word Count: 300 words
+\subsection{Gamers}
+I will try to capture a wide audience for this game. 
+Tetris is played by young and old, people from different educational backgrounds and different cultures.
+As described by Csikszentmihalyi \cite{flow} this can be done by creating a state of flow. To induce this state several things must be true.
+\begin{enumerate}
+    \item A challenging activity that requires skill
+    \item Clear goals and feedback
+    \item The player must be able to concentrate on the task at hand
+    \item Direct and immediate feedback
+    \item A sense of control
+    \item A loss of self-consciousness
+    \item An altered sense of time
+\end{enumerate}
+When looking at this list, it is clear that Tetris succeeded in all of them. The biggest challenge for this project will be to make it easy enough so users of all backgrounds can achieve 'flow'. As Chen \cite{flow_2} stated this can be achieved, by unlocking additional choices (pieces) when the player has obtaines some suffiency. Some users will struggle with the basic concept of higher dimensions, and the game is required to ease them into a basic understanding of how the rotations work. Others will have no issues getting into the game but will require additional challanges to be sucked into the game and keep engaged. The game needs to create a sense of reward in users playing it for 5 minutes during a short break as well as users that are willing to invest several hours to achieve higher scores. Due to the nature of the game it is expected that it will have a somewhat larger appeal on users with advanced education, so these will be the primary focus group during evauation, however, previous projects into the same realm have shown that focussing solely on this group will not be enough to create a successful game. Targeted testing will be carried out, and I will try to include at least 25\% of the testers from a group with a lower educational background.
+\newline
+While these are the target audiences for the game we have to accomodate the fact the the main group of users will be male, between 20-40 years old and most likely with a higher educational background. This will be the primary target group and affect marketing and pricing strategies.
+\subsection{Research}
+A secondary target user group will be the academic community. Tetris has been widely used as a research subject. Our variant will rely heavily on mental rotation and spatial reasoning, both have been an important part of psychological reasearch \cite{COOPER197520} \cite{CORBALLIS1997100} \cite{Kornhaber_2020} \cite{Lau_zhu}. This could be a very interested target audience if the game itself implements features that aid researchers in experiment design. Voice of customer will be conducted in advance of development to gain insights into what specific features would be suitable to engange the scientific community.
+This might be as simple as exporting pieces spawned + keystrokes into a csv file.
+% Explain the domain (e.g., educational gaming) and describe the target users.
+
+\section{Justification of Design Choices}
+% Approximate Word Count: 350 words
+Several choices had to be made during envisioning.
+\subsection{4D}
+While it was very enticing to try to implement a fully 4 dimensional game and or move tha play field into 4D as well. Preliminary user research as well as an extensive review of previous work has shown that this would increase the comlpexity to a level where the likelyhood of overall commercial success for such a project would decrease dramatically due to a decease in target users and the total obtainable market. I will therefore limit the playingfield to 3 dimensions and the pieces to 3 dimensional slices of 4 dimensional objects.
+\subsection{Gameplay}
+Due to limitations when it comes to user input the interactions within the 4th dimension will be limited. To be precise ther will be no way to move the w plane and change the slice we are prohecting into 3d space. The w plane will always be in the middle. This does however leave and opening for later expansion/enhancment of the gameplay.
+\subsection{User Interface}
+I feel that it is necessary to create a very informative user interface due to the complexity of the game and the fact that the arrow keys will have different functionalities depending on which action key is pressed. This shall be achieved through graphical overlays that will inform the player of the type of rotation/movement that will be performed in the current state.
+\subsection{Scoring}
+For the prototype multiline tetrises will be disabled. The primary goal of the MVP is to establish fun and engaing gameplay.
+\subsection{Art Style}
+The art style will be very important for the game. While people with higher educational background will likely be enticed by the mere concept of a 4 dimensional game, other user groups will need appealing and contemporary visuals to be kept enganged.
+
+
+% Explain how your design decisions meet user needs and fulfill domain requirements.
+
+\section{Overall Structure of the Project}
+% Approximate Word Count: 350 words
+The game will be made out of several components that will interact with each other. The main components are:
+\subsection{GameManager}
+This will take care of the overall game state. It will keep track of the current score, the current level, the current piece, the next piece, the playing field and the current state of the game. 
+\subsection{HyperCube}
+The basic building block of the game. This will be a 4 dimensional extension of a cube. It will be used to procedurally generate the mesh userd for rendering the pieces as well as basic rotation logic. Collision detection will be done in 3 dimensional space.
+\subsection{Piece}
+This will be a 4 dimensional collection of hypercubes. the main rotational logice be implemented here. The current plan is to decimpose the piece once it is resting on the playing field. In addition the rendering will switch from wireframe to solid. With individual cubes rendered in a color accorading to the row they are on.
+\subsection{Block}
+This will be the collection of all resting cubes and will be used for the detection of completed planes.
+\subsection{Level}
+This is the playing field. Will generate the mesh, keep track of the block and give options for later enlargement of the playing field (not in MVP).
+\subsection{User Interface}
+Will be a column on the right containing scores, level etc. as well as an overlay that will help the user understand the rotations.
+\subsection{InputManager}
+Will switch between different state depending on the action key pressed chaning the functionality of the arrow keys and relaying the information to the pieces.
+\subsection{AudioManager}
+Will take care of the audio. Will be very basic in the MVP.
+
+% Describe the architecture, including main components and their interactions.
+
+% Include diagrams (not counted in word limit).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{classes.png}
+    \caption{Overall Architecture of the 4D Tetris Project}
+    \label{fig:architecture}
+\end{figure}
+
+\section{Important Technologies and Methods}
+% Approximate Word Count: 300 words
+\subsection{Unity} is a requirement of the course. We will use the powerful game engine to handle everything from rendering, through audio for us. It is of yet undecided if the built in physics, collision and math modules are sufficient for this project or will need to be implemented.
+\subsection{C\#} is an object oriented programming language that abstracts away a lot of the details one has to deal with in lower level leanguages such as C++ and adds garbage collection. The downside is less fine detail control.
+
+% Identify key technologies, algorithms, and justify their use.
+
+\section{Plan of Work}
+% Approximate Word Count: 250 words
+
+% Outline major tasks and timeline.
+The Main activity in developing the project are going to be testing and developing. The additional task of writing the report will be done in parallel throughout the development. The most important features are outlined in the following Gantt chart, with ample amount of time included for unexpected challanges.
+In addition, due to a full time job, weeks that require business travel are included as well, as it is highly unlikely that any development can happen during those times.
+% Include Gantt chart (not counted in word limit).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{gantt.png}
+    \caption{Project Timeline Gantt Chart}
+    \label{fig:gantt}
+\end{figure}
+
+\section{Testing and Evaluation Plan}
+% Approximate Word Count: 250 words
+Recurring Testing is key to a successful completion of this project. Given the limited time available for development there will be a total of 3 main test phases.
+\begin{enumerate}
+    \item \textbf{Voice of customer} - This primary testing phase will not test the actual software, but the assumptions I have taken so far. This is meant to inform me on different aspects before starting the development phase:
+            \begin{enumerate}
+                \item Is the idea interesting
+                \item Are the keybindings to complicated
+                \item Is the chosen graphical style appropriate 
+                \item Does the concept sound interesting
+                \item How would you like level progression to go
+                \begin{enumerate}
+                    \item faster speed
+                    \item more complicated pieces
+                    \item ...
+                \end{enumerate}
+            \end{enumerate}
+    \item \textbf{Gameplay testing} - After having created a feasible prototype, most likelz with limited audiovisual appeal. We will try to get some information from the users whether the gameplay eorks.
+            \begin{enumerate}
+                \item Do you understand what you have to Do
+                \item Do you understand the basic visuals
+                \item Are you aware how to line up the pieces
+                \item Is the speed ok
+                \item Is the point system rewarding
+            \end{enumerate}
+            In addition we will have some UX/UI related questions
+    \item \textbf{Deliverable testing} - This final testing run will be used to test if the deliverable is up to spec. I will use the 'outstanding' criteria in the template as a reference and get metrics on how close we are to that goal. In addition users will be asked to rate different features of the game on a scale from 0 to 5 to identify any outliers. The goal is not to reach 5 in every categorz, but to identify components that perform below the average of the game. These might include:
+            \begin{enumerate}
+                \item Visual appeal
+                \item Audio effects
+                \item enjoyability
+                \item Difficulty
+                \item complexity
+                \item Ease of use (UI)
+            \end{enumerate}
+
+    
+\end{enumerate}
+% Describe how you will test and evaluate the project.
+
+\section{Prototype}
+\paragraph{Description}
+Prototyping will go through several stages. Some are performed in Python, to quickly check my reasoning. Other features will be tested in Unity directly.
+\paragraph{Rotations}
+The first feasibility issue was the rotation of the 4 dimensional pieces and the projections into 3D space. To check if I was able to generate the correct roations and the vertices I implemented a very basic símulation in Python. The reasoning
+behind this was, that Python support higher dimensional matrices out of the box and it seemed like a fast approach. In this round of prototyping I was able to show that I am able to produce the rotations as well as the projection, and in addition+
+that the rotation of the pieces looks interesting and can lead to unexpected piece configurations just as planned.
+\paragraph{Basic movement}
+Basic movement prototyping was done in unity to learn how to simulate the tetris style movement of 1 tile per button press, but gradually interpolate the position of the pieces.
+In addition rotation of 4d hypercubes was also implemented in Unity to check general feasibility.
+\paragraph{Conclusion}
+While the prototypes are very rough, and not as far progessed as hoped to due to time constraints, they do show that the underlying concept is feasible and the project can be attempted. It did also inform me about important watchouts for the development phase, such as handling disconnected edges/vertices. Since in between rotations we return to 3D space, things like collisions and line clearing will be much easier to implement.
+
+
+\bibliographystyle{acm}
+\bibliography{references}
+
+\end{document}
