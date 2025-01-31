@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
 
     bool[] keyWasDown = new bool[4] ;
     
+    private float lastFall = 0;
 
     void Update()
     {
@@ -139,6 +140,12 @@ public class InputManager : MonoBehaviour
             keyWasDown[3] = false;
         }
 
+        //every 10 seconds, move the polynomino down
+        if (Time.time - lastFall >= 10)
+        {
+            polynomino.addMovement(Polynomino4D.MovementAxis.Z, true);
+            lastFall = Time.time;
+        }
         
     }
 
