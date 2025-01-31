@@ -10,6 +10,9 @@ using System.Collections.Generic;
 /// </summary>
 public class Polynomino4D : MonoBehaviour
 {
+    public enum RotationAxis { XY, XZ, XW, YZ, YW, ZW }
+    public enum MovementAxis { X, Y, Z }
+
     [Header("Template & Prefab")]
     [Tooltip("Which 4D shape do we use? (set of blockOffsets in 4D)")]
     public Polynomino4DTemplate template;
@@ -23,27 +26,93 @@ public class Polynomino4D : MonoBehaviour
     [Header("4D Rotation Angles (in degrees)")]
     public float rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW;
 
+    public float cubeSize = 1.0f;
     void Start()
     {
         BuildFromTemplate();
-    }
+        // Random rotation for startup (in 90-degree increments)
+        rotationXY = Random.Range(0, 4) * 90;
+        rotationXZ = Random.Range(0, 4) * 90;
+        rotationXW = Random.Range(0, 4) * 90;
+        rotationYZ = Random.Range(0, 4) * 90;
+        rotationYW = Random.Range(0, 4) * 90;
+        rotationZW = Random.Range(0, 4) * 90;
 
-    void Update()
-    {
-        // If you allow continuous rotation, or your Tetris game
-        // updates angles in real-time, you'd do it here.
-        // Then we must forward the angles to each Hypercube:
-
+        // Set the initial rotation for all Hypercubes
         foreach (var cube in hypercubes)
         {
             if (cube != null)
             {
                 cube.SetRotation4D(
-                    rotationXY, rotationXZ, rotationXW,
-                    rotationYZ, rotationYW, rotationZW
-                );
+                                       rotationXY, rotationXZ, rotationXW,
+                                                          rotationYZ, rotationYW, rotationZW
+                                                                         );
             }
         }
+
+        // Store the initial rotation angles for later use
+        currentRotation[0] = rotationXY;
+        currentRotation[1] = rotationXZ;
+        currentRotation[2] = rotationXW;
+        currentRotation[3] = rotationYZ;
+        currentRotation[4] = rotationYW;
+        currentRotation[5] = rotationZW;
+
+        // Set the target rotation to the current rotation
+        targetRotation[0] = rotationXY;
+        targetRotation[1] = rotationXZ;
+        targetRotation[2] = rotationXW;
+        targetRotation[3] = rotationYZ;
+        targetRotation[4] = rotationYW;
+        targetRotation[5] = rotationZW;
+        
+    }
+
+    private float[] targetRotation = new float[6];
+    private float[] currentRotation = new float[6];
+
+    private Vector3 targetPosition = Vector3.zero;
+
+    void Update()
+    {
+        // Interpolate between current and target position
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
+
+        // Interpolate between current and target rotation
+        for (int i = 0; i < 6; i++)
+        {
+            currentRotation[i] = Mathf.Lerp(currentRotation[i], targetRotation[i], Time.deltaTime * 5);
+        }
+
+        //rotate the cubes
+        foreach (var cube in hypercubes)
+        {
+            if (cube != null)
+            {
+                cube.SetRotation4D(currentRotation[0], currentRotation[1], currentRotation[2], currentRotation[3], currentRotation[4], currentRotation[5]);
+            }
+        }
+    }
+
+    public void addMovement(MovementAxis axis, bool direction)
+    {
+        switch (axis)
+        {
+            case MovementAxis.X:
+                targetPosition.x += direction ? cubeSize : -cubeSize;
+                break;
+            case MovementAxis.Y:
+                targetPosition.y += direction ? cubeSize : -cubeSize;
+                break;
+            case MovementAxis.Z:
+                targetPosition.z += direction ? cubeSize : -cubeSize;
+                break;
+        }
+    }
+
+    public void addRotation(RotationAxis axis, bool direction)
+    {
+        targetRotation[(int)axis] += direction ? 90 : -90;
     }
 
     /// <summary>
@@ -81,6 +150,9 @@ public class Polynomino4D : MonoBehaviour
                 rotationXY, rotationXZ, rotationXW,
                 rotationYZ, rotationYW, rotationZW
             );
+
+            // Set the size of the cube
+            hc.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
 
             hypercubes.Add(hc);
         }

@@ -37,6 +37,7 @@ public class Hypercube : MonoBehaviour
 
     // The local offset in 4D, as assigned by the Polynomino
     public Vector4 localOffset4D = Vector4.zero;
+    public Vector4 rotatedOffset = Vector4.zero;
 
 
     // -- Constants for tesseract geometry --    
@@ -166,7 +167,11 @@ public class Hypercube : MonoBehaviour
         for (int i = 0; i < baseVertices.Length; i++)
         {
             transformedVerts[i] = rotMatrix.MultiplyPoint4x4(baseVertices[i]);
-            transformedVerts[i] += localOffset4D;
+            //Calculate the rotated offset
+            rotatedOffset = rotMatrix.MultiplyPoint4x4(localOffset4D);
+
+
+            transformedVerts[i] += rotatedOffset;
         }
     }
 
