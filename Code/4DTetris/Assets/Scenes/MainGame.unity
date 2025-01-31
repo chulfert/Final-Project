@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314b4fc406e67b44d935c66a60344c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 11400000, guid: 059dd441460d5f8489ed102a03e14b53, type: 2}
+  template: {fileID: 0}
   hypercubePrefab: {fileID: 9204410034985753324, guid: 18c1a3db6a4e9da41bdcf0e39e2c931c, type: 3}
   rotationXY: 0
   rotationXZ: 0

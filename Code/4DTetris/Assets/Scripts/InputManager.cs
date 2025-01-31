@@ -28,8 +28,17 @@ public class InputManager : MonoBehaviour
         bool mod_1 = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftShift);
         bool mod_2 = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.S);
         bool mod_3 = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.D);
-        
-        
+
+        if (Input.GetKey(KeyCode.Escape)){
+            // Quit the game
+            Application.Quit();
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            // Restart the game
+            Application.LoadLevel(Application.loadedLevel);
+        }
 
         // Only do WASD movement if NO modifiers are held only have 1 impulse per key, not held
         if (!mod_1 && !mod_2 && !mod_3)

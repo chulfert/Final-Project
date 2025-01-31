@@ -124,6 +124,7 @@ public class Polynomino4D : MonoBehaviour
         if (template == null || hypercubePrefab == null)
         {
             Debug.LogWarning("Polynomino4D: Missing template or prefab!");
+            CreateStandardPolynomino();
             return;
         }
 
@@ -156,6 +157,55 @@ public class Polynomino4D : MonoBehaviour
 
             hypercubes.Add(hc);
         }
+    }
+
+    public void CreateStandardPolynomino()
+    {
+        // 1) Grab the list of shapes
+        var allShapes = StandardPolynominoes4D.shapes;
+        // 2) Pick one randomly
+        int index = Random.Range(0, allShapes.Length);
+        Vector4[] chosenOffsets = allShapes[index];
+
+        // 3) Clear existing hypercubes if needed
+        ClearAllHypercubes();
+
+        // 4) Spawn hypercubes with these offsets
+        for (int i = 0; i < chosenOffsets.Length; i++)
+        {
+            // We'll reuse your existing method "AddHypercube(Vector4 localOffset)"
+            AddHypercube(chosenOffsets[i]);
+        }
+
+        for (int i = 0; i < chosenOffsets.Length; i++)
+        {
+            Vector4 offset = chosenOffsets[i];
+
+            GameObject go = Instantiate(hypercubePrefab, this.transform);
+            Hypercube hc = go.GetComponent<Hypercube>();
+            if (hc == null)
+            {
+                Debug.LogError("Prefab missing Hypercube component!", go);
+                Destroy(go);
+                continue;
+            }
+
+            // Set the local offset so the hypercube knows where it is in 4D
+            hc.localOffset4D = offset;
+
+            // Also set the current rotation angles, so it starts correctly
+            hc.SetRotation4D(
+                rotationXY, rotationXZ, rotationXW,
+                rotationYZ, rotationYW, rotationZW
+            );
+
+            // Set the size of the cube
+            hc.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
+
+            hypercubes.Add(hc);
+        }
+
+        Debug.Log($"Created standard polynomino index: {index}, with {chosenOffsets.Length} blocks.");
     }
 
     /// <summary>
