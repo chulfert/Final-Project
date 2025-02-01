@@ -35,10 +35,12 @@ public class Hypercube : MonoBehaviour
 
     private Mesh mesh;
 
+    public CubeRep linkedCube;
+
     // The local offset in 4D, as assigned by the Polynomino
     public Vector4 localOffset4D = Vector4.zero;
     public Vector4 rotatedOffset = Vector4.zero;
-
+    public Vector3 position3D = Vector3.zero;
 
     // -- Constants for tesseract geometry --    
     private static int[][] tesseractEdges = new int[][] {};
@@ -302,6 +304,15 @@ public class Hypercube : MonoBehaviour
                 projectedVerts[i] = new Vector3(v4.x, v4.y, v4.z);
             }
         }
+
+        //Update potion3D with the center of the projected vertices
+        Vector3 center = Vector3.zero;
+        for (int i = 0; i < projectedVerts.Length; i++)
+        {
+            center += projectedVerts[i];
+        }
+        center /= projectedVerts.Length;
+        position3D = center;
     }
 
     public void SetRotation4D(
@@ -358,6 +369,13 @@ public class Hypercube : MonoBehaviour
         // you’ll need to define triangles and normals.
 
         mesh.RecalculateBounds();
+    }
+    
+    //Get GRid aligned 3d position for the hypercube taking into acocunt the 4d rotation and the offset within the polynomino
+    public Vector3 GetPosition3D()
+    {
+        return position3D;               
+
     }
 }
 

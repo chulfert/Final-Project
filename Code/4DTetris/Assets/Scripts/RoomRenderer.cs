@@ -17,9 +17,30 @@ public class RoomRenderer : MonoBehaviour
 
     private Mesh lineMesh;
 
+    // Rigidbody for each wall
+    private Rigidbody[] wallRbs;
+
     void Start()
     {
         BuildLineMesh();
+        wallRbs = new Rigidbody[5];
+        // floor collider 
+        wallRbs[0] = gameObject.AddComponent<Rigidbody>();
+        wallRbs[0].isKinematic = true;
+        wallRbs[0].useGravity = false;
+        wallRbs[0].mass = 1000f;
+        wallRbs[0].collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        wallRbs[0].interpolation = RigidbodyInterpolation.Interpolate;
+        wallRbs[0].constraints = RigidbodyConstraints.FreezeAll;
+        wallRbs[0].gameObject.GetComponent<BoxCollider>().isTrigger = false;
+        //position the floor    
+        wallRbs[0].transform.position = new Vector3(sizeX * polynomino.cubeSize / 2, sizeY * polynomino.cubeSize / 2, sizeZ * polynomino.cubeSize);
+        wallRbs[0].transform.localScale = new Vector3(sizeX * polynomino.cubeSize, sizeY * polynomino.cubeSize, 1);
+        //rotate the floor
+        wallRbs[0].transform.Rotate(90, 0, 0);
+
+
+
     }
 
     private void BuildLineMesh()
@@ -154,7 +175,6 @@ public class RoomRenderer : MonoBehaviour
             }
         }
 
-        // We do NOT enclose z=0 with lines across x,y. That's open (the "top").
 
         // Build the final mesh
         lineMesh = new Mesh { name = "RoomWireframe" };

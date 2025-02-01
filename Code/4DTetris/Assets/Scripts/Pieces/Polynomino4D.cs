@@ -16,12 +16,14 @@ public class Polynomino4D : MonoBehaviour
     [Header("Template & Prefab")]
     [Tooltip("Which 4D shape do we use? (set of blockOffsets in 4D)")]
     public Polynomino4DTemplate template;
+    public GameObject Cube_Prefab;
 
     [Tooltip("Prefab that contains the 'Hypercube' script.")]
     public GameObject hypercubePrefab;
 
     // We'll store references to each Hypercube we spawn
     private List<Hypercube> hypercubes = new List<Hypercube>();
+    public List<CubeRep> cubes = new List<CubeRep>();
 
     [Header("4D Rotation Angles (in degrees)")]
     public float rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW;
@@ -50,6 +52,15 @@ public class Polynomino4D : MonoBehaviour
             }
         }
 
+        foreach (var hc in hypercubes)
+        {
+            GameObject cubeGO = Instantiate(Cube_Prefab, hc.GetPosition3D(), Quaternion.identity);
+            CubeRep cubeComponent = cubeGO.GetComponent<CubeRep>();
+            // Optionally set properties on cubeComponent here.
+            cubes.Add(cubeComponent);
+            hc.linkedCube = cubeComponent;
+        }
+
         // Store the initial rotation angles for later use
         currentRotation[0] = rotationXY;
         currentRotation[1] = rotationXZ;
@@ -65,10 +76,12 @@ public class Polynomino4D : MonoBehaviour
         targetRotation[3] = rotationYZ;
         targetRotation[4] = rotationYW;
         targetRotation[5] = rotationZW;
+
+        
         
     }
 
-    private float[] targetRotation = new float[6];
+    public float[] targetRotation = new float[6];
     private float[] currentRotation = new float[6];
 
     private Vector3 targetPosition = Vector3.zero;
@@ -76,12 +89,12 @@ public class Polynomino4D : MonoBehaviour
     void Update()
     {
         // Interpolate between current and target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 2);
 
         // Interpolate between current and target rotation
         for (int i = 0; i < 6; i++)
         {
-            currentRotation[i] = Mathf.Lerp(currentRotation[i], targetRotation[i], Time.deltaTime * 5);
+            currentRotation[i] = Mathf.Lerp(currentRotation[i], targetRotation[i], Time.deltaTime * 2);
         }
 
         //rotate the cubes
@@ -91,6 +104,13 @@ public class Polynomino4D : MonoBehaviour
             {
                 cube.SetRotation4D(currentRotation[0], currentRotation[1], currentRotation[2], currentRotation[3], currentRotation[4], currentRotation[5]);
             }
+        }
+
+        // query the hypercubes for their current position, empty cubes array and then fill it with the correct cubes
+        
+        foreach (var cube in hypercubes)
+        {
+            cube.linkedCube.transform.position = cube.GetPosition3D();
         }
     }
 
@@ -253,3 +273,5 @@ public class Polynomino4D : MonoBehaviour
         return hc;
     }
 }
+
+
