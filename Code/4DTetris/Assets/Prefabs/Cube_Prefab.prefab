@@ -48,6 +48,6 @@ MonoBehaviour:
   size: 0
   polynomino: {fileID: 0}
   rb: {fileID: 0}
-  gameObject: {fileID: 0}
   mesh: {fileID: 0}
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: 6a1143ee683302f4aa628c052723efc1, type: 2}
+  render: 0

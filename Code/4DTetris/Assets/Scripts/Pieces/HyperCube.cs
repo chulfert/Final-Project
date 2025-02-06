@@ -36,6 +36,7 @@ public class Hypercube : MonoBehaviour
     private Mesh mesh;
 
     public CubeRep linkedCube;
+    bool visible = false;
 
     // The local offset in 4D, as assigned by the Polynomino
     public Vector4 localOffset4D = Vector4.zero;
@@ -280,9 +281,7 @@ public class Hypercube : MonoBehaviour
             // Create a copy of the 4D vertex
             Vector4 v4 = transformedVerts[i];
 
-            // SHIFT by sliceW in the w-dimension
-            // i.e., if sliceW>0, we effectively move the hypercube so that
-            // w= sliceW ends up at w=0 in the new, "shifted" coordinates
+            
             v4.w -= sliceW;
 
             if (usePerspectiveProjection)
@@ -313,6 +312,17 @@ public class Hypercube : MonoBehaviour
         }
         center /= projectedVerts.Length;
         position3D = center;
+
+        // Determine if this cube is going to be rendered, if there are too few edges, don't render it
+        if (projectedVerts.Length < 8)
+        {
+            linkedCube.render = false;
+        }
+        else
+        {
+            linkedCube.render = true;
+        }
+
     }
 
     public void SetRotation4D(
@@ -374,8 +384,9 @@ public class Hypercube : MonoBehaviour
     //Get GRid aligned 3d position for the hypercube taking into acocunt the 4d rotation and the offset within the polynomino
     public Vector3 GetPosition3D()
     {
-        return position3D;               
-
+        //Calculate the rotated offset
+        Vector3 pos = new Vector3(rotatedOffset.x + position3D.x, rotatedOffset.y + position3D.y, rotatedOffset.z + position3D.z);
+        return pos;
     }
 }
 

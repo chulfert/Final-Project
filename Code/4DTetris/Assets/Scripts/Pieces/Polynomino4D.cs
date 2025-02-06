@@ -24,6 +24,7 @@ public class Polynomino4D : MonoBehaviour
     // We'll store references to each Hypercube we spawn
     private List<Hypercube> hypercubes = new List<Hypercube>();
     public List<CubeRep> cubes = new List<CubeRep>();
+    
 
     [Header("4D Rotation Angles (in degrees)")]
     public float rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW;
@@ -56,8 +57,8 @@ public class Polynomino4D : MonoBehaviour
         {
             GameObject cubeGO = Instantiate(Cube_Prefab, hc.GetPosition3D(), Quaternion.identity);
             CubeRep cubeComponent = cubeGO.GetComponent<CubeRep>();
-            // Optionally set properties on cubeComponent here.
             cubes.Add(cubeComponent);
+            cubeComponent.render = false;
             hc.linkedCube = cubeComponent;
         }
 
@@ -103,15 +104,13 @@ public class Polynomino4D : MonoBehaviour
             if (cube != null)
             {
                 cube.SetRotation4D(currentRotation[0], currentRotation[1], currentRotation[2], currentRotation[3], currentRotation[4], currentRotation[5]);
+                cube.linkedCube.transform.position = cube.GetPosition3D();
+                
             }
         }
 
-        // query the hypercubes for their current position, empty cubes array and then fill it with the correct cubes
         
-        foreach (var cube in hypercubes)
-        {
-            cube.linkedCube.transform.position = cube.GetPosition3D();
-        }
+       
     }
 
     public void addMovement(MovementAxis axis, bool direction)

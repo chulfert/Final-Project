@@ -9,7 +9,6 @@ public class CubeRep : MonoBehaviour
     [Header("References")]
     public Polynomino4D polynomino;
 
-
     public Rigidbody rb;
 
     public CubeRep(Vector3 position)
@@ -21,7 +20,7 @@ public class CubeRep : MonoBehaviour
     public Mesh mesh;
     public Material material;    
 
-    private bool render = false;
+    public bool render = false;
     public void Start()
     {
         // create a cube
@@ -33,13 +32,39 @@ public class CubeRep : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.constraints = RigidbodyConstraints.FreezeAll;
+
+        // Add a simple cube mesh
+        mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh = mesh;
+        mesh.vertices = new Vector3[]
+        {
+            new Vector3(-size, -size, -size),
+            new Vector3(size, -size, -size),
+            new Vector3(size, size, -size),
+            new Vector3(-size, size, -size),
+            new Vector3(-size, -size, size),
+            new Vector3(size, -size, size),
+            new Vector3(size, size, size),
+            new Vector3(-size, size, size)
+        };
     }
 
     public void Update()
     {
         //Check if colliding with another cube
-
+        if(!render)
+        {
+            //disable rendering of the mesh
+            GetComponent<MeshRenderer>().enabled = false;
+        }
+        else
+        {
+            //enable rendering of the mesh
+            GetComponent<MeshRenderer>().enabled = true;
+        }
         
+        // Update the position of the rigidbody
+        rb.MovePosition(position);
 
     }
 
