@@ -68,6 +68,19 @@ public class BoardState : MonoBehaviour
         
     }
 
+    // From a given position, check if this is available
+    public bool CheckNextFree(Vector3 targetPosition)
+    {
+        int x = (int)targetPosition.x;
+        int y = (int)targetPosition.y;
+        int z = (int)targetPosition.z;
+        if (board[y].cells[x, z].state == CellState.Empty)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public void TransferCubes(Polynomino4D polynomino)
     {
         // Take the cubes from the polynomino and put them in the board, then destroy the polyomino

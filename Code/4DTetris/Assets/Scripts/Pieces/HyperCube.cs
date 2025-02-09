@@ -36,7 +36,6 @@ public class Hypercube : MonoBehaviour
     private Mesh mesh;
 
     public CubeRep linkedCube;
-    bool visible = false;
 
     // The local offset in 4D, as assigned by the Polynomino
     public Vector4 localOffset4D = Vector4.zero;

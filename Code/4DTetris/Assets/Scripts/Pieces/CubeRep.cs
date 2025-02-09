@@ -2,8 +2,6 @@ using UnityEngine;
 using System.Collections;
 public class CubeRep : MonoBehaviour
 {
-    
-    public Vector3 position;
     public float size;
 
     [Header("References")]
@@ -11,11 +9,6 @@ public class CubeRep : MonoBehaviour
 
     public Rigidbody rb;
 
-    public CubeRep(Vector3 position)
-    {
-        this.position = position;
-        this.size = polynomino.cubeSize;
-    }
 
     public Mesh mesh;
     public Material material;    
@@ -32,6 +25,10 @@ public class CubeRep : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.constraints = RigidbodyConstraints.FreezeAll;
+
+        // the rigidbody needs to be a cube
+        rb.transform.localScale = new Vector3(size, size, size);
+
 
         // Add a simple cube mesh
         mesh = new Mesh();
@@ -63,8 +60,6 @@ public class CubeRep : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = true;
         }
         
-        // Update the position of the rigidbody
-        rb.MovePosition(position);
 
     }
 
@@ -80,6 +75,11 @@ public class CubeRep : MonoBehaviour
     public void ToggleRender()
     {
         render = !render;
+    }
+
+    public Vector3 GetPosition3D()
+    {
+        return transform.position;
     }
     
 }
