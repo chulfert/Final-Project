@@ -268,17 +268,7 @@ public class Hypercube : MonoBehaviour
             center += projectedVerts[i];
         }
         center /= projectedVerts.Length;
-        position3D = center;
-
-        // Determine if this cube is going to be rendered, if there are too few edges, don't render it
-        if (projectedVerts.Length < 8)
-        {
-            linkedCube.render = false;
-        }
-        else
-        {
-            linkedCube.render = true;
-        }
+        position3D = center;      
 
     }
 

@@ -1,15 +1,23 @@
 # Fdb version 3
-["bibtex prelim_report"] 1739133505 "prelim_report.aux" "prelim_report.bbl" "prelim_report" 1739133573
+["bibtex prelim_report"] 1739141940 "prelim_report.aux" "prelim_report.bbl" "prelim_report" 1739141954
   "e:/LatexLive/texlive/2021/texmf-dist/bibtex/bst/base/acm.bst" 1640700506 21064 c61a48664f3c347ce7f73c1a6a530506 ""
-  "prelim_report.aux" 1739133572 10292 e92661016aeff1fb6f4c7260b265e92d "pdflatex"
+  "prelim_report.aux" 1739141954 12171 7983fbfa557a1d8172435929031aa44d "pdflatex"
   "references.bib" 1733003348 9543 09c92699640d169e5cd6e7a7911751de ""
   (generated)
   "prelim_report.bbl"
   "prelim_report.blg"
-["pdflatex"] 1739133570 "c:/Users/chulf/Desktop/Final Project/Discover/prelim_report.tex" "prelim_report.pdf" "prelim_report" 1739133573
+["pdflatex"] 1739141951 "c:/Users/chulf/Desktop/Final Project/Discover/prelim_report.tex" "prelim_report.pdf" "prelim_report" 1739141954
   "4dtris.png" 1733003348 614084 5e22ad88dcdd55d452ab0742dcc9cbab ""
   "Dali_Crucifixion_hypercube.jpg" 1733003348 20350 296d22ff4fe5c5dbb9aea4f8e9055fed ""
-  "c:/Users/chulf/Desktop/Final Project/Discover/prelim_report.tex" 1739133569 31579 ecd1262122a84055742d620255e20fd7 ""
+  "Dev/HyperCube1.png" 1737628797 112161 7075bc3da304fe529ba9163663b15d2c ""
+  "Dev/bottom working.png" 1739137774 235547 3643670047d4d568f70db649db2c994f ""
+  "Dev/pieces piling up.png" 1739137758 307808 8edb4ed379d207b4e5c7c1c6c1f820b8 ""
+  "Dev/play_with_pointers.png" 1739138082 90782 31e3d240c8424d2acc75049ec4d07e9b ""
+  "Dev/voc1.png" 1739140114 101472 6ecb5a08bd4423b2a61917711287f44b ""
+  "Dev/voc2.png" 1739140130 88115 f7cd8e15a4623821f49d96edbd5d20e2 ""
+  "Dev/voc3.png" 1739140157 98448 77682c190dacf75f7e6110655409c6c8 ""
+  "Dev/voc4.png" 1739140170 79708 434da3c54d36477e25d58db81eeb6113 ""
+  "c:/Users/chulf/Desktop/Final Project/Discover/prelim_report.tex" 1739141952 40984 748a5964340c0d6b24d7a33877ad7eb6 ""
   "classes.png" 1733003348 151085 e9f3181a3c9f25f44b39e4b0ef73a25b ""
   "e:/LatexLive/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1640700785 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "e:/LatexLive/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1640701561 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -96,11 +104,11 @@
   "frac4d.png" 1733003348 3317 8e198a7923b177bad1da7afa1c3d1859 ""
   "gantt.png" 1734088915 127237 156901ba2d1ad3ff863cef476a8c3ac1 ""
   "polynominoes.png" 1731334940 11636 3e38dd5d3f6d287dbef9b85ed5d9b5de ""
-  "prelim_report.aux" 1739133572 10292 e92661016aeff1fb6f4c7260b265e92d "pdflatex"
-  "prelim_report.bbl" 1739133506 2996 a05e71c31d61d87082d6490460b9e3fa "bibtex prelim_report"
-  "prelim_report.out" 1739133572 5605 9ff3b941a8cc485990497e51b5d1087a "pdflatex"
-  "prelim_report.tex" 1739133569 31579 ecd1262122a84055742d620255e20fd7 ""
-  "prelim_report.toc" 1739133572 4097 cd59cafa61079db012877ee7f23370d2 "pdflatex"
+  "prelim_report.aux" 1739141954 12171 7983fbfa557a1d8172435929031aa44d "pdflatex"
+  "prelim_report.bbl" 1739141940 2996 a05e71c31d61d87082d6490460b9e3fa "bibtex prelim_report"
+  "prelim_report.out" 1739141954 5605 9ff3b941a8cc485990497e51b5d1087a "pdflatex"
+  "prelim_report.tex" 1739141952 40984 748a5964340c0d6b24d7a33877ad7eb6 ""
+  "prelim_report.toc" 1739141954 4400 a470cff93945fc56b9c8d87a8585c36a "pdflatex"
   (generated)
   "prelim_report.aux"
   "prelim_report.log"

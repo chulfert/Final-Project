@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.28)  9 FEB 2025 21:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.28)  9 FEB 2025 23:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -368,14 +368,74 @@ Package pdftex.def Info: Dali_Crucifixion_hypercube.jpg  used on input line 104.
 <classes.png, id=330, 1225.57875pt x 852.18375pt>
 File: classes.png Graphic file (type png)
 <use classes.png>
-Package pdftex.def Info: classes.png  used on input line 187.
+Package pdftex.def Info: classes.png  used on input line 188.
 (pdftex.def)             Requested size: 500.484pt x 347.99324pt.
-<gantt.png, id=331, 1163.84813pt x 573.64313pt>
+ [11 <./classes.png>]
+<gantt.png, id=337, 1163.84813pt x 573.64313pt>
 File: gantt.png Graphic file (type png)
 <use gantt.png>
-Package pdftex.def Info: gantt.png  used on input line 208.
+Package pdftex.def Info: gantt.png  used on input line 209.
 (pdftex.def)             Requested size: 500.484pt x 246.67924pt.
- [11 <./classes.png>] [12 <./gantt.png>] [13] [14] (./prelim_report.bbl [15]) [16] (./prelim_report.aux)
+ [12 <./gantt.png>]
+<./Dev/HyperCube1.png, id=352, 1146.53343pt x 592.46344pt>
+File: ./Dev/HyperCube1.png Graphic file (type png)
+<use ./Dev/HyperCube1.png>
+Package pdftex.def Info: ./Dev/HyperCube1.png  used on input line 272.
+(pdftex.def)             Requested size: 300.29344pt x 155.17593pt.
+ [13] [14 <./Dev/HyperCube1.png>]
+<./Dev/play_with_pointers.png, id=382, 760.34062pt x 515.67656pt>
+File: ./Dev/play_with_pointers.png Graphic file (type png)
+<use ./Dev/play_with_pointers.png>
+Package pdftex.def Info: ./Dev/play_with_pointers.png  used on input line 357.
+(pdftex.def)             Requested size: 300.29344pt x 203.67033pt.
+ [15]
+<./Dev/pieces piling up.png, id=392, 917.67844pt x 496.85625pt>
+File: ./Dev/pieces piling up.png Graphic file (type png)
+<use ./Dev/pieces piling up.png>
+Package pdftex.def Info: ./Dev/pieces piling up.png  used on input line 382.
+(pdftex.def)             Requested size: 300.29344pt x 162.58325pt.
+<./Dev/bottom working.png, id=393, 840.89156pt x 486.31688pt>
+File: ./Dev/bottom working.png Graphic file (type png)
+<use ./Dev/bottom working.png>
+Package pdftex.def Info: ./Dev/bottom working.png  used on input line 390.
+(pdftex.def)             Requested size: 300.29344pt x 173.67145pt.
+
+Overfull \hbox (92.76083pt too wide) in paragraph at lines 419--419
+[]        \OT1/cmtt/m/n/10 // Check the hypercubes of the polynominoe, calculate the position in the board grid and set it to filled[] 
+ []
+
+[16 <./Dev/play_with_pointers.png> <./Dev/pieces piling up.png>]
+Overfull \hbox (119.0106pt too wide) in paragraph at lines 419--419
+[]            \OT1/cmtt/m/n/10 Vector3 pos3 = new Vector3(x - (int)(GetBoardExtends().x / 2), y - (int)(GetBoardExtends().x / 2), z + 1);[] 
+ []
+
+
+Overfull \hbox (92.76083pt too wide) in paragraph at lines 419--419
+[]            \OT1/cmtt/m/n/10 go.transform.localScale = new Vector3(polynomino.cubeSize, polynomino.cubeSize, polynomino.cubeSize);[] 
+ []
+
+[17 <./Dev/bottom working.png>]
+<./Dev/voc1.png, id=412, 497.2176pt x 431.09055pt>
+File: ./Dev/voc1.png Graphic file (type png)
+<use ./Dev/voc1.png>
+Package pdftex.def Info: ./Dev/voc1.png  used on input line 447.
+(pdftex.def)             Requested size: 150.14671pt x 130.1767pt.
+<./Dev/voc2.png, id=413, 497.2176pt x 425.30894pt>
+File: ./Dev/voc2.png Graphic file (type png)
+<use ./Dev/voc2.png>
+Package pdftex.def Info: ./Dev/voc2.png  used on input line 448.
+(pdftex.def)             Requested size: 150.14671pt x 128.43083pt.
+<./Dev/voc3.png, id=414, 508.7808pt x 444.4605pt>
+File: ./Dev/voc3.png Graphic file (type png)
+<use ./Dev/voc3.png>
+Package pdftex.def Info: ./Dev/voc3.png  used on input line 449.
+(pdftex.def)             Requested size: 150.14671pt x 131.16219pt.
+<./Dev/voc4.png, id=415, 497.2176pt x 426.393pt>
+File: ./Dev/voc4.png Graphic file (type png)
+<use ./Dev/voc4.png>
+Package pdftex.def Info: ./Dev/voc4.png  used on input line 450.
+(pdftex.def)             Requested size: 150.14671pt x 128.75818pt.
+ (./prelim_report.bbl [18 <./Dev/voc1.png> <./Dev/voc2.png> <./Dev/voc3.png> <./Dev/voc4.png>]) [19] (./prelim_report.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -383,18 +443,18 @@ Package rerunfilecheck Info: File `prelim_report.out' has not changed.
 (rerunfilecheck)             Checksum: 9FF3B941A8CC485990497E51B5D1087A;5605.
  ) 
 Here is how much of TeX's memory you used:
- 10381 strings out of 478353
- 169261 string characters out of 5847090
- 478102 words of memory out of 5000000
- 28257 multiletter control sequences out of 15000+600000
+ 10460 strings out of 478353
+ 170796 string characters out of 5847090
+ 478474 words of memory out of 5000000
+ 28310 multiletter control sequences out of 15000+600000
  408835 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,9n,63p,1361b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,9n,63p,1361b,471s stack positions out of 5000i,500n,10000p,200000b,80000s
 {e:/LatexLive/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on prelim_report.pdf (16 pages, 951937 bytes).
+Output written on prelim_report.pdf (19 pages, 1808001 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
- 421 compressed objects within 5 object streams
- 133 named destinations out of 1000 (max. 500000)
- 367 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 519 PDF objects out of 1000 (max. 8388607)
+ 451 compressed objects within 5 object streams
+ 150 named destinations out of 1000 (max. 500000)
+ 407 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -174,6 +174,7 @@ This will be the collection of all resting cubes and will be used for the detect
 This is the playing field. Will generate the mesh, keep track of the block and give options for later enlargement of the playing field (not in MVP).
 \subsection{User Interface}
 Will be a column on the right containing scores, level etc. as well as an overlay that will help the user understand the rotations.
+The main plan to achieve this is to have a graphic that represents the arrow keys. Whenever one of the modifier keys is pressed the text, and maybe the colour of these arrow keys will change to give the player an idea of what rotational plane will happen. The problem lies in the actual rotations changing depending on the starting rotation. It might be necessary to have a visualisation of the current pieces somewhere in the UI that represents all 4 possible rotations with the current modifier, this could be turned off at a later stage (difficulty). Since this is one of the main challenges other preceding games have faced, this needs to be an area of focus and further testing. 
 \subsection{InputManager}
 Will switch between different state depending on the action key pressed chaning the functionality of the arrow keys and relaying the information to the pieces.
 \subsection{AudioManager}
@@ -265,6 +266,12 @@ While the prototypes are very rough, and not as far progessed as hoped to due to
 
 \section{Implementation}
 \paragraph{Hypercubes}
+\begin{figure}
+    \label{fig:hypercube}
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Dev/HyperCube1.png}
+    \caption{A 4D hypercube projected into 3D space in Unity.}
+\end{figure}
 These are the basic building blocks of my game. It was the first module that was implemented. All the hypercube class does is instantiate 
 The first thing this class does is create the vertices of the hypercube. This is done through 4 nested for loops that store 4 dimensional vectors in a list. 
 From the vertices we can create the edges, a special property of 4d hypercubes is that two vertices form an edge if and only if they differ in exactly one coordinate. Since this is done only once on startup it is also implelented thorugh nested for loops.
@@ -323,7 +330,7 @@ This class has seen some revisions already, especially when in comes to collisio
 The first plan was to use the built in Unity collision detection system. I created a cube on top of every hypercube and attached a rigidbody to act as a collider and have constant collision detection. After thinking about it however, I discovered this would be quite wasteful, and instead we keep track of the extends of the playing field and the the location of all walls and all blocks, and every time the player ask for any kind of movement we query if the final positon after that move, not the interpolated one, is even possible. If not, in case of a wall we simply ignore the move, in case of a block that prevents further falling, we start a timer, that unless the situation is resolved, will lock the piece in place.
 For now this does not consider the edge case, where a rotation leads to an out of bounds situation, which is however planned to be mitigated in the future.
 
-Locking in place will not be handles by the polynominue. Instead it will hand itself of to the board, and be dissassembled.
+Locking in place will not be handles by the polynomino. Instead it will hand itself of to the board, and be dissassembled.
 
 
 \paragraph{Input manager}
@@ -332,7 +339,7 @@ This class handles all the input provided by the player. For this assignement th
     \centering
     \begin{tabular}{|c|c|c|c|c|}
     \hline
-     & LEFT & UP & RIGHT& DOWN\\
+    Modifier & LEFT & UP & RIGHT& DOWN\\
     \hline
      & Move left & Move up & Move right & Move down\\
     A & XY- & XZ+ & XY+ & XZ-\\
@@ -345,14 +352,120 @@ This class handles all the input provided by the player. For this assignement th
 \end{table}
 To make it easier for the user to understand, for the moment a text field on the UI layer is updated whenever a modifier is pressed to inform the user what planes of rotation are currently beeing used. In the future this will be modified to a graphical overlay.
 For the moment this class also handles the pieces falling towards the bottom, however this is not properly decoupled and will be moved in the future.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Dev/play_with_pointers.png}
+    \caption{The current playfield with info about rotation (A key held down).}
+    \label{fig:input}
+\end{figure}
 
 
 \paragraph{BoardState}
+This class gathers information about the cells on the board. It is made up of a List of arrays of structs, that hold coordinates, a state and a cube. The Board State class provides crucial functions to other parts of the program such as Checking the bounds and checking for other pieces.
+\begin{verbatim}
+    public bool CheckNextFree(Vector3 targetPosition)
+    {
+        int x = (int)Math.Round(targetPosition.x) + (int)(GetBoardExtends().x / 2);
+        int y = (int)Math.Round(targetPosition.y) + (int)(GetBoardExtends().y / 2);
+        int z = (int)Math.Floor(targetPosition.z);
+        if (board[z].cells[x, y].state == CellState.Filled)
+        {
+            return false;
+        }
+        return true;
+    }
+\end{verbatim}
+This functions simply checks if a cell is already taken. Since we have discrete movements from cell to cell, even thoug we interpolate for graphical reasons, this is a much cheaper approach than doing acual collision detection or other complex techniques (could also raycast in z etc...).
+This approach leads to appropriate stacking of the pieces.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Dev/pieces piling up.png}
+    \caption{Pieces stacking.}
+    \label{fig:board}
+\end{figure}
+An even more trivial approach was chosen to check for the bottom. We simply check the Z coordinate an fix it in place.
+\begin{figure}
+    \label{fig:bottom}
+    \centering
+    \includegraphics[width=0.6\textwidth]{./Dev/bottom working.png}
+    \caption{Piece locked in place at the bottom.}
+\end{figure}
+The locking mechanism itself is done by removing the polynomino from the game and instanciating cubes in the grid, this also removes a lot of complexity.
+\begin{verbatim}
+    public void TransferCubes(Polynomino4D polynomino)
+    {
+        // Check the hypercubes of the polynominoe, calculate the position in the board grid and set it to filled
+        foreach (var cube in polynomino.hypercubes)
+        {
+            Vector3 pos = cube.GetPosition3D() + polynomino.transform.position;
+            int x = (int)Math.Round(pos.x) + (int)(GetBoardExtends().x / 2);
+            int y = (int)Math.Round(pos.y) + (int)(GetBoardExtends().y / 2);
+            int z = (int)Math.Floor(pos.z);
+            board[z].cells[x, y].state = CellState.Filled;
+ 
+            // Create a cube from the basic cube prefab and set it to this position
+            Vector3 pos3 = new Vector3(x - (int)(GetBoardExtends().x / 2), y - (int)(GetBoardExtends().x / 2), z + 1);
+            GameObject go = Instantiate(basicCube, pos3, Quaternion.identity);
+            go.transform.localScale = new Vector3(polynomino.cubeSize, polynomino.cubeSize, polynomino.cubeSize);
+            board[z].cells[x, y].cube = go;
+            // Assign color based on z heioght
+            float color = (float)z / (float)roomRenderer.sizeZ;
+            go.GetComponent<MeshRenderer>().material.color = new Color(color, color, color);
+ 
+        }
+        Destroy(polynomino.gameObject);
+        GameObject.Find("GameManager").GetComponent<PolyManager>().SpawnNewPolynomino();
+    }
+\end{verbatim}
+To make it easier to indentify layers we currently colour the cube according to their z position, however in future iterations this will be changed to predefined colours.
+This class is also in charge of clearing layers and updating the score. The layer clearing is implemented, however not bug-free yet. The score system is not implemented yet.
 
 \paragraph{Room Renderer}
+This class simply defines the size of the playing field and, for now renders a wireframe as seen in \ref{fig:input}.
+
+\paragraph{PolyManager}
+Manages the spawning of new polynominoes. 
+
+\paragraph{Conclusion}
+The first 'sprint' was a somewhat enlightening experience. As the good saying goes, no plan survives first contact with the enemy. 
+In this instance the enemy was my day job that suddenly required extensive overseas travel, which derailed my plan. But we had accounted for some travel, so the consequences can be somehwat mitigated. 
+Another good learning experience was, that in nearly all circumstances my first solution was not the correct or best solution (nor are my current ones), but iterating over each function multiple times lead to much more elegant and efficient solutions. 
+I feel that i am still in scope for what i tried to achieve in my project outline, but the 4D aspect, at least visually, will need some more work. 
+Functionally we have a prototype that spawns random pieces, lets them fall down the board, they collide with the floor as well as other pieces and lock in place. Clearing is partially implemented. Once that is done, everything will be refactored. When looking back at the module that dealt with software decoupling I do recognise it in a lot of places in my own code and will want to clean that up before final submission.
+Currently little unit testing has been done, this is mainly due to the fact that I was still figuring out the 'how' and unit testing without knowing the actual inputs and outputs that are required is somewhat futile. This will be done during refactor.
+The visuals will also need a major overhaul, but this is planned for the next sprint.
+Overall I feel confident that the project will be completed in time and to a satisfactory level. The main challenge is that I identified is playtesting, as the speed and the size of the board need to align with the limited time of 3 minutes that are available for the prototype.
 
 \section{Evaluation}
+\paragraph{Voice of Customer}
+This was described in a former paragraph. The goal was to identify the actual need for such a game, and learn about general properties. This was done using a simple questionaire at a (local) university (faculty + students).
+Some results can be seen in figure \ref{fig:voc}. What this shows it that there is a general interest in the game. The proposed keybindings (see table \ref{tab:input}) were liked, however I doubt that the results will be identical after playtesting.
+The progession system was in most cases wanted as the normal 'get faster' approach, since this is not critical for the prototype in this module it will be left for later.
+The question about the graphics was a little ambigous, since there was no concept art provided to the testees, this should be considered in future works.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\textwidth]{./Dev/voc1.png}
+    \includegraphics[width=0.3\textwidth]{./Dev/voc2.png}
+    \includegraphics[width=0.3\textwidth]{./Dev/voc3.png}
+    \includegraphics[width=0.3\textwidth]{./Dev/voc4.png}
+    \caption{Results of the Voice of Customer Survey.}
+    \label{fig:voc}
+\end{figure}
+\paragraph{Prototype Testing}
+This test was renamed from Gameplay testing, since due to time constraints, some functions were not provided (score system).
+This was performed in person on 10 people. The participants were betwenn 29 and 47 years old, and with a higher educational background, this needs to be considered, but more testing was not possible due to time constraints.\newline
+The participants reveived a quick verbal intro the game concept. They were then left alone with the protype and asked to talk about visuals, the controls, game speeds, concept and general feedback.
+Some key results are:
+\begin{enumerate}
+    \item Visuals are ok, multiple people want shading on the polynominoes
+    \item Controls are fine, more guidance on what will happen during rotations would help
+    \item Game feels slow
+    \item Concept it interesting, the idea of 4 dimensional tetris pieces is hard to understand, for a full release an actual physics intro would be fun
+\end{enumerate}
+This second round of user testing was very informal, but very informative. Having people playing it live and giving direct verbal feedback provided me with many ideas how to inprove in the future.
 
+\paragraph{Unit testing}
+As mentioned above, this was not yet done. Due to my own lack of understanding how to solve the problems it felt constructed to unit test, and I was unaware of many of the actual edge cases. The plan is to do user testing during the refactor, since i now know how it can work, and will work on optimizaztion and decoupling this could be a good place for unit testing.
 \bibliographystyle{acm}
 \bibliography{references}
 

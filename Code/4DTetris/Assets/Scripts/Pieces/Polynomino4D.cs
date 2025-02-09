@@ -1,13 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class Polynomino4D : MonoBehaviour
 {
     public enum RotationAxis { XY, XZ, XW, YZ, YW, ZW }
     public enum MovementAxis { X, Y, Z }
-
-    [Header("Prefab")]
-    public GameObject Cube_Prefab;
 
     [Tooltip("Prefab that contains the 'Hypercube' script.")]
     public GameObject hypercubePrefab;
@@ -26,6 +24,9 @@ public class Polynomino4D : MonoBehaviour
 
     private Vector3 boardOrigin = Vector3.zero;
     private Vector3 boardExtends = Vector3.zero;
+
+    float endPolyTimer = 0.0f;
+    bool endPolyTimerStarted = false;
 
     public float cubeSize = 1.0f;
     void Start()
@@ -47,16 +48,7 @@ public class Polynomino4D : MonoBehaviour
             {
                 cube.SetRotation4D(rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW);
             }
-        }
-
-        foreach (var hc in hypercubes)
-        {
-            GameObject cubeGO = Instantiate(Cube_Prefab, hc.GetPosition3D(), Quaternion.identity);
-            CubeRep cubeComponent = cubeGO.GetComponent<CubeRep>();
-            cubes.Add(cubeComponent);
-            cubeComponent.render = false;
-            hc.linkedCube = cubeComponent;
-        }
+        }     
 
         // Store the initial rotation angles for later use
         currentRotation[0] = rotationXY;
@@ -105,13 +97,18 @@ public class Polynomino4D : MonoBehaviour
             if (cube != null)
             {
                 cube.SetRotation4D(currentRotation[0], currentRotation[1], currentRotation[2], currentRotation[3], currentRotation[4], currentRotation[5]);
-                cube.linkedCube.transform.position = cube.GetPosition3D();
-                
             }
         }
+        if (endPolyTimerStarted)
+        {
+            endPolyTimer += Time.deltaTime;
 
-        
-       
+            // end the polyomino if it has been in the same position for 3 seconds
+            if (endPolyTimer > 0.3f)
+            {
+                boardState.TransferCubes(this);
+            }
+        }
     }
 
     public void addMovement(MovementAxis axis, bool direction)
@@ -151,13 +148,28 @@ public class Polynomino4D : MonoBehaviour
             case MovementAxis.Z:
                 float oldZ = targetPosition.z;
                 targetPosition.z += direction ? cubeSize : -cubeSize;
+                //int freeCounter = 0;
                 foreach (var hc in hypercubes) {
                     Vector3 pos = hc.GetPosition3D();
                     Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+                    if (targetPos.z < 0) break;
                     if (!boardState.CheckZBounds(targetPos))
                     {
                         boardState.TransferCubes(this);
+                        return;
                     }
+                    if (!boardState.CheckNextFree(targetPos))
+                    {
+                        endPolyTimerStarted = true;
+                        break;
+                    }
+                    else
+                    {
+                        endPolyTimerStarted = false;
+                        endPolyTimer = 0.0f;
+                        break;
+                    }
+
                 }
                 break;
         }
@@ -218,14 +230,6 @@ public class Polynomino4D : MonoBehaviour
             rotationXY, rotationXZ, rotationXW,
             rotationYZ, rotationYW, rotationZW
         );
-
-        GameObject cubeGO = Instantiate(Cube_Prefab, hc.GetPosition3D(), Quaternion.identity);
-        CubeRep cubeComponent = cubeGO.GetComponent<CubeRep>();
-        cubes.Add(cubeComponent);
-        cubeComponent.render = false;
-        hc.linkedCube = cubeComponent;
-        hc.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
-
         hypercubes.Add(hc);
         return hc;
     }

@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using static UnityEditor.PlayerSettings;
 
 public class BoardState : MonoBehaviour
 {
@@ -71,14 +72,14 @@ public class BoardState : MonoBehaviour
     // From a given position, check if this is available
     public bool CheckNextFree(Vector3 targetPosition)
     {
-        int x = (int)targetPosition.x;
-        int y = (int)targetPosition.y;
-        int z = (int)targetPosition.z;
-        if (board[y].cells[x, z].state == CellState.Empty)
+        int x = (int)Math.Round(targetPosition.x) + (int)(GetBoardExtends().x / 2);
+        int y = (int)Math.Round(targetPosition.y) + (int)(GetBoardExtends().y / 2);
+        int z = (int)Math.Floor(targetPosition.z);
+        if (board[z].cells[x, y].state == CellState.Filled)
         {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     public bool CheckBounds(Vector3 target)
@@ -92,7 +93,7 @@ public class BoardState : MonoBehaviour
 
     public bool CheckZBounds(Vector3 target)
     {
-        if(target.z > GetBoardOrigin().z + GetBoardExtends().z * current_polynomino.cubeSize) return false;
+        if(Mathf.Floor(target.z) >  GetBoardExtends().z * current_polynomino.cubeSize - 1) return false;
         return true;
     }
 
@@ -124,7 +125,6 @@ public class BoardState : MonoBehaviour
             int x = (int)Math.Round(pos.x) + (int)(GetBoardExtends().x / 2);
             int y = (int)Math.Round(pos.y) + (int)(GetBoardExtends().y / 2);
             int z = (int)Math.Floor(pos.z);
-            Console.WriteLine("x: " + x + " y: " + y + " z: " + z);
             board[z].cells[x, y].state = CellState.Filled;
 
             // Create a cube from the basic cube prefab and set it to this position
