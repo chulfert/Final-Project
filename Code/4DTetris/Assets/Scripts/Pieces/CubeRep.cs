@@ -32,7 +32,7 @@ public class CubeRep : MonoBehaviour
 
         // Add a simple cube mesh
         mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
+        //GetComponent<MeshFilter>().mesh = mesh;
         mesh.vertices = new Vector3[]
         {
             new Vector3(-size, -size, -size),
@@ -52,12 +52,12 @@ public class CubeRep : MonoBehaviour
         if(!render)
         {
             //disable rendering of the mesh
-            GetComponent<MeshRenderer>().enabled = false;
+            //GetComponent<MeshRenderer>().enabled = false;
         }
         else
         {
             //enable rendering of the mesh
-            GetComponent<MeshRenderer>().enabled = true;
+            //GetComponent<MeshRenderer>().enabled = true;
         }
         
 

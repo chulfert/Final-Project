@@ -1,28 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-/// <summary>
-/// Polynomino4D manages a collection of Hypercubes that form a 4D shape.
-/// - Builds itself from a template (array of 4D offsets).
-/// - Keeps track of rotation angles in 4D (XY, XZ, XW, YZ, YW, ZW).
-/// - Forwards those angles + each block's offset to the Hypercube scripts.
-/// - Supports removing hypercubes (e.g. for Tetris line clears).
-/// </summary>
 public class Polynomino4D : MonoBehaviour
 {
     public enum RotationAxis { XY, XZ, XW, YZ, YW, ZW }
     public enum MovementAxis { X, Y, Z }
 
-    [Header("Template & Prefab")]
-    [Tooltip("Which 4D shape do we use? (set of blockOffsets in 4D)")]
-    public Polynomino4DTemplate template;
+    [Header("Prefab")]
     public GameObject Cube_Prefab;
 
     [Tooltip("Prefab that contains the 'Hypercube' script.")]
     public GameObject hypercubePrefab;
 
     // We'll store references to each Hypercube we spawn
-    private List<Hypercube> hypercubes = new List<Hypercube>();
+    public List<Hypercube> hypercubes = new List<Hypercube>();
     public List<CubeRep> cubes = new List<CubeRep>();
     
 
@@ -30,7 +21,11 @@ public class Polynomino4D : MonoBehaviour
     public float rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW;
 
     [Header("References")]
-    public BoardState boardState;
+    public GameObject board;
+    private BoardState boardState;
+
+    private Vector3 boardOrigin = Vector3.zero;
+    private Vector3 boardExtends = Vector3.zero;
 
     public float cubeSize = 1.0f;
     void Start()
@@ -77,8 +72,13 @@ public class Polynomino4D : MonoBehaviour
         targetRotation[2] = rotationXW;
         targetRotation[3] = rotationYZ;
         targetRotation[4] = rotationYW;
-        targetRotation[5] = rotationZW;     
-        
+        targetRotation[5] = rotationZW;
+
+        // From the board get the position and size of the playfield
+        // boardOrigin = boardState.GetBoardOrigin();
+        //boardExtends = boardState.GetBoardExtends();
+        board = GameObject.Find("Board");
+        boardState = board.GetComponent<BoardState>();
     }
 
     public float[] targetRotation = new float[6];
@@ -119,16 +119,46 @@ public class Polynomino4D : MonoBehaviour
         switch (axis)
         {
             case MovementAxis.X:
+                float oldX = targetPosition.x;
                 targetPosition.x += direction ? cubeSize : -cubeSize;
+                //Check the edges
+                // conver the final position of the hypercubes
+                // after the move into grid coordinates
+                foreach (var hc in hypercubes)
+                {
+                    Vector3 pos = hc.GetPosition3D();
+                    Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+                    if (!boardState.CheckBounds(targetPos))
+                    {
+                        targetPosition.x = oldX;
+                    }
+                }
+
                 break;
             case MovementAxis.Y:
+                float oldY = targetPosition.y;
                 targetPosition.y += direction ? cubeSize : -cubeSize;
-                // Check the board if the move is possible
-                foreach(var hc in hypercubes)                    
-                        boardState.CheckNextFree(targetPosition);               
+                foreach (var hc in hypercubes)
+                {
+                    Vector3 pos = hc.GetPosition3D();
+                    Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+                    if (!boardState.CheckBounds(targetPos))
+                    {
+                        targetPosition.y = oldY;
+                    }
+                }
                 break;
             case MovementAxis.Z:
+                float oldZ = targetPosition.z;
                 targetPosition.z += direction ? cubeSize : -cubeSize;
+                foreach (var hc in hypercubes) {
+                    Vector3 pos = hc.GetPosition3D();
+                    Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+                    if (!boardState.CheckZBounds(targetPos))
+                    {
+                        boardState.TransferCubes(this);
+                    }
+                }
                 break;
         }
     }

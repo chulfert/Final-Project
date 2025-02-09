@@ -4,7 +4,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     [Header("References")]
-    public Polynomino4D polynomino; // Assign via Inspector
+    private Polynomino4D polynomino; 
     public TextMeshProUGUI planeIndicator;
 
     [Header("Movement Settings")]
@@ -18,8 +18,11 @@ public class InputManager : MonoBehaviour
     
     private float lastFall = 0;
 
+
     void Update()
     {
+
+        polynomino = GetComponent<PolyManager>().getCurrentPoly();
         if (polynomino == null) return;
 
         // -------------------------------
@@ -141,7 +144,7 @@ public class InputManager : MonoBehaviour
         }
 
         //every 10 seconds, move the polynomino down
-        if (Time.time - lastFall >= 10)
+        if (Time.time - lastFall >= 1)
         {
             polynomino.addMovement(Polynomino4D.MovementAxis.Z, true);
             lastFall = Time.time;

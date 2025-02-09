@@ -263,6 +263,95 @@ In addition rotation of 4d hypercubes was also implemented in Unity to check gen
 \paragraph{Conclusion}
 While the prototypes are very rough, and not as far progessed as hoped to due to time constraints, they do show that the underlying concept is feasible and the project can be attempted. It did also inform me about important watchouts for the development phase, such as handling disconnected edges/vertices. Since in between rotations we return to 3D space, things like collisions and line clearing will be much easier to implement.
 
+\section{Implementation}
+\paragraph{Hypercubes}
+These are the basic building blocks of my game. It was the first module that was implemented. All the hypercube class does is instantiate 
+The first thing this class does is create the vertices of the hypercube. This is done through 4 nested for loops that store 4 dimensional vectors in a list. 
+From the vertices we can create the edges, a special property of 4d hypercubes is that two vertices form an edge if and only if they differ in exactly one coordinate. Since this is done only once on startup it is also implelented thorugh nested for loops.
+\begin{verbatim}
+    for (int i = 0; i < baseVertices.Length; i++)
+    {
+        for (int j = i + 1; j < baseVertices.Length; j++)
+        {
+            Vector4 vi = baseVertices[i];
+            Vector4 vj = baseVertices[j];
+
+            // Count how many coordinates differ
+            int diffCount = 0;
+            if (Mathf.Abs(vi.x - vj.x) > 0.001f) diffCount++;
+            if (Mathf.Abs(vi.y - vj.y) > 0.001f) diffCount++;
+            if (Mathf.Abs(vi.z - vj.z) > 0.001f) diffCount++;
+            if (Mathf.Abs(vi.w - vj.w) > 0.001f) diffCount++;
+
+            if (diffCount == 1)
+            {
+                edges.Add(new int[] { i, j });
+            }
+        }
+    }
+\end{verbatim}
+To make the system easier, edges are not recalculated, but stay connected to the same vertices through the whole play. During inital testing this has not produced any critical issues, but might need to change in the future.
+The Hypercubes are also in charge of creating their own mesh. For now we rely on a wireframe mesh, but this is still planned to change in the future. We simply store the current position of the vertices in a list and reference them in the index array. From this we create a new mesh each update (there is a lot of room for optimization here). This is necessary since we are not simply creating an object in 3D space, but we are rotating in 4 dimensions and create a different 3D cut each update, in addition we a interpolating the rotations to make the movement look smooth..
+To obtain the positions of the vertices we use a helper class 
+\begin{verbatim}
+    public static Vector4 MultiplyPoint4x4(this Matrix4x4 m, Vector4 v)
+{
+    Vector4 result;
+    result.x = m.m00 * v.x + m.m01 * v.y + m.m02 * v.z + m.m03 * v.w;
+    result.y = m.m10 * v.x + m.m11 * v.y + m.m12 * v.z + m.m13 * v.w;
+    result.z = m.m20 * v.x + m.m21 * v.y + m.m22 * v.z + m.m23 * v.w;
+    result.w = m.m30 * v.x + m.m31 * v.y + m.m32 * v.z + m.m33 * v.w;
+    return result;
+}
+\end{verbatim}
+that lets us easily rotate a point by using a rotation matrix. Then we use a very trivial orthographic projection of the 4D space into 3D space. This is done by simply ignoring the w coordinate. This is a very simple approach, but it is sufficient for the current state of the project, an still gives nice visuals and interesting rotations. Future testing might compare a mathematically more correct approach against this in some sort of AB testing.
+\paragraph{Polynominoes}
+This module  handles the actual pieces. It randomly picks from a list of pre-created polynominoe layouts and creates the necessary hypercubes as well as rotates the piece into a random (snapped to 90°) state. The class also handles the rotations of the polynominoe. Every frame we interpolate
+between the current position and rotation as well as the target position an rotation. This is fortunately all baked into C\#.
+\begin{verbatim}
+    // Interpolate between current and target position
+transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 2);
+
+// Interpolate between current and target rotation
+for (int i = 0; i < 6; i++)
+{
+    currentRotation[i] = Mathf.Lerp(currentRotation[i], targetRotation[i], Time.deltaTime * 2);
+}
+\end{verbatim}
+This provides us with smooth movements.
+This class has seen some revisions already, especially when in comes to collision detection.
+The first plan was to use the built in Unity collision detection system. I created a cube on top of every hypercube and attached a rigidbody to act as a collider and have constant collision detection. After thinking about it however, I discovered this would be quite wasteful, and instead we keep track of the extends of the playing field and the the location of all walls and all blocks, and every time the player ask for any kind of movement we query if the final positon after that move, not the interpolated one, is even possible. If not, in case of a wall we simply ignore the move, in case of a block that prevents further falling, we start a timer, that unless the situation is resolved, will lock the piece in place.
+For now this does not consider the edge case, where a rotation leads to an out of bounds situation, which is however planned to be mitigated in the future.
+
+Locking in place will not be handles by the polynominue. Instead it will hand itself of to the board, and be dissassembled.
+
+
+\paragraph{Input manager}
+This class handles all the input provided by the player. For this assignement the input is very limited as we are bound to the arrow keys, plus 3 modifiers. The chosen layout table is below:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+     & LEFT & UP & RIGHT& DOWN\\
+    \hline
+     & Move left & Move up & Move right & Move down\\
+    A & XY- & XZ+ & XY+ & XZ-\\
+    S & XW- & YZ+ & XW+ & YZ-\\
+    D & YW- & ZW+ & YW+ & ZW-\\
+    \hline
+    \end{tabular}
+    \caption{Input Layout: The arrow keys are used to move the piece, the A, S, D keys are used to modify the plane of rotation.}
+    \label{tab:input}
+\end{table}
+To make it easier for the user to understand, for the moment a text field on the UI layer is updated whenever a modifier is pressed to inform the user what planes of rotation are currently beeing used. In the future this will be modified to a graphical overlay.
+For the moment this class also handles the pieces falling towards the bottom, however this is not properly decoupled and will be moved in the future.
+
+
+\paragraph{BoardState}
+
+\paragraph{Room Renderer}
+
+\section{Evaluation}
 
 \bibliographystyle{acm}
 \bibliography{references}

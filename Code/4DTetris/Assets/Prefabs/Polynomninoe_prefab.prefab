@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1706400048078309617}
   - component: {fileID: 6720426416858590480}
   m_Layer: 0
-  m_Name: Poly_Prefab
+  m_Name: Polynomninoe_prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 8585438614831535613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314b4fc406e67b44d935c66a60344c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   Cube_Prefab: {fileID: 3373468606981830669, guid: 4461e82e148149b428ef0af65d675e36, type: 3}
   hypercubePrefab: {fileID: 9204410034985753324, guid: 18c1a3db6a4e9da41bdcf0e39e2c931c, type: 3}
+  hypercubes: []
   cubes: []
   rotationXY: 0
   rotationXZ: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   rotationYZ: 0
   rotationYW: 0
   rotationZW: 0
+  board: {fileID: 0}
   cubeSize: 1
   targetRotation:
   - 0
