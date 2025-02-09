@@ -1,35 +1,38 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
-/// <summary>
-/// Polynomino4D manages a collection of Hypercubes that form a 4D shape.
-/// - Builds itself from a template (array of 4D offsets).
-/// - Keeps track of rotation angles in 4D (XY, XZ, XW, YZ, YW, ZW).
-/// - Forwards those angles + each block's offset to the Hypercube scripts.
-/// - Supports removing hypercubes (e.g. for Tetris line clears).
-/// </summary>
 public class Polynomino4D : MonoBehaviour
 {
     public enum RotationAxis { XY, XZ, XW, YZ, YW, ZW }
     public enum MovementAxis { X, Y, Z }
 
-    [Header("Template & Prefab")]
-    [Tooltip("Which 4D shape do we use? (set of blockOffsets in 4D)")]
-    public Polynomino4DTemplate template;
-
     [Tooltip("Prefab that contains the 'Hypercube' script.")]
     public GameObject hypercubePrefab;
 
     // We'll store references to each Hypercube we spawn
-    private List<Hypercube> hypercubes = new List<Hypercube>();
+    public List<Hypercube> hypercubes = new List<Hypercube>();
+    public List<CubeRep> cubes = new List<CubeRep>();
+    
 
     [Header("4D Rotation Angles (in degrees)")]
     public float rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW;
 
+    [Header("References")]
+    public GameObject board;
+    private BoardState boardState;
+
+    private Vector3 boardOrigin = Vector3.zero;
+    private Vector3 boardExtends = Vector3.zero;
+
+    float endPolyTimer = 0.0f;
+    bool endPolyTimerStarted = false;
+
     public float cubeSize = 1.0f;
     void Start()
     {
-        BuildFromTemplate();
+        CreateStandardPolynomino();
+        
         // Random rotation for startup (in 90-degree increments)
         rotationXY = Random.Range(0, 4) * 90;
         rotationXZ = Random.Range(0, 4) * 90;
@@ -43,12 +46,9 @@ public class Polynomino4D : MonoBehaviour
         {
             if (cube != null)
             {
-                cube.SetRotation4D(
-                                       rotationXY, rotationXZ, rotationXW,
-                                                          rotationYZ, rotationYW, rotationZW
-                                                                         );
+                cube.SetRotation4D(rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW);
             }
-        }
+        }     
 
         // Store the initial rotation angles for later use
         currentRotation[0] = rotationXY;
@@ -65,10 +65,15 @@ public class Polynomino4D : MonoBehaviour
         targetRotation[3] = rotationYZ;
         targetRotation[4] = rotationYW;
         targetRotation[5] = rotationZW;
-        
+
+        // From the board get the position and size of the playfield
+        // boardOrigin = boardState.GetBoardOrigin();
+        //boardExtends = boardState.GetBoardExtends();
+        board = GameObject.Find("Board");
+        boardState = board.GetComponent<BoardState>();
     }
 
-    private float[] targetRotation = new float[6];
+    public float[] targetRotation = new float[6];
     private float[] currentRotation = new float[6];
 
     private Vector3 targetPosition = Vector3.zero;
@@ -76,13 +81,15 @@ public class Polynomino4D : MonoBehaviour
     void Update()
     {
         // Interpolate between current and target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 5);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 2);
 
         // Interpolate between current and target rotation
         for (int i = 0; i < 6; i++)
         {
-            currentRotation[i] = Mathf.Lerp(currentRotation[i], targetRotation[i], Time.deltaTime * 5);
+            currentRotation[i] = Mathf.Lerp(currentRotation[i], targetRotation[i], Time.deltaTime * 2);
         }
+        
+
 
         //rotate the cubes
         foreach (var cube in hypercubes)
@@ -92,6 +99,16 @@ public class Polynomino4D : MonoBehaviour
                 cube.SetRotation4D(currentRotation[0], currentRotation[1], currentRotation[2], currentRotation[3], currentRotation[4], currentRotation[5]);
             }
         }
+        if (endPolyTimerStarted)
+        {
+            endPolyTimer += Time.deltaTime;
+
+            // end the polyomino if it has been in the same position for 3 seconds
+            if (endPolyTimer > 0.3f)
+            {
+                boardState.TransferCubes(this);
+            }
+        }
     }
 
     public void addMovement(MovementAxis axis, bool direction)
@@ -99,13 +116,61 @@ public class Polynomino4D : MonoBehaviour
         switch (axis)
         {
             case MovementAxis.X:
+                float oldX = targetPosition.x;
                 targetPosition.x += direction ? cubeSize : -cubeSize;
+                //Check the edges
+                // conver the final position of the hypercubes
+                // after the move into grid coordinates
+                foreach (var hc in hypercubes)
+                {
+                    Vector3 pos = hc.GetPosition3D();
+                    Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+                    if (!boardState.CheckBounds(targetPos))
+                    {
+                        targetPosition.x = oldX;
+                    }
+                }
+
                 break;
             case MovementAxis.Y:
+                float oldY = targetPosition.y;
                 targetPosition.y += direction ? cubeSize : -cubeSize;
+                foreach (var hc in hypercubes)
+                {
+                    Vector3 pos = hc.GetPosition3D();
+                    Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+                    if (!boardState.CheckBounds(targetPos))
+                    {
+                        targetPosition.y = oldY;
+                    }
+                }
                 break;
             case MovementAxis.Z:
+                float oldZ = targetPosition.z;
                 targetPosition.z += direction ? cubeSize : -cubeSize;
+                //int freeCounter = 0;
+                foreach (var hc in hypercubes) {
+                    Vector3 pos = hc.GetPosition3D();
+                    Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
+                    if (targetPos.z < 0) break;
+                    if (!boardState.CheckZBounds(targetPos))
+                    {
+                        boardState.TransferCubes(this);
+                        return;
+                    }
+                    if (!boardState.CheckNextFree(targetPos))
+                    {
+                        endPolyTimerStarted = true;
+                        break;
+                    }
+                    else
+                    {
+                        endPolyTimerStarted = false;
+                        endPolyTimer = 0.0f;
+                        break;
+                    }
+
+                }
                 break;
         }
     }
@@ -113,50 +178,6 @@ public class Polynomino4D : MonoBehaviour
     public void addRotation(RotationAxis axis, bool direction)
     {
         targetRotation[(int)axis] += direction ? 90 : -90;
-    }
-
-    /// <summary>
-    /// Instantiates one Hypercube for each 4D offset in the template.
-    /// Then store them in our 'hypercubes' list.
-    /// </summary>
-    private void BuildFromTemplate()
-    {
-        if (template == null || hypercubePrefab == null)
-        {
-            Debug.LogWarning("Polynomino4D: Missing template or prefab!");
-            CreateStandardPolynomino();
-            return;
-        }
-
-        ClearAllHypercubes(); // if we had any old ones
-
-        for (int i = 0; i < template.blockOffsets.Length; i++)
-        {
-            Vector4 offset = template.blockOffsets[i];
-
-            GameObject go = Instantiate(hypercubePrefab, this.transform);
-            Hypercube hc = go.GetComponent<Hypercube>();
-            if (hc == null)
-            {
-                Debug.LogError("Prefab missing Hypercube component!", go);
-                Destroy(go);
-                continue;
-            }
-
-            // Set the local offset so the hypercube knows where it is in 4D
-            hc.localOffset4D = offset;
-
-            // Also set the current rotation angles, so it starts correctly
-            hc.SetRotation4D(
-                rotationXY, rotationXZ, rotationXW,
-                rotationYZ, rotationYW, rotationZW
-            );
-
-            // Set the size of the cube
-            hc.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
-
-            hypercubes.Add(hc);
-        }
     }
 
     public void CreateStandardPolynomino()
@@ -173,45 +194,11 @@ public class Polynomino4D : MonoBehaviour
         // 4) Spawn hypercubes with these offsets
         for (int i = 0; i < chosenOffsets.Length; i++)
         {
-            // We'll reuse your existing method "AddHypercube(Vector4 localOffset)"
             AddHypercube(chosenOffsets[i]);
-        }
-
-        for (int i = 0; i < chosenOffsets.Length; i++)
-        {
-            Vector4 offset = chosenOffsets[i];
-
-            GameObject go = Instantiate(hypercubePrefab, this.transform);
-            Hypercube hc = go.GetComponent<Hypercube>();
-            if (hc == null)
-            {
-                Debug.LogError("Prefab missing Hypercube component!", go);
-                Destroy(go);
-                continue;
-            }
-
-            // Set the local offset so the hypercube knows where it is in 4D
-            hc.localOffset4D = offset;
-
-            // Also set the current rotation angles, so it starts correctly
-            hc.SetRotation4D(
-                rotationXY, rotationXZ, rotationXW,
-                rotationYZ, rotationYW, rotationZW
-            );
-
-            // Set the size of the cube
-            hc.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
-
-            hypercubes.Add(hc);
-        }
-
-        Debug.Log($"Created standard polynomino index: {index}, with {chosenOffsets.Length} blocks.");
+        };
     }
 
-    /// <summary>
-    /// Removes a single hypercube from this polynomino (e.g., Tetris line clear).
-    /// Destroys the GameObject, and removes it from the 'hypercubes' list.
-    /// </summary>
+    /// Remove a specific hypercube from the polynomino, might not be needed TODO: check
     public void RemoveHypercube(Hypercube cube)
     {
         if (cube != null)
@@ -221,9 +208,7 @@ public class Polynomino4D : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Remove ALL hypercubes (destroy them). Called if the entire piece is removed.
-    /// </summary>
+    /// remove all the hypercubes, might be needed when we connect to the stack
     public void ClearAllHypercubes()
     {
         foreach (var hc in hypercubes)
@@ -233,10 +218,7 @@ public class Polynomino4D : MonoBehaviour
         hypercubes.Clear();
     }
 
-    /// <summary>
-    /// If you want to add an extra hypercube at runtime (rare in Tetris, but possible).
-    /// localOffset is in 4D, referencing the polynomino's origin.
-    /// </summary>
+    /// Add a hyperbuve to the polynomino at a specific 4D offset.
     public Hypercube AddHypercube(Vector4 localOffset)
     {
         if (hypercubePrefab == null) return null;
@@ -248,8 +230,9 @@ public class Polynomino4D : MonoBehaviour
             rotationXY, rotationXZ, rotationXW,
             rotationYZ, rotationYW, rotationZW
         );
-
         hypercubes.Add(hc);
         return hc;
     }
 }
+
+

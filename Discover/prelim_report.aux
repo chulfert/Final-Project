@@ -2,10 +2,13 @@
 \providecommand\hyper@newdestlabel[2]{}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -28,9 +31,9 @@
 \@writefile{toc}{\contentsline {paragraph}{Mathematics}{3}{section*.5}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:poly}{{\caption@xref {fig:poly}{ on input line 42}}{4}{Gameplay}{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The single monomino (A(1) = 1), the two dominoes (A(2) = 2), the A(3) = 6 triominoes, and the A(4) = 19 tetrominoes (Tetris pieces) \cite  {polyominoes}}}{4}{figure.caption.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The single monomino (A(1) = 1), the two dominoes (A(2) = 2), the A(3) = 6 triominoes, and the A(4) = 19 tetrominoes (Tetris pieces) \cite  {polyominoes}\relax }}{4}{figure.caption.4}\protected@file@percent }
 \newlabel{fig:frac4d}{{\caption@xref {fig:frac4d}{ on input line 71}}{5}{Frac 4D}{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The 4 playing fields of Frac 4D. Image from myabandonware.com}}{5}{figure.caption.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The 4 playing fields of Frac 4D. Image from myabandonware.com\relax }}{5}{figure.caption.10}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{User Interface}{5}{section*.8}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Conclusion}{5}{section*.9}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Frac 4D}{5}{subsection.3.2}\protected@file@percent }
@@ -41,7 +44,7 @@
 \citation{cliff_alg}
 \citation{rot_n_1}
 \newlabel{fig:4dtris}{{\caption@xref {fig:4dtris}{ on input line 84}}{6}{Conclusion}{figure.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 4DTris in action. Still from a video on youtube, posted by the autor Simon Laszlo, https://www.youtube.com/watch?v=WO9SNW5Tp7A}}{6}{figure.caption.13}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 4DTris in action. Still from a video on youtube, posted by the autor Simon Laszlo, https://www.youtube.com/watch?v=WO9SNW5Tp7A\relax }}{6}{figure.caption.13}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}This project}{6}{subsection.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Literature}{6}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}The Fourth Dimension}{6}{subsection.4.1}\protected@file@percent }
@@ -49,7 +52,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}An Introduction to Clifford Algebras and Spinors}{6}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}On Rotations in Space of Four Dimensions}{6}{subsection.4.4}\protected@file@percent }
 \newlabel{fig:4d}{{\caption@xref {fig:4d}{ on input line 103}}{7}{The Fourth Dimension}{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The Crucifixion (Corpus Hypercubus) by Salvador Dali. A representation of a hypercube unfolded into 3 dimensions.}}{7}{figure.caption.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The Crucifixion (Corpus Hypercubus) by Salvador Dali. A representation of a hypercube unfolded into 3 dimensions.\relax }}{7}{figure.caption.15}\protected@file@percent }
 \citation{4d_vis_1}
 \citation{4d_vis_2}
 \citation{4d_vis_3}
@@ -77,20 +80,48 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Piece}{10}{subsection.8.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Block}{10}{subsection.8.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.5}Level}{10}{subsection.8.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}User Interface}{10}{subsection.8.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.6}User Interface}{11}{subsection.8.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.7}InputManager}{11}{subsection.8.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {8.8}AudioManager}{11}{subsection.8.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Overall Architecture of the 4D Tetris Project}}{11}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:architecture}{{5}{11}{Overall Architecture of the 4D Tetris Project}{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Overall Architecture of the 4D Tetris Project\relax }}{11}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:architecture}{{5}{11}{Overall Architecture of the 4D Tetris Project\relax }{figure.caption.16}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {9}Important Technologies and Methods}{11}{section.9}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Unity}{11}{subsection.9.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}C\#}{11}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}C\#}{12}{subsection.9.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {10}Plan of Work}{12}{section.10}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Project Timeline Gantt Chart}}{12}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:gantt}{{6}{12}{Project Timeline Gantt Chart}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Project Timeline Gantt Chart\relax }}{12}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:gantt}{{6}{12}{Project Timeline Gantt Chart\relax }{figure.caption.17}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {11}Testing and Evaluation Plan}{12}{section.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {12}Prototype}{13}{section.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Description}{13}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Rotations}{13}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Basic movement}{13}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Conclusion}{13}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}Implementation}{13}{section.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Hypercubes}{13}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:hypercube}{{\caption@xref {fig:hypercube}{ on input line 270}}{14}{Hypercubes}{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces A 4D hypercube projected into 3D space in Unity.\relax }}{14}{figure.caption.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Polynominoes}{15}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Input manager}{15}{section*.25}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Input Layout: The arrow keys are used to move the piece, the A, S, D keys are used to modify the plane of rotation.\relax }}{15}{table.caption.26}\protected@file@percent }
+\newlabel{tab:input}{{1}{15}{Input Layout: The arrow keys are used to move the piece, the A, S, D keys are used to modify the plane of rotation.\relax }{table.caption.26}{}}
+\@writefile{toc}{\contentsline {paragraph}{BoardState}{15}{section*.28}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces The current playfield with info about rotation (A key held down).\relax }}{16}{figure.caption.27}\protected@file@percent }
+\newlabel{fig:input}{{8}{16}{The current playfield with info about rotation (A key held down).\relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Pieces stacking.\relax }}{16}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:board}{{9}{16}{Pieces stacking.\relax }{figure.caption.29}{}}
+\newlabel{fig:bottom}{{\caption@xref {fig:bottom}{ on input line 388}}{17}{BoardState}{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Piece locked in place at the bottom.\relax }}{17}{figure.caption.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Room Renderer}{17}{section*.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{PolyManager}{17}{section*.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Conclusion}{17}{section*.33}\protected@file@percent }
 \bibstyle{acm}
 \bibdata{references}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Results of the Voice of Customer Survey.\relax }}{18}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:voc}{{11}{18}{Results of the Voice of Customer Survey.\relax }{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {14}Evaluation}{18}{section.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Voice of Customer}{18}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Prototype Testing}{18}{section*.36}\protected@file@percent }
 \bibcite{4d_vis_1}{1}
 \bibcite{polyominoes}{2}
 \bibcite{flow_2}{3}
@@ -101,11 +132,6 @@
 \bibcite{tetris_np}{8}
 \bibcite{tiling2}{9}
 \bibcite{geo_alg}{10}
-\@writefile{toc}{\contentsline {section}{\numberline {12}Prototype}{13}{section.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Description}{13}{section*.18}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Rotations}{13}{section*.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Basic movement}{13}{section*.20}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Conclusion}{13}{section*.21}\protected@file@percent }
 \bibcite{4d_vis_3}{11}
 \bibcite{cliff_alg}{12}
 \bibcite{Kornhaber_2020}{13}
@@ -113,4 +139,5 @@
 \bibcite{4d_vis_2}{15}
 \bibcite{rucker}{16}
 \bibcite{tiling1}{17}
-\gdef \@abspage@last{14}
+\@writefile{toc}{\contentsline {paragraph}{Unit testing}{19}{section*.37}\protected@file@percent }
+\gdef \@abspage@last{19}

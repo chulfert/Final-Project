@@ -35,10 +35,12 @@ public class Hypercube : MonoBehaviour
 
     private Mesh mesh;
 
+    public CubeRep linkedCube;
+
     // The local offset in 4D, as assigned by the Polynomino
     public Vector4 localOffset4D = Vector4.zero;
     public Vector4 rotatedOffset = Vector4.zero;
-
+    public Vector3 position3D = Vector3.zero;
 
     // -- Constants for tesseract geometry --    
     private static int[][] tesseractEdges = new int[][] {};
@@ -47,10 +49,8 @@ public class Hypercube : MonoBehaviour
     {
         // 1) Create the base vertex set for a tesseract
         CreateBaseVertices();
-
-        // 2) Create the edge table (or do it manually/hard-coded)
+        // 2) Create the edge table 
         CreateEdgeTable();
-
         // 3) Initialize the Mesh
         mesh = new Mesh();
         mesh.name = "HypercubeMesh";
@@ -62,30 +62,15 @@ public class Hypercube : MonoBehaviour
 
     void Update()
     {
-        // 1) Rotate + transform the 4D vertices
-        Apply4DRotation();
-
-        // 2) If we’re converting to a 3D cube, clamp w near zero
-        if (convertToCube)
-        {
-            ConvertTo3DIfThreshold();
-        }
-
-        // 3) Project from 4D -> 3D 
+        Apply4DRotation();   
         ProjectVertices();
-
-        // 4) Update the mesh
         UpdateMesh();
     }
 
-    // ------------------------------------------------------------------------
-    // STEP 1) CREATE BASE VERTICES (16 corners of a 4D hypercube)
-    // ------------------------------------------------------------------------
+    // CREATE BASE VERTICES
     private void CreateBaseVertices()
     {
-        // A tesseract has 16 vertices: each coordinate is +size/2 or -size/2
         float half = size * 0.5f;
-        // 16 vertices means 2^4 combinations
         baseVertices = new Vector4[16];
 
         int index = 0;
@@ -116,7 +101,6 @@ public class Hypercube : MonoBehaviour
         // This function can be done programmatically to avoid mistakes.
 
         // We'll store the edges in tesseractEdges as pairs [v1, v2].
-        // For simplicity, do it in a single pass:
         var edges = new System.Collections.Generic.List<int[]>();
         for (int i = 0; i < baseVertices.Length; i++)
         {
@@ -141,9 +125,7 @@ public class Hypercube : MonoBehaviour
         tesseractEdges = edges.ToArray();
     }
 
-    // ------------------------------------------------------------------------
-    // STEP 3) APPLY 4D ROTATION
-    // ------------------------------------------------------------------------
+    // APPLY 4D ROTATION
     private void Apply4DRotation()
     {
         // Convert angles to radians
@@ -169,8 +151,6 @@ public class Hypercube : MonoBehaviour
             transformedVerts[i] = rotMatrix.MultiplyPoint4x4(baseVertices[i]);
             //Calculate the rotated offset
             rotatedOffset = rotMatrix.MultiplyPoint4x4(localOffset4D);
-
-
             transformedVerts[i] += rotatedOffset;
         }
     }
@@ -248,29 +228,9 @@ public class Hypercube : MonoBehaviour
         m[3, 2] = sin; m[3, 3] = cos;
 
         return m * mat;
-    }
-    // ------------------------------------------------------------------------
+    }  
 
-    // ------------------------------------------------------------------------
-    // STEP 4) OPTIONAL: CONVERT W -> 0 IF BELOW THRESHOLD
-    //         This effectively collapses the hypercube to a 3D cube.
-    // ------------------------------------------------------------------------
-    private void ConvertTo3DIfThreshold()
-    {
-        for (int i = 0; i < transformedVerts.Length; i++)
-        {
-            var v = transformedVerts[i];
-            if (Mathf.Abs(v.w) < wThreshold)
-            {
-                v.w = 0f;
-                transformedVerts[i] = v;
-            }
-        }
-    }
-
-    // ------------------------------------------------------------------------
-    // STEP 5) PROJECT 4D POINTS TO 3D
-    // ------------------------------------------------------------------------
+    //PROJECT 4D POINTS TO 3D
     private void ProjectVertices()
     {
         for (int i = 0; i < transformedVerts.Length; i++)
@@ -278,9 +238,7 @@ public class Hypercube : MonoBehaviour
             // Create a copy of the 4D vertex
             Vector4 v4 = transformedVerts[i];
 
-            // SHIFT by sliceW in the w-dimension
-            // i.e., if sliceW>0, we effectively move the hypercube so that
-            // w= sliceW ends up at w=0 in the new, "shifted" coordinates
+            
             v4.w -= sliceW;
 
             if (usePerspectiveProjection)
@@ -302,12 +260,19 @@ public class Hypercube : MonoBehaviour
                 projectedVerts[i] = new Vector3(v4.x, v4.y, v4.z);
             }
         }
+
+        //Update potion3D with the center of the projected vertices
+        Vector3 center = Vector3.zero;
+        for (int i = 0; i < projectedVerts.Length; i++)
+        {
+            center += projectedVerts[i];
+        }
+        center /= projectedVerts.Length;
+        position3D = center;      
+
     }
 
-    public void SetRotation4D(
-        float rXY, float rXZ, float rXW,
-        float rYZ, float rYW, float rZW
-    )
+    public void SetRotation4D(float rXY, float rXZ, float rXW,float rYZ, float rYW, float rZW)
     {
         rotationXY = rXY;
         rotationXZ = rXZ;
@@ -317,12 +282,7 @@ public class Hypercube : MonoBehaviour
         rotationZW = rZW;
     }
 
-    // ------------------------------------------------------------------------
-    // STEP 6) UPDATE MESH
-    //         Here we’ll build a wireframe by forming lines between edges.
-    //         Alternatively, you can build the full set of faces if you want
-    //         a “solid” tesseract.
-    // ------------------------------------------------------------------------
+    // UPDATE MESH
     private void UpdateMesh()
     {
         // For a wireframe approach using a standard Mesh in Unity,
@@ -358,6 +318,14 @@ public class Hypercube : MonoBehaviour
         // you’ll need to define triangles and normals.
 
         mesh.RecalculateBounds();
+    }
+    
+    //Get GRid aligned 3d position for the hypercube taking into acocunt the 4d rotation and the offset within the polynomino
+    public Vector3 GetPosition3D()
+    {
+        //Calculate the rotated offset
+        //Vector3 pos = new Vector3(rotatedOffset.x + position3D.x, rotatedOffset.y + position3D.y, rotatedOffset.z + position3D.z);
+        return rotatedOffset;
     }
 }
 

@@ -17,20 +17,17 @@ public class RoomRenderer : MonoBehaviour
 
     private Mesh lineMesh;
 
+    // Rigidbody for each wall
+    private Rigidbody[] wallRbs;
+
     void Start()
     {
         BuildLineMesh();
     }
 
     private void BuildLineMesh()
-    {
-        if (polynomino == null)
-        {
-            Debug.LogError("RoomRenderer: polynomino reference is missing!");
-            return;
-        }
-
-        float cSize = polynomino.cubeSize;
+    {      
+        float cSize = GameObject.Find("GameManager").GetComponent<PolyManager>().cubeSize;
 
         var verts = new List<Vector3>();
         var indices = new List<int>();
@@ -154,7 +151,6 @@ public class RoomRenderer : MonoBehaviour
             }
         }
 
-        // We do NOT enclose z=0 with lines across x,y. That's open (the "top").
 
         // Build the final mesh
         lineMesh = new Mesh { name = "RoomWireframe" };
