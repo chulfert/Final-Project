@@ -25,7 +25,7 @@ public class PolyManager : MonoBehaviour
 
     public void SpawnNewPolynomino()
     {
-        currentPolynomino = Instantiate(Polynomninoe_prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        currentPolynomino = Instantiate(Polynomninoe_prefab, new Vector3(1.0f, 1.0f, 1f), Quaternion.identity);
         board.GetComponent<BoardState>().current_polynomino = currentPolynomino.GetComponent<Polynomino4D>();
     }
     public Polynomino4D getCurrentPoly()

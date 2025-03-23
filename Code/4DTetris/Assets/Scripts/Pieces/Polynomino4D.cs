@@ -76,7 +76,7 @@ public class Polynomino4D : MonoBehaviour
     public float[] targetRotation = new float[6];
     private float[] currentRotation = new float[6];
 
-    private Vector3 targetPosition = Vector3.zero;
+    public Vector3 targetPosition = Vector3.zero;
 
     void Update()
     {
@@ -91,12 +91,13 @@ public class Polynomino4D : MonoBehaviour
         
 
 
-        //rotate the cubes
+        //rotate the cubes // update the board
         foreach (var cube in hypercubes)
         {
             if (cube != null)
             {
                 cube.SetRotation4D(currentRotation[0], currentRotation[1], currentRotation[2], currentRotation[3], currentRotation[4], currentRotation[5]);
+
             }
         }
         if (endPolyTimerStarted)
@@ -113,22 +114,25 @@ public class Polynomino4D : MonoBehaviour
 
     public void addMovement(MovementAxis axis, bool direction)
     {
+        GameObject board = GameObject.Find("Board");
+        board.GetComponent<BoardState>().ClearFalling();
         switch (axis)
         {
             case MovementAxis.X:
                 float oldX = targetPosition.x;
                 targetPosition.x += direction ? cubeSize : -cubeSize;
-                //Check the edges
-                // conver the final position of the hypercubes
-                // after the move into grid coordinates
                 foreach (var hc in hypercubes)
                 {
+                    if(!hc.IsVisible()) continue;
                     Vector3 pos = hc.GetPosition3D();
                     Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
                     if (!boardState.CheckBounds(targetPos))
                     {
                         targetPosition.x = oldX;
+                        board.GetComponent<BoardState>().SetFalling(targetPosition);
+                        continue;
                     }
+                    board.GetComponent<BoardState>().SetFalling(targetPos);
                 }
 
                 break;
@@ -137,22 +141,27 @@ public class Polynomino4D : MonoBehaviour
                 targetPosition.y += direction ? cubeSize : -cubeSize;
                 foreach (var hc in hypercubes)
                 {
+                    if (!hc.IsVisible()) continue;
                     Vector3 pos = hc.GetPosition3D();
                     Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
                     if (!boardState.CheckBounds(targetPos))
                     {
                         targetPosition.y = oldY;
-                    }
+                        board.GetComponent<BoardState>().SetFalling(targetPosition + pos);
+                        continue;
+                    }                                
+                    board.GetComponent<BoardState>().SetFalling(targetPos);
                 }
                 break;
             case MovementAxis.Z:
                 float oldZ = targetPosition.z;
                 targetPosition.z += direction ? cubeSize : -cubeSize;
-                //int freeCounter = 0;
-                foreach (var hc in hypercubes) {
+                foreach (var hc in hypercubes)
+                {
+                    if (!hc.IsVisible()) continue;
                     Vector3 pos = hc.GetPosition3D();
                     Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
-                    if (targetPos.z < 0) break;
+                    if (targetPos.z < 0) continue;
                     if (!boardState.CheckZBounds(targetPos))
                     {
                         boardState.TransferCubes(this);
@@ -160,6 +169,8 @@ public class Polynomino4D : MonoBehaviour
                     }
                     if (!boardState.CheckNextFree(targetPos))
                     {
+                        targetPosition.z = oldZ;
+                        board.GetComponent<BoardState>().SetFalling(targetPosition + pos);
                         endPolyTimerStarted = true;
                         break;
                     }
@@ -167,9 +178,8 @@ public class Polynomino4D : MonoBehaviour
                     {
                         endPolyTimerStarted = false;
                         endPolyTimer = 0.0f;
-                        break;
                     }
-
+                    board.GetComponent<BoardState>().SetFalling(targetPos);
                 }
                 break;
         }

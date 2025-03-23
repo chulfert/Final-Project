@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Hypercube : MonoBehaviour
@@ -45,6 +46,8 @@ public class Hypercube : MonoBehaviour
     // -- Constants for tesseract geometry --    
     private static int[][] tesseractEdges = new int[][] {};
 
+    bool visible = true;
+
     void Awake()
     {
         // 1) Create the base vertex set for a tesseract
@@ -65,6 +68,17 @@ public class Hypercube : MonoBehaviour
         Apply4DRotation();   
         ProjectVertices();
         UpdateMesh();
+
+        //check the Mesh if it contains enough vertices to be visible
+        if (mesh.vertexCount > 0)
+        {
+            visible = true;
+        }
+        else
+        {
+            visible = false;
+            Debug.Log("Hypercube is not visible");
+        }
     }
 
     // CREATE BASE VERTICES
@@ -151,6 +165,7 @@ public class Hypercube : MonoBehaviour
             transformedVerts[i] = rotMatrix.MultiplyPoint4x4(baseVertices[i]);
             //Calculate the rotated offset
             rotatedOffset = rotMatrix.MultiplyPoint4x4(localOffset4D);
+            Debug.Log("Rotated Offset: " + rotatedOffset);
             transformedVerts[i] += rotatedOffset;
         }
     }
@@ -284,15 +299,11 @@ public class Hypercube : MonoBehaviour
 
     // UPDATE MESH
     private void UpdateMesh()
-    {
-        // For a wireframe approach using a standard Mesh in Unity,
-        // we can represent each edge as a pair of vertices in the mesh, 
-        // with indices that form lines. 
-        // Another option: use a LineRenderer with multiple segments.
-
+    {      
         // -- Build wireframe data --
         var wireVerts = new System.Collections.Generic.List<Vector3>();
         var wireIndices = new System.Collections.Generic.List<int>();
+
 
         for (int e = 0; e < tesseractEdges.Length; e++)
         {
@@ -307,16 +318,13 @@ public class Hypercube : MonoBehaviour
             wireIndices.Add(wireVerts.Count - 2);
             wireIndices.Add(wireVerts.Count - 1);
         }
+        Debug.Log("Indices: " + wireIndices.Count);
 
         mesh.Clear();
 
         // Because we’re building line geometry:
         mesh.SetVertices(wireVerts);
         mesh.SetIndices(wireIndices.ToArray(), MeshTopology.Lines, 0);
-
-        // Normals/UVs are not critical for a wireframe. If you want a solid mesh,
-        // you’ll need to define triangles and normals.
-
         mesh.RecalculateBounds();
     }
     
@@ -324,8 +332,27 @@ public class Hypercube : MonoBehaviour
     public Vector3 GetPosition3D()
     {
         //Calculate the rotated offset
-        //Vector3 pos = new Vector3(rotatedOffset.x + position3D.x, rotatedOffset.y + position3D.y, rotatedOffset.z + position3D.z);
         return rotatedOffset;
+        
+    }
+
+    //public bool IsVisible()
+    //{
+    //    return visible;
+    //}
+
+    public bool IsVisible()
+    {
+        float wThreshold = 0.7f; 
+        bool wComponentValid = Mathf.Abs(rotatedOffset.w) < wThreshold;
+
+        float minSize = 0.1f; 
+        bool hasSufficientSize = mesh.bounds.size.magnitude > minSize;
+
+        bool isPositionValid = !float.IsNaN(position3D.x) &&
+                              !float.IsNaN(position3D.y) &&
+                              !float.IsNaN(position3D.z);
+        return wComponentValid && hasSufficientSize && isPositionValid;
     }
 }
 
