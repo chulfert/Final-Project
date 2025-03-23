@@ -25,7 +25,7 @@ public class BoardState : MonoBehaviour
     }
 
     private struct Cell
-    { 
+    {
         public CellState state;
         public GameObject cube;
     }
@@ -71,7 +71,7 @@ public class BoardState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            CheckLayersForFull();
+        CheckLayersForFull();
         //string debug = "";
         // Debug the board state
         //for (int i = 0; i < board.Count; i++)
@@ -99,7 +99,7 @@ public class BoardState : MonoBehaviour
                 {
                     if (board[z].cells[x, y].state == CellState.Falling)
                     {
-                        fallingCubes.Add(new Vector3Int(x,y,z));
+                        fallingCubes.Add(new Vector3Int(x, y, z));
                     }
                 }
             }
@@ -139,7 +139,7 @@ public class BoardState : MonoBehaviour
 
     public bool CheckZBounds(Vector3 target)
     {
-        if(Mathf.Floor(target.z) >=  GetBoardExtends().z * current_polynomino.cubeSize) return false;
+        if (Mathf.Floor(target.z) >= GetBoardExtends().z * current_polynomino.cubeSize) return false;
         return true;
     }
 
@@ -171,10 +171,9 @@ public class BoardState : MonoBehaviour
             Vector3 pos = cube.GetPosition3D() + polynomino.targetPosition;
             Vector3Int index = WorldToBoardIndex(pos);
             if (!CheckValidBoardPosition(index))
-            { 
+            {
                 GameObject.Find("GameManager").GetComponent<GameStateManager>().GameOver();
             }
-            // GameOver goes here
             board[index.z].cells[index.x, index.y].state = CellState.Filled;
 
             // Create a cube from the basic cube prefab and set it to this position
@@ -272,19 +271,20 @@ public class BoardState : MonoBehaviour
             {
                 for (int k = 0; k < board[i].cells.GetLength(1); k++)
                 {
-                    if ( board[i].cells[j, k].state == CellState.Falling)
+                    if (board[i].cells[j, k].state == CellState.Falling)
                     {
                         board[i].cells[j, k].state = CellState.Empty;
                     }
                 }
-                
-            }            
+
+            }
         }
     }
     public void SetFalling(Vector3 pos_in)
     {
         Vector3Int pos = WorldToBoardIndex(pos_in);
         if (pos.z < 0) return;
+        if (!CheckValidBoardPosition(pos)) return;
         board[pos.z].cells[pos.x, pos.y].state = CellState.Falling;
     }
 
@@ -299,12 +299,12 @@ public class BoardState : MonoBehaviour
 
         Vector3 boardOrigin = GetBoardOrigin();
         // Subtract the board origin and divide by cube size (assume uniform scaling)
-        int x = Mathf.RoundToInt((pos.x - boardOrigin.x) / current_polynomino.cubeSize);
-        int y = Mathf.RoundToInt((pos.y - boardOrigin.y) / current_polynomino.cubeSize);
+        int x = Mathf.RoundToInt((pos.x - boardOrigin.x) / current_polynomino.cubeSize) - 1;
+        int y = Mathf.RoundToInt((pos.y - boardOrigin.y) / current_polynomino.cubeSize) - 1;
         int z = Mathf.RoundToInt((pos.z - boardOrigin.z) / current_polynomino.cubeSize) - 1;
         return new Vector3Int(x, y, z);
     }
-   
+
     private Vector3 BoardIndexToWorld(Vector3Int index)
     {
         /*Vector3 ext = GetBoardExtends();
@@ -315,16 +315,55 @@ public class BoardState : MonoBehaviour
 
 
         Vector3 boardOrigin = GetBoardOrigin();
-        return new Vector3(index.x * current_polynomino.cubeSize + boardOrigin.x, index.y * current_polynomino.cubeSize + boardOrigin.y, index.z * current_polynomino.cubeSize + boardOrigin.z + 1);
+        return new Vector3(index.x * current_polynomino.cubeSize + boardOrigin.x + 1, index.y * current_polynomino.cubeSize + boardOrigin.y + 1, index.z * current_polynomino.cubeSize + boardOrigin.z + 1);
 
     }
 
     private bool CheckValidBoardPosition(Vector3Int index)
     {
-        if (index.x < 0 || index.x >= GetBoardExtends().x) return false;
-        if (index.y < 0 || index.y >= GetBoardExtends().y) return false;
-        if (index.z < 0 || index.z >= GetBoardExtends().z) return false;
+        if (index.z < 0 || index.z >= board.Count)
+            return false;
+
+        if (index.x < 0 || index.x >= board[index.z].cells.GetLength(0))
+            return false;
+
+        if (index.y < 0 || index.y >= board[index.z].cells.GetLength(1))
+            return false;
+
         return true;
     }
 
+    public Vector3 ResetVector(Vector3 pos)
+    {
+        // Calculate how far out of bounds we are
+        Vector3Int index = WorldToBoardIndex(pos);
+        Vector3 mod = Vector3.zero;
+        if (index.x < 0)
+        {
+            mod.x = -index.x;
+        }
+        if (index.x >= GetBoardExtends().x)
+        {
+            mod.x = GetBoardExtends().x - index.x - 1;
+        }
+        if (index.y < 0)
+        {
+            mod.y = -index.y;
+        }
+        if (index.y >= GetBoardExtends().y)
+        {
+            mod.y = GetBoardExtends().y - index.y - 1;
+        }
+        if (index.z < 0)
+        {
+            mod.z = -index.z;
+        }
+        if (index.z >= GetBoardExtends().z)
+        {
+            mod.z = GetBoardExtends().z - index.z - 1;
+        }
+        return mod;
+
+
     }
+}

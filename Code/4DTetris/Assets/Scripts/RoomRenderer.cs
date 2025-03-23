@@ -11,8 +11,7 @@ public class RoomRenderer : MonoBehaviour
 
     [Header("References")]
     public Polynomino4D polynomino; 
-
-    [Header("Room Offset")]
+     
 
     private Mesh lineMesh;
 
@@ -23,7 +22,7 @@ public class RoomRenderer : MonoBehaviour
     {
         cSize = GameObject.Find("GameManager").GetComponent<PolyManager>().cubeSize;
         GameObject board = GameObject.Find("Board");
-        board.transform.position = new Vector3(-sizeX / 2, -sizeY / 2, 0) * cSize;
+        board.transform.position = new Vector3(-sizeX / 2 + 0.5f, -sizeY / 2 + 0.5f, 0) * cSize;
         BuildLineMesh();
         CreateQuadMesh();
     }
@@ -201,7 +200,7 @@ public class RoomRenderer : MonoBehaviour
 
             // --- Right Wall (x = sizeX * cSize) ---
             Matrix4x4 matrixRight = Matrix4x4.TRS(
-                new Vector3(sizeX * cSize, cube.y * cSize, cube.z * cSize) + board_pos,
+                new Vector3(sizeX * cSize, cube.y * cSize, (cube.z + 1) * cSize) + board_pos,
                 Quaternion.Euler(0, 90, 0),
                 new Vector3(cSize, cSize, 1)
             );
@@ -219,7 +218,7 @@ public class RoomRenderer : MonoBehaviour
 
             // --- Front Wall (y = sizeY * cSize) ---
             Matrix4x4 matrixFront = Matrix4x4.TRS(
-                new Vector3(cube.x * cSize, sizeY * cSize, cube.z * cSize) + board_pos,
+                new Vector3(cube.x * cSize, sizeY * cSize, (cube.z+1) * cSize) + board_pos,
                 Quaternion.Euler(-90, 0, 0),
                 new Vector3(cSize, cSize, 1)
             );

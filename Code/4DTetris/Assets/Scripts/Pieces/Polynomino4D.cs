@@ -67,10 +67,12 @@ public class Polynomino4D : MonoBehaviour
         targetRotation[5] = rotationZW;
 
         // From the board get the position and size of the playfield
-        // boardOrigin = boardState.GetBoardOrigin();
-        //boardExtends = boardState.GetBoardExtends();
         board = GameObject.Find("Board");
+
         boardState = board.GetComponent<BoardState>();
+        boardOrigin = boardState.GetBoardOrigin();
+        boardExtends = boardState.GetBoardExtends();
+        targetPosition = boardOrigin + new Vector3(boardExtends.x/2, boardExtends.y/2, 0);
     }
 
     public float[] targetRotation = new float[6];
@@ -116,6 +118,77 @@ public class Polynomino4D : MonoBehaviour
     {
         GameObject board = GameObject.Find("Board");
         board.GetComponent<BoardState>().ClearFalling();
+        Vector3 oldPosition = targetPosition;
+        Vector3 newPosition = targetPosition;
+        switch (axis)
+        {
+            case MovementAxis.X:
+                newPosition.x += direction ? cubeSize : -cubeSize;
+                break;
+            case MovementAxis.Y:
+                newPosition.y += direction ? cubeSize : -cubeSize;
+                break;
+            case MovementAxis.Z:
+                newPosition.z += direction ? cubeSize : -cubeSize;
+                break;
+        }
+
+        bool canMove = true;
+        bool hittingPiece = false;
+
+        foreach (var hc in hypercubes)
+        {
+            if(!hc.IsVisible()) continue;
+            Vector3 pos = hc.GetPosition3D();
+            Vector3 targetPos = pos + newPosition;
+            if(axis == MovementAxis.Z)
+            {
+                if (!boardState.CheckZBounds(targetPos))
+                {
+                    boardState.TransferCubes(this);
+                    return;
+                }
+            }
+            else
+            {
+                if (!boardState.CheckBounds(targetPos))
+                {
+                    canMove = false;
+                    break;
+                }
+                
+            }
+            if (!boardState.CheckNextFree(targetPos))
+            {
+                hittingPiece = true;
+                canMove = false;
+                break;
+            }
+        }
+
+        if (canMove) {
+            targetPosition = newPosition;
+            foreach (var hc in hypercubes)
+            {
+                if (!hc.IsVisible()) continue;
+                Vector3 pos = hc.GetPosition3D();
+                Vector3 targetPos = pos + targetPosition;
+                board.GetComponent<BoardState>().SetFalling(targetPos);
+            }
+            endPolyTimerStarted = false;
+        }
+        else if (hittingPiece)
+        {
+            endPolyTimerStarted = true;
+        }
+        else
+        {
+            board.GetComponent<BoardState>().SetFalling(targetPosition);
+        }
+    
+
+
+        /*
         switch (axis)
         {
             case MovementAxis.X:
@@ -154,6 +227,7 @@ public class Polynomino4D : MonoBehaviour
                 }
                 break;
             case MovementAxis.Z:
+                Vector3 oldPosition = targetPosition;
                 float oldZ = targetPosition.z;
                 targetPosition.z += direction ? cubeSize : -cubeSize;
                 foreach (var hc in hypercubes)
@@ -167,6 +241,7 @@ public class Polynomino4D : MonoBehaviour
                         boardState.TransferCubes(this);
                         return;
                     }
+
                     if (!boardState.CheckNextFree(targetPos))
                     {
                         targetPosition.z = oldZ;
@@ -182,7 +257,7 @@ public class Polynomino4D : MonoBehaviour
                     board.GetComponent<BoardState>().SetFalling(targetPos);
                 }
                 break;
-        }
+        }*/
     }
 
     public void addRotation(RotationAxis axis, bool direction)

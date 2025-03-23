@@ -332,8 +332,7 @@ public class Hypercube : MonoBehaviour
     public Vector3 GetPosition3D()
     {
         //Calculate the rotated offset
-        return rotatedOffset;
-        
+        return rotatedOffset;        
     }
 
     //public bool IsVisible()
