@@ -1,11 +1,23 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
     [Header("References")]
     private Polynomino4D polynomino; 
     public TextMeshProUGUI planeIndicator;
+
+    public Button leftArrowButton;
+    public Button rightArrowButton;
+    public Button upArrowButton;
+    public Button downArrowButton;
+
+    private TextMeshProUGUI leftArrow;
+    private TextMeshProUGUI rightArrow;
+    private TextMeshProUGUI upArrow;
+    private TextMeshProUGUI downArrow;
+
 
     [Header("Movement Settings")]
     public float moveStep = 0.1f; // how much to move per frame in x or y
@@ -18,7 +30,17 @@ public class InputManager : MonoBehaviour
     
     private float lastFall = 0;
 
+    GameObject board;
 
+    private void Start()
+    {
+        board = GameObject.Find("Board");
+
+        leftArrow = leftArrowButton.GetComponentInChildren<TextMeshProUGUI>();
+        rightArrow = rightArrowButton.GetComponentInChildren<TextMeshProUGUI>();
+        upArrow = upArrowButton.GetComponentInChildren<TextMeshProUGUI>();
+        downArrow = downArrowButton.GetComponentInChildren<TextMeshProUGUI>();
+    }
     void Update()
     {
 
@@ -42,12 +64,24 @@ public class InputManager : MonoBehaviour
         {
             // Restart the game
             Application.LoadLevel(Application.loadedLevel);
+
+        }
+
+        if (Input.GetKey(KeyCode.C))
+        {
+            BoardState b = board.GetComponent<BoardState>();
+            b.ClearLayer(9);
         }
 
         // Only do WASD movement if NO modifiers are held only have 1 impulse per key, not held
         if (!mod_1 && !mod_2 && !mod_3)
         {
             planeIndicator.text = "Movement";
+
+            leftArrow.text = "Left";
+            rightArrow.text = "Right";
+            upArrow.text = "Up";
+            downArrow.text = "Down";
 
             Vector3 currentPos = polynomino.transform.position;
             // W => +y
@@ -78,6 +112,10 @@ public class InputManager : MonoBehaviour
         else if (mod_1 && !mod_2 && !mod_3)
         {
             planeIndicator.text = "Rotation XY (L/R) || Rotation XZ (U/D)";
+            leftArrow.text = "XY-";
+            rightArrow.text = "XY+";
+            upArrow.text = "XZ+";
+            downArrow.text = "XZ-";
             // Shift + A/d rotates around XY plane
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 polynomino.addRotation(Polynomino4D.RotationAxis.XY, false);
@@ -93,6 +131,11 @@ public class InputManager : MonoBehaviour
         else if (!mod_1 && mod_2 && !mod_3)
         {
             planeIndicator.text = "Rotation XW (L/R) || Rotation YZ (U/D)";
+            leftArrow.text = "XW-";
+            rightArrow.text = "XW+";
+            upArrow.text = "YZ+";
+            downArrow.text = "YZ-";
+
             // ctrl + A/d rotates around Xw plane
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 polynomino.addRotation(Polynomino4D.RotationAxis.XW, false);
@@ -107,6 +150,11 @@ public class InputManager : MonoBehaviour
         else if (!mod_1 && !mod_2 && mod_3)
         {
             planeIndicator.text = "Rotation YW (L/R) || Rotation ZW (U/D)";
+            leftArrow.text = "YW-";
+            rightArrow.text = "YW+";
+            upArrow.text = "ZW+";
+            downArrow.text = "ZW-";
+
             // alt + A/d rotates around Yw plane
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 polynomino.addRotation(Polynomino4D.RotationAxis.YW, false);

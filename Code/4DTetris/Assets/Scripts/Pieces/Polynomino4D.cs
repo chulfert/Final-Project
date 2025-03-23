@@ -106,8 +106,8 @@ public class Polynomino4D : MonoBehaviour
         {
             endPolyTimer += Time.deltaTime;
 
-            // end the polyomino if it has been in the same position for 3 seconds
-            if (endPolyTimer > 0.3f)
+            // end the polyomino if it has been in the same position for 0.8 seconds
+            if (endPolyTimer > 0.8f)
             {
                 boardState.TransferCubes(this);
             }
@@ -262,21 +262,20 @@ public class Polynomino4D : MonoBehaviour
 
     public void addRotation(RotationAxis axis, bool direction)
     {
+        float oldRotation = targetRotation[(int)axis];
         targetRotation[(int)axis] += direction ? 90 : -90;
-    }
+        //Check if rotation is possible TODODODODO
+        
+        }
 
     public void CreateStandardPolynomino()
     {
-        // 1) Grab the list of shapes
         var allShapes = StandardPolynominoes4D.shapes;
-        // 2) Pick one randomly
         int index = Random.Range(0, allShapes.Length);
         Vector4[] chosenOffsets = allShapes[index];
 
-        // 3) Clear existing hypercubes if needed
         ClearAllHypercubes();
 
-        // 4) Spawn hypercubes with these offsets
         for (int i = 0; i < chosenOffsets.Length; i++)
         {
             AddHypercube(chosenOffsets[i]);

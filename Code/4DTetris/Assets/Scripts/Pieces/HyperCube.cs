@@ -165,7 +165,6 @@ public class Hypercube : MonoBehaviour
             transformedVerts[i] = rotMatrix.MultiplyPoint4x4(baseVertices[i]);
             //Calculate the rotated offset
             rotatedOffset = rotMatrix.MultiplyPoint4x4(localOffset4D);
-            Debug.Log("Rotated Offset: " + rotatedOffset);
             transformedVerts[i] += rotatedOffset;
         }
     }
@@ -318,7 +317,6 @@ public class Hypercube : MonoBehaviour
             wireIndices.Add(wireVerts.Count - 2);
             wireIndices.Add(wireVerts.Count - 1);
         }
-        Debug.Log("Indices: " + wireIndices.Count);
 
         mesh.Clear();
 

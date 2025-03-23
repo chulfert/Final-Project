@@ -126,11 +126,7 @@ public class BoardState : MonoBehaviour
     }
 
     public bool CheckBounds(Vector3 target)
-    {
-        /*if (target.x < GetBoardOrigin().x) return false;
-        if (target.y < GetBoardOrigin().y) return false;
-        if(target.x > GetBoardOrigin().x + GetBoardExtends().x * current_polynomino.cubeSize) return false;
-        if (target.y > GetBoardOrigin().y + GetBoardExtends().y * current_polynomino.cubeSize) return false;*/
+    {        
         Vector3Int boardPosition = WorldToBoardIndex(target);
         if (boardPosition.x < 0 || boardPosition.x >= GetBoardExtends().x) return false;
         if (boardPosition.y < 0 || boardPosition.y >= GetBoardExtends().y) return false;
@@ -164,12 +160,14 @@ public class BoardState : MonoBehaviour
 
     public void TransferCubes(Polynomino4D polynomino)
     {
+        int cubeCount = 0;
         // Check the hypercubes of the polynominoe, calculate the position in the board grid and set it to filled
         foreach (var cube in polynomino.hypercubes)
         {
             if (!cube.IsVisible()) continue;
             Vector3 pos = cube.GetPosition3D() + polynomino.targetPosition;
             Vector3Int index = WorldToBoardIndex(pos);
+            cubeCount += board.Count - index.z;
             if (!CheckValidBoardPosition(index))
             {
                 GameObject.Find("GameManager").GetComponent<GameStateManager>().GameOver();
@@ -192,7 +190,9 @@ public class BoardState : MonoBehaviour
 
         }
         Destroy(polynomino.gameObject);
-        GameObject.Find("GameManager").GetComponent<PolyManager>().SpawnNewPolynomino();
+        GameObject gm = GameObject.Find("GameManager");
+        gm.GetComponent<GameStateManager>().AddScore(cubeCount);
+        gm.GetComponent<PolyManager>().SpawnNewPolynomino();
     }
 
     public void CheckLayersForFull()
@@ -226,40 +226,48 @@ public class BoardState : MonoBehaviour
     public void ClearLayer(int layer)
     {
         // destroy the full layer and move everything at a lower Z towards z by 1, spawn a new layer at the top
-        for (int i = 0; i < board[layer].cells.GetLength(0); i++)
+        for (int x = 0; x < board[layer].cells.GetLength(0); x++)
         {
-            for (int j = 0; j < board[layer].cells.GetLength(1); j++)
+            for (int y = 0; y < board[layer].cells.GetLength(1); y++)
             {
-                Destroy(board[layer].cells[i, j].cube.gameObject);
-                board[layer].cells[i, j].state = CellState.Empty;
-                board[layer].cells[i, j].cube = null;
+                if (board[layer].cells[x, y].cube != null)
+                {
+                    GameObject.Destroy(board[layer].cells[x, y].cube);
+                    // We must update the actual struct in the array
+                    Cell cell = board[layer].cells[x, y];
+                    cell.state = CellState.Empty;
+                    cell.cube = null;
+                    board[layer].cells[x, y] = cell; // Assign back to update the actual data
+                }
             }
         }
-        for (int i = layer; i < board.Count - 1; i++)
+        for (int z = layer; z > 0; z--)
         {
-            for (int j = 0; j < board[i].cells.GetLength(0); j++)
+            for (int x = 0; x < board[z].cells.GetLength(0); x++)
             {
-                for (int k = 0; k < board[i].cells.GetLength(1); k++)
+                for (int y = 0; y < board[z].cells.GetLength(1); y++)
                 {
-                    board[i].cells[j, k].state = board[i + 1].cells[j, k].state;
-                    board[i].cells[j, k].cube = board[i + 1].cells[j, k].cube;
-                    if (board[i].cells[j, k].cube != null)
+                    // skip falling cubes
+                    if (board[z].cells[x, y].state == CellState.Falling) continue;
+                    // Copy the state from the layer above
+                    board[z].cells[x, y].state = board[z - 1].cells[x, y].state;
+                    board[z].cells[x, y].cube = board[z - 1].cells[x, y].cube;
+
+                    // If there's a cube, move it up by 1 unit
+                    if (board[z].cells[x, y].cube != null)
                     {
-                        Vector3 pos = board[i].cells[j, k].cube.transform.position;
-                        pos.z += 1;
-                        board[i].cells[j, k].cube.transform.position = pos;
+                        // Move the actual GameObject
+                        Vector3 pos = board[z].cells[x, y].cube.transform.position;
+                        pos.z = pos.z + current_polynomino.cubeSize; 
+                        board[z].cells[x, y].cube.transform.position = pos;
                     }
                 }
             }
         }
-        for (int i = 0; i < board[board.Count - 1].cells.GetLength(0); i++)
-        {
-            for (int j = 0; j < board[board.Count - 1].cells.GetLength(1); j++)
-            {
-                board[board.Count - 1].cells[i, j].state = CellState.Empty;
-                board[board.Count - 1].cells[i, j].cube = null;
-            }
-        }
+
+        // Find the GameMananger and update the score
+        int score = board[0].cells.GetLength(0) * board[0].cells.GetLength(1) * 100;
+        GameObject.Find("GameManager").GetComponent<GameStateManager>().AddScore(100);
 
 
     }
