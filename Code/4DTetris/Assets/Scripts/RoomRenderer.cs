@@ -22,7 +22,7 @@ public class RoomRenderer : MonoBehaviour
     {
         cSize = GameObject.Find("GameManager").GetComponent<PolyManager>().cubeSize;
         GameObject board = GameObject.Find("Board");
-        board.transform.position = new Vector3(-sizeX / 2, -sizeY / 2 , 0) * cSize;
+        board.transform.position = new Vector3(-sizeX / 2 - 0.5f, -sizeY / 2 - 0.5f, -0.5f) * cSize;
         BuildLineMesh();
         CreateQuadMesh();
     }
@@ -47,14 +47,14 @@ public class RoomRenderer : MonoBehaviour
         // -----------------------------------------------------------
         for (int x = 0; x <= sizeX; x++)
         {
-            float X = (x+0.5f) * cSize;
+            float X = x * cSize;
             Vector3 start = new Vector3(X, 0f, sizeZ * cSize) ;
             Vector3 end = new Vector3(X, sizeY * cSize, sizeZ * cSize) ;
             AddLine(start, end);
         }
         for (int y = 0; y <= sizeY; y++)
         {
-            float Y = (y+0.5f) * cSize;
+            float Y = y * cSize;
             Vector3 start = new Vector3(0f, Y, sizeZ * cSize) ;
             Vector3 end = new Vector3(sizeX * cSize, Y, sizeZ * cSize) ;
             AddLine(start, end);
@@ -65,7 +65,7 @@ public class RoomRenderer : MonoBehaviour
         //
         // Wall A: x=0
         {
-            float X = 0.5f*cSize;
+            float X = 0;
             // vertical lines along z
             for (int y = 0; y <= sizeY; y++)
             {
@@ -86,31 +86,26 @@ public class RoomRenderer : MonoBehaviour
 
         // Wall B: x=sizeX
         {
-            float X = (sizeX + 0.5f) * cSize;
+            float X = sizeX * cSize;
             for (int y = 0; y <= sizeY; y++)
             {
                 float Y = y * cSize;
                 Vector3 start = new Vector3(X, Y, 0f) ;
                 Vector3 end = new Vector3(X, Y, sizeZ * cSize) ;
-                start += new Vector3(0.0f, 0.0f, -0.5f * cSize);
-                end += new Vector3(0.0f, 0.0f, -0.5f * cSize);
-
                 AddLine(start, end);
             }
             for (int z = 0; z <= sizeZ; z++)
             {
                 float Z = z * cSize;
                 Vector3 start = new Vector3(X, 0f, Z) ;
-                Vector3 end = new Vector3(X, sizeY * cSize, Z);
-                start += new Vector3(0.0f, 0.0f, -0.5f * cSize);
-                end += new Vector3(0.0f, 0.0f, -0.5f * cSize);
+                Vector3 end = new Vector3(X, sizeY * cSize, Z) ;
                 AddLine(start, end);
             }
         }
 
         // Wall C: y=0
         {
-            float Y = 0.5f*cSize;
+            float Y = 0;
             for (int x = 0; x <= sizeX; x++)
             {
                 float X = x * cSize;

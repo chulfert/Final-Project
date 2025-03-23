@@ -46,7 +46,7 @@ public class Hypercube : MonoBehaviour
     // -- Constants for tesseract geometry --    
     private static int[][] tesseractEdges = new int[][] {};
 
-    bool visible = true;
+    //bool visible = true;
 
     void Awake()
     {
@@ -67,18 +67,7 @@ public class Hypercube : MonoBehaviour
     {
         Apply4DRotation();   
         ProjectVertices();
-        UpdateMesh();
-
-        //check the Mesh if it contains enough vertices to be visible
-        if (mesh.vertexCount > 0)
-        {
-            visible = true;
-        }
-        else
-        {
-            visible = false;
-            Debug.Log("Hypercube is not visible");
-        }
+        UpdateMesh();      
     }
 
     // CREATE BASE VERTICES

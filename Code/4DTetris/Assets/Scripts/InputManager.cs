@@ -1,5 +1,7 @@
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
@@ -54,7 +56,7 @@ public class InputManager : MonoBehaviour
         bool mod_1 = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftShift);
         bool mod_2 = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.S);
         bool mod_3 = Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.D);
-
+#if DEBUG
         if (Input.GetKey(KeyCode.Escape)){
             // Quit the game
             Application.Quit();
@@ -63,7 +65,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             // Restart the game
-            Application.LoadLevel(Application.loadedLevel);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
         }
 
@@ -71,6 +73,16 @@ public class InputManager : MonoBehaviour
         {
             BoardState b = board.GetComponent<BoardState>();
             b.ClearLayer(9);
+        }
+#endif
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            bool go = GameObject.Find("GameManager").GetComponent<GameStateManager>().gameOver;
+            if (go)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
 
         // Only do WASD movement if NO modifiers are held only have 1 impulse per key, not held

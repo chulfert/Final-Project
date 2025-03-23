@@ -9,6 +9,7 @@ public class GameStateManager : MonoBehaviour
     public TextMeshProUGUI rules;
     public GameObject rulesPanel;
     private int score = 0;
+    public bool gameOver = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +35,8 @@ public class GameStateManager : MonoBehaviour
         gameOverIndicator.text = "Game Over! Your score was: " + score;
         gameOverIndicator.gameObject.SetActive(true);
         Time.timeScale = 0;
+        gameOver = true;
+
     }
 
     public void AddScore(int points)

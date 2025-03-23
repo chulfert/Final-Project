@@ -72,20 +72,6 @@ public class BoardState : MonoBehaviour
     void Update()
     {
         CheckLayersForFull();
-        //string debug = "";
-        // Debug the board state
-        //for (int i = 0; i < board.Count; i++)
-        //{
-        //    debug += "Layer: " + i + ": ";
-        //    for (int j = 0; j < board[i].cells.GetLength(0); j++)
-        //    {
-        //        for (int k = 0; k < board[i].cells.GetLength(1); k++)
-        //        {
-        //            debug += "X: " + j + "Y: " + board[i].cells[j, k].state + "\n";
-        //        }
-        //    }
-        //}
-        //Debug.Log(debug);
     }
 
     public List<Vector3Int> GetFallingCubes()
@@ -298,33 +284,33 @@ public class BoardState : MonoBehaviour
 
     private Vector3Int WorldToBoardIndex(Vector3 pos)
     {
-        /*Vector3 ext = GetBoardExtends();
+        Vector3 ext = GetBoardExtends();
         int x = Mathf.FloorToInt(pos.x) + Mathf.FloorToInt(ext.x / 2f);
         int y = Mathf.FloorToInt(pos.y) + Mathf.FloorToInt(ext.y / 2f);
         int z = Mathf.FloorToInt(pos.z) - 1;  // assuming z remains as is.
-        return new Vector3Int(x, y, z);*/
+        return new Vector3Int(x, y, z);
 
 
-        Vector3 boardOrigin = GetBoardOrigin();
+        /*Vector3 boardOrigin = GetBoardOrigin();
         // Subtract the board origin and divide by cube size (assume uniform scaling)
         int x = Mathf.RoundToInt((pos.x - boardOrigin.x) / current_polynomino.cubeSize) - 1;
         int y = Mathf.RoundToInt((pos.y - boardOrigin.y) / current_polynomino.cubeSize) - 1;
         int z = Mathf.RoundToInt((pos.z - boardOrigin.z) / current_polynomino.cubeSize) - 1;
-        return new Vector3Int(x, y, z);
+        return new Vector3Int(x, y, z);*/
     }
 
     private Vector3 BoardIndexToWorld(Vector3Int index)
     {
-        /*Vector3 ext = GetBoardExtends();
+        Vector3 ext = GetBoardExtends();
         float x = (index.x - ext.x / 2f);
         float y = (index.y - ext.y / 2f);
         float z = index.z + 1;
-        return new Vector3(x, y, z);*/
+        return new Vector3(x, y, z);
 
-
+        /*
         Vector3 boardOrigin = GetBoardOrigin();
         return new Vector3(index.x * current_polynomino.cubeSize + boardOrigin.x + 1, index.y * current_polynomino.cubeSize + boardOrigin.y + 1, index.z * current_polynomino.cubeSize + boardOrigin.z + 1);
-
+        */
     }
 
     private bool CheckValidBoardPosition(Vector3Int index)

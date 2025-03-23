@@ -58,7 +58,7 @@ public class Polynomino4D : MonoBehaviour
         currentRotation[4] = rotationYW;
         currentRotation[5] = rotationZW;
 
-        // Set the target rotation to the current rotation
+        // Set the target rotation to the current rotationa
         targetRotation[0] = rotationXY;
         targetRotation[1] = rotationXZ;
         targetRotation[2] = rotationXW;
@@ -72,7 +72,7 @@ public class Polynomino4D : MonoBehaviour
         boardState = board.GetComponent<BoardState>();
         boardOrigin = boardState.GetBoardOrigin();
         boardExtends = boardState.GetBoardExtends();
-        targetPosition = boardOrigin + new Vector3(boardExtends.x/2, boardExtends.y/2, 0);
+        targetPosition = transform.position;
     }
 
     public float[] targetRotation = new float[6];
