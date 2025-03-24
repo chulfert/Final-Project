@@ -1,12 +1,5 @@
-using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
-using System;
-using static UnityEditor.PlayerSettings;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEngine.Rendering.VolumeComponent;
-using static Polynomino4D;
-using TMPro;
 
 public class BoardState : MonoBehaviour
 {
@@ -146,6 +139,10 @@ public class BoardState : MonoBehaviour
 
     public void TransferCubes(Polynomino4D polynomino)
     {
+        if (FindAnyObjectByType<AudioManager>() != null)
+        {
+            AudioManager.Instance.PlayBlockPlacementSound();
+        }
         int cubeCount = 0;
         // Check the hypercubes of the polynominoe, calculate the position in the board grid and set it to filled
         foreach (var cube in polynomino.hypercubes)
@@ -157,6 +154,7 @@ public class BoardState : MonoBehaviour
             if (!CheckValidBoardPosition(index))
             {
                 GameObject.Find("GameManager").GetComponent<GameStateManager>().GameOver();
+                return;
             }
             board[index.z].cells[index.x, index.y].state = CellState.Filled;
 
@@ -211,6 +209,10 @@ public class BoardState : MonoBehaviour
 
     public void ClearLayer(int layer)
     {
+        if (FindAnyObjectByType<AudioManager>() != null)
+        {
+            AudioManager.Instance.PlayLevelClearSound();
+        }
         // destroy the full layer and move everything at a lower Z towards z by 1, spawn a new layer at the top
         for (int x = 0; x < board[layer].cells.GetLength(0); x++)
         {

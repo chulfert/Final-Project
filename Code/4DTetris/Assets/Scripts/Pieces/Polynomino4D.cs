@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class Polynomino4D : MonoBehaviour
 {
@@ -262,6 +261,11 @@ public class Polynomino4D : MonoBehaviour
 
     public void addRotation(RotationAxis axis, bool direction)
     {
+        if (FindAnyObjectByType<AudioManager>() != null)
+        {
+            AudioManager.Instance.PlayRotationSound();
+        }
+
         float oldRotation = targetRotation[(int)axis];
         targetRotation[(int)axis] += direction ? 90 : -90;
         //Check if rotation is possible TODODODODO

@@ -174,6 +174,12 @@ public class RoomRenderer : MonoBehaviour
     }
     void OnRenderObject()
     {
+        GameObject gm = GameObject.Find("GameManager");
+        if(gm.GetComponent<GameStateManager>().gameOver)
+        {
+            return;
+        }
+
         if (fillMat == null || quadMesh == null)
         {
             Debug.LogError("Missing fill material or quad mesh!");

@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -81,7 +80,10 @@ public class InputManager : MonoBehaviour
             bool go = GameObject.Find("GameManager").GetComponent<GameStateManager>().gameOver;
             if (go)
             {
+                GameObject.Find("GameManager").GetComponent<GameStateManager>().gameOver = false;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                Time.timeScale = 1;
+
             }
         }
 

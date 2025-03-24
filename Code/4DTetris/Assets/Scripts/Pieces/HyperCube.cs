@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Hypercube : MonoBehaviour
@@ -238,7 +237,6 @@ public class Hypercube : MonoBehaviour
     {
         for (int i = 0; i < transformedVerts.Length; i++)
         {
-            // Create a copy of the 4D vertex
             Vector4 v4 = transformedVerts[i];
 
             
@@ -246,7 +244,6 @@ public class Hypercube : MonoBehaviour
 
             if (usePerspectiveProjection)
             {
-                // Example perspective: treat w like part of the "camera distance"
                 float dist = perspectiveDistance - v4.w;
                 if (Mathf.Approximately(dist, 0f)) dist = 0.0001f;
                 float invDist = 1.0f / dist;
@@ -259,7 +256,6 @@ public class Hypercube : MonoBehaviour
             }
             else
             {
-                // Orthographic: ignoring w
                 projectedVerts[i] = new Vector3(v4.x, v4.y, v4.z);
             }
         }
@@ -308,8 +304,6 @@ public class Hypercube : MonoBehaviour
         }
 
         mesh.Clear();
-
-        // Because we’re building line geometry:
         mesh.SetVertices(wireVerts);
         mesh.SetIndices(wireIndices.ToArray(), MeshTopology.Lines, 0);
         mesh.RecalculateBounds();
@@ -318,7 +312,6 @@ public class Hypercube : MonoBehaviour
     //Get GRid aligned 3d position for the hypercube taking into acocunt the 4d rotation and the offset within the polynomino
     public Vector3 GetPosition3D()
     {
-        //Calculate the rotated offset
         return rotatedOffset;        
     }
 
