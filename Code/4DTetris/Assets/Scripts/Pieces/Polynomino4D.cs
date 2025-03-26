@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class Polynomino4D : MonoBehaviour
 {
@@ -32,7 +31,7 @@ public class Polynomino4D : MonoBehaviour
     void Start()
     {
         CreateStandardPolynomino();
-        
+
         // Random rotation for startup (in 90-degree increments)
         rotationXY = Random.Range(0, 4) * 90;
         rotationXZ = Random.Range(0, 4) * 90;
@@ -48,7 +47,7 @@ public class Polynomino4D : MonoBehaviour
             {
                 cube.SetRotation4D(rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW);
             }
-        }     
+        }
 
         // Store the initial rotation angles for later use
         currentRotation[0] = rotationXY;
@@ -58,7 +57,7 @@ public class Polynomino4D : MonoBehaviour
         currentRotation[4] = rotationYW;
         currentRotation[5] = rotationZW;
 
-        // Set the target rotation to the current rotation
+        // Set the target rotation to the current rotationa
         targetRotation[0] = rotationXY;
         targetRotation[1] = rotationXZ;
         targetRotation[2] = rotationXW;
@@ -67,16 +66,42 @@ public class Polynomino4D : MonoBehaviour
         targetRotation[5] = rotationZW;
 
         // From the board get the position and size of the playfield
-        // boardOrigin = boardState.GetBoardOrigin();
-        //boardExtends = boardState.GetBoardExtends();
         board = GameObject.Find("Board");
+
         boardState = board.GetComponent<BoardState>();
+        boardOrigin = boardState.GetBoardOrigin();
+        boardExtends = boardState.GetBoardExtends();
+        targetPosition = transform.position;
+
+        bool valid = false;
+        //Check validity of the position
+        while (!valid)
+        {
+            valid = true;
+            Vector3 correctionVector;
+            foreach (Hypercube c in hypercubes)
+            {
+                if (c != null)
+                {
+                    Vector3 pos = c.GetPosition3D();
+                    Vector3 targetPos = pos + targetPosition;
+                    if (!boardState.CheckBounds(targetPos))
+                    {
+                        valid = false;
+                        correctionVector = boardState.ResetVector(targetPos);
+                        targetPosition += correctionVector;
+                    }
+                }
+            }
+        }
+
+        
     }
 
     public float[] targetRotation = new float[6];
     private float[] currentRotation = new float[6];
 
-    private Vector3 targetPosition = Vector3.zero;
+    public Vector3 targetPosition = Vector3.zero;
 
     void Update()
     {
@@ -91,20 +116,21 @@ public class Polynomino4D : MonoBehaviour
         
 
 
-        //rotate the cubes
+        //rotate the cubes // update the board
         foreach (var cube in hypercubes)
         {
             if (cube != null)
             {
                 cube.SetRotation4D(currentRotation[0], currentRotation[1], currentRotation[2], currentRotation[3], currentRotation[4], currentRotation[5]);
+
             }
         }
         if (endPolyTimerStarted)
         {
             endPolyTimer += Time.deltaTime;
 
-            // end the polyomino if it has been in the same position for 3 seconds
-            if (endPolyTimer > 0.3f)
+            // end the polyomino if it has been in the same position for 0.8 seconds
+            if (endPolyTimer > 0.8f)
             {
                 boardState.TransferCubes(this);
             }
@@ -113,22 +139,96 @@ public class Polynomino4D : MonoBehaviour
 
     public void addMovement(MovementAxis axis, bool direction)
     {
+        GameObject board = GameObject.Find("Board");
+        board.GetComponent<BoardState>().ClearFalling();
+        Vector3 oldPosition = targetPosition;
+        Vector3 newPosition = targetPosition;
+        switch (axis)
+        {
+            case MovementAxis.X:
+                newPosition.x += direction ? cubeSize : -cubeSize;
+                break;
+            case MovementAxis.Y:
+                newPosition.y += direction ? cubeSize : -cubeSize;
+                break;
+            case MovementAxis.Z:
+                newPosition.z += direction ? cubeSize : -cubeSize;
+                break;
+        }
+
+        bool canMove = true;
+        bool hittingPiece = false;
+
+        foreach (var hc in hypercubes)
+        {
+            if(!hc.IsVisible()) continue;
+            Vector3 pos = hc.GetPosition3D();
+            Vector3 targetPos = pos + newPosition;
+            if(axis == MovementAxis.Z)
+            {
+                if (!boardState.CheckZBounds(targetPos))
+                {
+                    boardState.TransferCubes(this);
+                    return;
+                }
+            }
+            else
+            {
+                if (!boardState.CheckBounds(targetPos))
+                {
+                    canMove = false;
+                    break;
+                }
+                
+            }
+            if (!boardState.CheckNextFree(targetPos))
+            {
+                hittingPiece = true;
+                canMove = false;
+                break;
+            }
+        }
+
+        if (canMove) {
+            targetPosition = newPosition;
+            foreach (var hc in hypercubes)
+            {
+                if (!hc.IsVisible()) continue;
+                Vector3 pos = hc.GetPosition3D();
+                Vector3 targetPos = pos + targetPosition;
+                board.GetComponent<BoardState>().SetFalling(targetPos);
+            }
+            endPolyTimerStarted = false;
+        }
+        else if (hittingPiece)
+        {
+            endPolyTimerStarted = true;
+        }
+        else
+        {
+            board.GetComponent<BoardState>().SetFalling(targetPosition);
+        }
+    
+
+
+        /*
         switch (axis)
         {
             case MovementAxis.X:
                 float oldX = targetPosition.x;
                 targetPosition.x += direction ? cubeSize : -cubeSize;
-                //Check the edges
-                // conver the final position of the hypercubes
-                // after the move into grid coordinates
                 foreach (var hc in hypercubes)
                 {
+                    if(!hc.IsVisible()) continue;
                     Vector3 pos = hc.GetPosition3D();
                     Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
                     if (!boardState.CheckBounds(targetPos))
                     {
                         targetPosition.x = oldX;
+                        board.GetComponent<BoardState>().SetFalling(targetPosition);
+                        continue;
                     }
+                    board.GetComponent<BoardState>().SetFalling(targetPos);
                 }
 
                 break;
@@ -137,29 +237,38 @@ public class Polynomino4D : MonoBehaviour
                 targetPosition.y += direction ? cubeSize : -cubeSize;
                 foreach (var hc in hypercubes)
                 {
+                    if (!hc.IsVisible()) continue;
                     Vector3 pos = hc.GetPosition3D();
                     Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
                     if (!boardState.CheckBounds(targetPos))
                     {
                         targetPosition.y = oldY;
-                    }
+                        board.GetComponent<BoardState>().SetFalling(targetPosition + pos);
+                        continue;
+                    }                                
+                    board.GetComponent<BoardState>().SetFalling(targetPos);
                 }
                 break;
             case MovementAxis.Z:
+                Vector3 oldPosition = targetPosition;
                 float oldZ = targetPosition.z;
                 targetPosition.z += direction ? cubeSize : -cubeSize;
-                //int freeCounter = 0;
-                foreach (var hc in hypercubes) {
+                foreach (var hc in hypercubes)
+                {
+                    if (!hc.IsVisible()) continue;
                     Vector3 pos = hc.GetPosition3D();
                     Vector3 targetPos = pos + new Vector3(targetPosition.x, targetPosition.y, targetPosition.z);
-                    if (targetPos.z < 0) break;
+                    if (targetPos.z < 0) continue;
                     if (!boardState.CheckZBounds(targetPos))
                     {
                         boardState.TransferCubes(this);
                         return;
                     }
+
                     if (!boardState.CheckNextFree(targetPos))
                     {
+                        targetPosition.z = oldZ;
+                        board.GetComponent<BoardState>().SetFalling(targetPosition + pos);
                         endPolyTimerStarted = true;
                         break;
                     }
@@ -167,31 +276,34 @@ public class Polynomino4D : MonoBehaviour
                     {
                         endPolyTimerStarted = false;
                         endPolyTimer = 0.0f;
-                        break;
                     }
-
+                    board.GetComponent<BoardState>().SetFalling(targetPos);
                 }
                 break;
-        }
+        }*/
     }
 
     public void addRotation(RotationAxis axis, bool direction)
     {
+        if (FindAnyObjectByType<AudioManager>() != null)
+        {
+            AudioManager.Instance.PlayRotationSound();
+        }
+
+        float oldRotation = targetRotation[(int)axis];
         targetRotation[(int)axis] += direction ? 90 : -90;
-    }
+        //Check if rotation is possible TODODODODO
+        
+        }
 
     public void CreateStandardPolynomino()
     {
-        // 1) Grab the list of shapes
         var allShapes = StandardPolynominoes4D.shapes;
-        // 2) Pick one randomly
         int index = Random.Range(0, allShapes.Length);
         Vector4[] chosenOffsets = allShapes[index];
 
-        // 3) Clear existing hypercubes if needed
         ClearAllHypercubes();
 
-        // 4) Spawn hypercubes with these offsets
         for (int i = 0; i < chosenOffsets.Length; i++)
         {
             AddHypercube(chosenOffsets[i]);

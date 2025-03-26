@@ -45,6 +45,8 @@ public class Hypercube : MonoBehaviour
     // -- Constants for tesseract geometry --    
     private static int[][] tesseractEdges = new int[][] {};
 
+    //bool visible = true;
+
     void Awake()
     {
         // 1) Create the base vertex set for a tesseract
@@ -64,7 +66,7 @@ public class Hypercube : MonoBehaviour
     {
         Apply4DRotation();   
         ProjectVertices();
-        UpdateMesh();
+        UpdateMesh();      
     }
 
     // CREATE BASE VERTICES
@@ -235,7 +237,6 @@ public class Hypercube : MonoBehaviour
     {
         for (int i = 0; i < transformedVerts.Length; i++)
         {
-            // Create a copy of the 4D vertex
             Vector4 v4 = transformedVerts[i];
 
             
@@ -243,7 +244,6 @@ public class Hypercube : MonoBehaviour
 
             if (usePerspectiveProjection)
             {
-                // Example perspective: treat w like part of the "camera distance"
                 float dist = perspectiveDistance - v4.w;
                 if (Mathf.Approximately(dist, 0f)) dist = 0.0001f;
                 float invDist = 1.0f / dist;
@@ -256,7 +256,6 @@ public class Hypercube : MonoBehaviour
             }
             else
             {
-                // Orthographic: ignoring w
                 projectedVerts[i] = new Vector3(v4.x, v4.y, v4.z);
             }
         }
@@ -284,15 +283,11 @@ public class Hypercube : MonoBehaviour
 
     // UPDATE MESH
     private void UpdateMesh()
-    {
-        // For a wireframe approach using a standard Mesh in Unity,
-        // we can represent each edge as a pair of vertices in the mesh, 
-        // with indices that form lines. 
-        // Another option: use a LineRenderer with multiple segments.
-
+    {      
         // -- Build wireframe data --
         var wireVerts = new System.Collections.Generic.List<Vector3>();
         var wireIndices = new System.Collections.Generic.List<int>();
+
 
         for (int e = 0; e < tesseractEdges.Length; e++)
         {
@@ -309,23 +304,34 @@ public class Hypercube : MonoBehaviour
         }
 
         mesh.Clear();
-
-        // Because we’re building line geometry:
         mesh.SetVertices(wireVerts);
         mesh.SetIndices(wireIndices.ToArray(), MeshTopology.Lines, 0);
-
-        // Normals/UVs are not critical for a wireframe. If you want a solid mesh,
-        // you’ll need to define triangles and normals.
-
         mesh.RecalculateBounds();
     }
     
     //Get GRid aligned 3d position for the hypercube taking into acocunt the 4d rotation and the offset within the polynomino
     public Vector3 GetPosition3D()
     {
-        //Calculate the rotated offset
-        //Vector3 pos = new Vector3(rotatedOffset.x + position3D.x, rotatedOffset.y + position3D.y, rotatedOffset.z + position3D.z);
-        return rotatedOffset;
+        return rotatedOffset;        
+    }
+
+    //public bool IsVisible()
+    //{
+    //    return visible;
+    //}
+
+    public bool IsVisible()
+    {
+        float wThreshold = 0.7f; 
+        bool wComponentValid = Mathf.Abs(rotatedOffset.w) < wThreshold;
+
+        float minSize = 0.1f; 
+        bool hasSufficientSize = mesh.bounds.size.magnitude > minSize;
+
+        bool isPositionValid = !float.IsNaN(position3D.x) &&
+                              !float.IsNaN(position3D.y) &&
+                              !float.IsNaN(position3D.z);
+        return wComponentValid && hasSufficientSize && isPositionValid;
     }
 }
 
