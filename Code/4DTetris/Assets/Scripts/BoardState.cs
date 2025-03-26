@@ -5,7 +5,7 @@ public class BoardState : MonoBehaviour
 {
     // References
     [Header("References")]
-    private RoomRenderer roomRenderer;
+    public RoomRenderer roomRenderer;
     public Polynomino4D current_polynomino;
     public GameObject basicCube;
 
@@ -17,21 +17,26 @@ public class BoardState : MonoBehaviour
         Falling,
     }
 
-    private struct Cell
+    public struct Cell
     {
         public CellState state;
         public GameObject cube;
     }
-    private struct Layer
+    public struct Layer
     {
         public Cell[,] cells;
     }
 
-    private List<Layer> board;
+    public List<Layer> board;
 
-    List<Color> colors = new List<Color>();
+    public List<Color> colors = new List<Color>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
+        InitializeBoard();
+    }
+
+    public void InitializeBoard()
     {
         roomRenderer = GetComponent<RoomRenderer>();
         // Initialize the board state
@@ -57,7 +62,7 @@ public class BoardState : MonoBehaviour
 
         for (int i = 0; i < roomRenderer.sizeZ; i++)
         {
-            colors.Add(new Color(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f)));
+            colors.Add(new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)));
         }
     }
 
@@ -117,24 +122,18 @@ public class BoardState : MonoBehaviour
         if (Mathf.Floor(target.z) >= GetBoardExtends().z * current_polynomino.cubeSize) return false;
         return true;
     }
-
-    //TODO: THIS IS HORRIBLE COUPLING!!!! CHANGE IT!!!!
     public Vector3 GetBoardOrigin()
     {
         // find GO Board
         GameObject go = GameObject.Find("Board");
+        if(!go) return Vector3.zero; //For testing
         // get the size of the board    
         return go.transform.position;
     }
-
-    //TODO: THIS IS HORRIBLE COUPLING!!!! CHANGE IT!!!!
     public Vector3 GetBoardExtends()
     {
-        // finf GO Board and RoomRenderer component
-        GameObject go = GameObject.Find("Board");
-        RoomRenderer rr = go.GetComponent<RoomRenderer>();
         // get the size of the board
-        return new Vector3(rr.sizeX, rr.sizeY, rr.sizeZ);
+        return new Vector3(roomRenderer.sizeX, roomRenderer.sizeY, roomRenderer.sizeZ);
     }
 
     public void TransferCubes(Polynomino4D polynomino)
@@ -160,15 +159,12 @@ public class BoardState : MonoBehaviour
 
             // Create a cube from the basic cube prefab and set it to this position
             Vector3 pos3 = BoardIndexToWorld(index);
-            //pos3.y += 1;
-            //pos3.z -= 0.5f;
 
             GameObject go = Instantiate(basicCube, pos3, Quaternion.identity);
             go.transform.localScale = new Vector3(polynomino.cubeSize, polynomino.cubeSize, polynomino.cubeSize);
             board[index.z].cells[index.x, index.y].cube = go;
 
             // Assign color based on z heioght
-            //float color = (float)z / (float)roomRenderer.sizeZ;
             Color c = colors[index.z];
             go.GetComponent<MeshRenderer>().material.color = c;
 
@@ -213,6 +209,11 @@ public class BoardState : MonoBehaviour
         {
             AudioManager.Instance.PlayLevelClearSound();
         }
+
+
+        // Find the GameMananger and update the score
+        int score = board[0].cells.GetLength(0) * board[0].cells.GetLength(1) * 100;
+        GameObject.Find("GameManager").GetComponent<GameStateManager>().AddScore(100);
         // destroy the full layer and move everything at a lower Z towards z by 1, spawn a new layer at the top
         for (int x = 0; x < board[layer].cells.GetLength(0); x++)
         {
@@ -253,10 +254,6 @@ public class BoardState : MonoBehaviour
             }
         }
 
-        // Find the GameMananger and update the score
-        int score = board[0].cells.GetLength(0) * board[0].cells.GetLength(1) * 100;
-        GameObject.Find("GameManager").GetComponent<GameStateManager>().AddScore(100);
-
 
     }
     public void ClearFalling()
@@ -284,31 +281,28 @@ public class BoardState : MonoBehaviour
         board[pos.z].cells[pos.x, pos.y].state = CellState.Falling;
     }
 
-    private Vector3Int WorldToBoardIndex(Vector3 pos)
+    public Vector3Int WorldToBoardIndex(Vector3 pos)
     {
         Vector3 ext = GetBoardExtends();
-        if(Mathf.Approximately(pos.x, 0.0f)) pos.x = 0.0f;
-        if (Mathf.Approximately(pos.y, 0.0f)) pos.y = 0.0f;
-        if (Mathf.Approximately(pos.z, 0.0f)) pos.z = 0.0f;
+
+        int x_round = Mathf.RoundToInt(pos.x);
+        int y_round = Mathf.RoundToInt(pos.y);
+        int z_round = Mathf.RoundToInt(pos.z);
 
 
-        int x = Mathf.CeilToInt(pos.x + ext.x / 2f);
-        int y = Mathf.CeilToInt(pos.y + ext.y / 2f);
-        int z = Mathf.CeilToInt(pos.z) - 1;
+        int x = Mathf.CeilToInt(x_round + ext.x / 2f);
+        int y = Mathf.CeilToInt(y_round + ext.y / 2f);
+        int z = Mathf.CeilToInt(z_round) - 1;
         return new Vector3Int(x, y, z);
     }
 
-    private Vector3 BoardIndexToWorld(Vector3Int index)
+    public Vector3 BoardIndexToWorld(Vector3Int index)
     {
         Vector3 ext = GetBoardExtends();
         float x = (index.x - ext.x / 2f);
         float y = (index.y - ext.y / 2f);
         float z = index.z + 1;
         return new Vector3(x, y, z);
-        
-        /*
-        Vector3 boardOrigin = GetBoardOrigin();
-        return new Vector3(index.x * current_polynomino.cubeSize + boardOrigin.x + 1, index.y * current_polynomino.cubeSize + boardOrigin.y + 1, index.z * current_polynomino.cubeSize + boardOrigin.z + 1);*/
     }
 
     private bool CheckValidBoardPosition(Vector3Int index)
@@ -391,4 +385,10 @@ public class BoardState : MonoBehaviour
 
         Debug.Log("Board has been reset");
     }
+
+    public List<Layer> GetBoard()
+    {
+        return board;
+    }
+
 }

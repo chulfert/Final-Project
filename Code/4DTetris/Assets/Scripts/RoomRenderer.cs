@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class RoomRenderer : MonoBehaviour
 {
     [Header("Size in XY, 'Height' along Z")]
-    public int sizeX = 4;
-    public int sizeY = 4;
+    public int sizeX = 6;
+    public int sizeY = 6;
     public int sizeZ = 10;
 
     [Header("References")]

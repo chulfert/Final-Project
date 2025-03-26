@@ -19,6 +19,8 @@ public class InputManager : MonoBehaviour
     private TextMeshProUGUI upArrow;
     private TextMeshProUGUI downArrow;
 
+    bool lineCleared = false;
+    float lineClearCounter = 0.0f;
 
     [Header("Movement Settings")]
     public float moveStep = 0.1f; // how much to move per frame in x or y
@@ -51,6 +53,16 @@ public class InputManager : MonoBehaviour
         polynomino = GetComponent<PolyManager>().getCurrentPoly();
         if (polynomino == null) return;
 
+
+        if(lineCleared)
+        {
+            lineClearCounter += Time.deltaTime;
+            if (lineClearCounter >= 1.0f)
+            {
+                lineCleared = false;
+                lineClearCounter = 0.0f;
+            }
+        }
         // -------------------------------
         // 1) Movement with W/A/S/D alone
         //    (no Shift/CTRL/Alt pressed)
@@ -81,7 +93,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             bool go = GameObject.Find("GameManager").GetComponent<GameStateManager>().gameOver;
-            if (go)
+            if (go && !lineCleared)
             {
                 GameObject.Find("GameManager").GetComponent<GameStateManager>().RestartGame();
             }

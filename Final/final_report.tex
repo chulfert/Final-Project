@@ -27,6 +27,10 @@ The goal is to create a fun fut complex game that lends itself to endless replay
 % Approximate Word Count: 50 words
 CM3030 Games Development Project Idea Title 1: Arcade Game
 
+\section{Motivation}
+Like many children of the same period I experienced the release of Tetris first hand. I was soon fascinated by the aforementioned BlockOut, the 3D clone of Tetris. While it never achieved the financial success its predecessor did, it was a much more interesting experience for me, and more challenging, since it relied less on reaction speed and memorization, but forced the player to think and rotate in 3D space. I was confronted with the exact same task again, when during my studies (quite a while ago) I was part of a physiology study that measured the capabilities of participants to predict rotations of 3d objects in space and tried to establish a correlation with IQ. 
+I had been thinking of playing around with a 4 dimensional version of this for a while, since the existing solutions did not represent, how i was envisioning it. This motivated me to try to implement at least a prototype for this assignement.
+
 \section{Existing work}
 \subsection{Tetris}
 \paragraph{Introduction}
@@ -62,8 +66,6 @@ Part of the success of Tetris is its accessability. There is no need to explain 
 There is no explanation needed. This is a feature that needs to be replicated to make the game accessible to a broad audience. The difficulty will be to translate the increased compelxity of this project into an accessable product.
 \paragraph{Conclusion}
 Tetris was a pivotal work. There is a reason it is displayed in the Museum of Modern Art in New York. It has inspired so many different fields and captured millions of players. This all needs to be kept in mind during developemtn as I want to capture a similar feeling of simplicity and complexity in our game.
-
-
 \subsection{Frac 4D}
 This is a game developed in the early 90's and never completed. It featured 4 distinct, but connected 3 dimensional playing fields. Pieces can be rotated and due to their underlying 4 dimensional structure this will reveal different configurations, the can exist in some of the fields but not in others, which can lead to unexpected 'collisions'. The game was apparently very hard to play and in the end failed to provide an easy access into 4 dimenesion.
 \begin{figure}
@@ -90,30 +92,44 @@ BlockOut is a 3D Tetris variant. The playing field is a 3D cube and the pieces a
 The playing field is projected from above. Individual layers are color coded. In any other way the game is very similar to Tetris. The game was moderately successful and can be played online for free nowadays.
 \subparagraph*{Conclusion}
 This is a great example of a Tetris variant and something that my version will largely be based on. I want to take large parts of the visualization style but enhance on UI/UX.
+\subsection{ TODO }
+
 
 \subsection{This project}
 will be an amalgamation of all the above. Taking the best features from every item. Looks from BlockOut, physics from 4DTris, UX features from Frac4D and general greatness from Tetris.
+
 \section{Literature}
 Understanding 4 dimensional space and its implications is a very challenging undertaking, however there is some literature out there that can help with the process. 
 
-\subsection{The Fourth Dimension} by Rudy Rucker \cite{rucker} takes us through a wild journey from ancient mathematics to conteporary philosphy and the other way round. This can create great insights on how it is possible to understnad
-and even visualize 4 dimensional object within reality that is confined to 3 dimensions. This work does greatly help with becoming comfortable with the concept of 4 dimensions and will be a great help in the development of the game.
+\subsection{The Fourth Dimension} by Rudy Rucker \cite{rucker} takes us through a wild journey from ancient mathematics to conteporary philosphy and the other way round. This can create great insights on how it is possible to understand and even visualize 4 dimensional object within reality that is confined to 3 dimensions. This work does greatly help with becoming comfortable with the concept of 4 dimensions and will be a great help in the development of the game.
+\newline
+While this is not comparable to peer reviewed literature in quality, it is a good read to deal with the difficulties of the topic. He touches on historical literature that deals with similar topics from Plato to the somewhat famous novel of Flatlands. Both deal with the perception we have of our dimensionality and how situations (Plato) or beeing a lower dimensional beeing (Flatlands) could change that perception. This helps open our minds to think about the 4th dimension. He also covers how we can represent the 4 dimensional object by slicing it with a 3d plane, without going into the mathematical aspect of it. 
+The book helped me to visualize in my head on how i wanted my 4d interpretation of the game to look like.
+
 \begin{figure}
     \label{fig:4d}
     \includegraphics[width=0.6\textwidth]{Dali_Crucifixion_hypercube.jpg}
     \caption{The Crucifixion (Corpus Hypercubus) by Salvador Dali. A representation of a hypercube unfolded into 3 dimensions.}
 \end{figure}
-\subsection{Geometric algebra for computer science} by Leo Dorst, Daniel Fontijne and Stephen Mann \cite{geo_alg} serves as a great introduction into geometric algebra, which might be a solution to the problem of representing, and especially rotation 4 dimensional ojects. While no final decision has been made on the technique that will be used, a decent understanding of the topice is necessery to finally choose the correct one. 
-\subsection{An Introduction to Clifford Algebras and Spinors} by Jayme Vaz Jr. and Roldao da Rocha Jr. \cite{cliff_alg} is another great resource into the topic, especially as Cliffor algebras are widely used in n-dimensional geometry. The chapter on spinors is especially interesting as they are one of the ways to represent rotations in higher dimensions and might be the foundation of the techniques we will use.
-\subsection{On Rotations in Space of Four Dimensions} by Cole \cite{rot_n_1} is an article from 1888 that deals with the problem of rotations in 4 dimensions. The article proofs a general rotation matrix for 4 dimensions. The most important feature however is the date of publication, prooving the persistant human interest in the topic of higher dimensions and therefore (somewhat) validating the project.
+
+\subsection{Geometric algebra for computer science} by Leo Dorst, Daniel Fontijne and Stephen Mann \cite{geo_alg} serves as a great introduction into geometric algebra, which might be a solution to the problem of representing, and especially rotation 4 dimensional objects. The book explains how algebraic expression can be extented to geometric shapes, introduces the idea of multivectors, and how the are used to manipulate geometric objects. There is some coverage on how to implement the techniques used in code. Published by Morgan Kaufmann, this is not peer reviewed, but a commercial book. The authors are accredited academics, which should give the book some credibility.
+\subsection{An Introduction to Clifford Algebras and Spinors} by Jayme Vaz Jr. and Roldao da Rocha Jr. \cite{cliff_alg} is another great resource into the topic, especially as Cliffor algebras are widely used in n-dimensional geometry. The chapter on spinors is especially interesting as they are one of the ways to represent rotations in higher dimensions.
+The authors of this book are well known, and while this book is not peer reviewed it is published by Oxford University Press, a well known publisher of scientific literature.
+In the end this turned out to be far to complex for this project, as I was able to approximate the rotations with a much simpler approach.
+
+\subsection{On Rotations in Space of Four Dimensions} by Cole \cite{rot_n_1} is an article from 1888 that deals with the problem of rotations in 4 dimensions. The article proofs a general rotation matrix for 4 dimensions. The most important feature however is the date of publication, proving the persistent human interest in the topic of higher dimensions and therefore (somewhat) validating the project.
+\newline
+While beeing a very old article, it describes how to construct a 4x4 matrix from the rotations. In the end this was the technique used in this project, since it was simple but effective. being a peer review journal article, that has been cited often, I believe this to be a credible source of information.
+
 \subsection{Conclusion}
 This is just a small outtake on literature that can help understand the topic of higher dimensions which is necessary for this project. Especially the decision on which mathematical representation and technique will be chosen is heavily informed by these books/articles.
-\section{Visualization}
 
+\section{Visualization}
 Visualization of 4 dimensional objects is a very challenging but interesting task.
 
 There is a large amount of great resources available to help understanding how this can be done. A very good overview over the techniques is presented in the PhD thesis by Hallasch \cite{4d_vis_1}. In extension to this the website "https://baileysnyder.com/interactive-4d/4d-cubes/" \cite{4d_vis_2} offers great interactive tools to generate an understanding of how to get to 4d dimensions and back.
-\subsection{Illuminating the fourth dimension} Illuminating the fourth dimension by Hanson et al. \cite{4d_vis_3} describes multiple techniques on how to render 4d objects into 3d space onto a 2d screen. This includes advanced shadowing and shading techniques which exceed the necessitiy of this project since unity will be used.
+This is again not a peer review source and any information gathered here should be questioned. However since it is a free resource, and the results did approximate my expecations, it did help me understand the topic better.
+\subsection{Illuminating the fourth dimension} Illuminating the fourth dimension by Hanson et al. \cite{4d_vis_3} describes multiple techniques on how to render 4d objects into 3d space onto a 2d screen. This includes advanced shadowing and shading techniques which exceed the necessity of this project since unity will be used.
 \newpage
 
 
@@ -175,7 +191,7 @@ This is the playing field. Will generate the mesh, keep track of the block and g
 Will be a column on the right containing scores, level etc. as well as an overlay that will help the user understand the rotations.
 The main plan to achieve this is to have a graphic that represents the arrow keys. Whenever one of the modifier keys is pressed the text, and maybe the colour of these arrow keys will change to give the player an idea of what rotational plane will happen. The problem lies in the actual rotations changing depending on the starting rotation. It might be necessary to have a visualisation of the current pieces somewhere in the UI that represents all 4 possible rotations with the current modifier, this could be turned off at a later stage (difficulty). Since this is one of the main challenges other preceding games have faced, this needs to be an area of focus and further testing. 
 \subsection{InputManager}
-Will switch between different state depending on the action key pressed chaning the functionality of the arrow keys and relaying the information to the pieces.
+Will switch between different state depending on the action key pressed changing the functionality of the arrow keys and relaying the information to the pieces.
 \subsection{AudioManager}
 Will take care of the audio. Will be very basic in the MVP.
 
@@ -417,10 +433,10 @@ The locking mechanism itself is done by removing the polynomino from the game an
     }
 \end{verbatim}
 To make it easier to indentify layers we currently colour the cube according to their z position, however in future iterations this will be changed to predefined colours.
-This class is also in charge of clearing layers and updating the score. The layer clearing is implemented, however not bug-free yet. The score system is not implemented yet.
+This class is also in charge of clearing layers and updating the score. 
 
 \paragraph{Room Renderer}
-This class simply defines the size of the playing field and, for now renders a wireframe as seen in \ref{fig:input}.
+This class simply defines the size of the playing field and, for now renders a wireframe as seen in \ref{fig:input}. It also checkes the board for falling cubes and instantiates rectangles in all four side walls. This help to identify the shape of the object 
 
 \paragraph{PolyManager}
 Manages the spawning of new polynominoes. 
