@@ -109,16 +109,13 @@ public class HighScoreManager : MonoBehaviour
                 // Sort scores in case the file was tampered with
                 highScores = highScores.OrderByDescending(entry => entry.score).ToList();
 
-                Debug.Log("High scores loaded successfully");
+                
             }
             else
             {
                 Debug.Log("No high score file found, starting with empty list");
                 highScores = new List<HighScoreEntry>();
-                foreach (HighScoreEntry entry in highScores)
-                {
-                    Debug.Log(entry.playerName + " " + entry.score);
-                }
+                
             }
         }
         catch (System.Exception e)

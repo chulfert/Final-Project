@@ -31,7 +31,7 @@ public class Polynomino4D : MonoBehaviour
     void Start()
     {
         CreateStandardPolynomino();
-        
+
         // Random rotation for startup (in 90-degree increments)
         rotationXY = Random.Range(0, 4) * 90;
         rotationXZ = Random.Range(0, 4) * 90;
@@ -47,7 +47,7 @@ public class Polynomino4D : MonoBehaviour
             {
                 cube.SetRotation4D(rotationXY, rotationXZ, rotationXW, rotationYZ, rotationYW, rotationZW);
             }
-        }     
+        }
 
         // Store the initial rotation angles for later use
         currentRotation[0] = rotationXY;
@@ -72,6 +72,30 @@ public class Polynomino4D : MonoBehaviour
         boardOrigin = boardState.GetBoardOrigin();
         boardExtends = boardState.GetBoardExtends();
         targetPosition = transform.position;
+
+        bool valid = false;
+        //Check validity of the position
+        while (!valid)
+        {
+            valid = true;
+            Vector3 correctionVector;
+            foreach (Hypercube c in hypercubes)
+            {
+                if (c != null)
+                {
+                    Vector3 pos = c.GetPosition3D();
+                    Vector3 targetPos = pos + targetPosition;
+                    if (!boardState.CheckBounds(targetPos))
+                    {
+                        valid = false;
+                        correctionVector = boardState.ResetVector(targetPos);
+                        targetPosition += correctionVector;
+                    }
+                }
+            }
+        }
+
+        
     }
 
     public float[] targetRotation = new float[6];

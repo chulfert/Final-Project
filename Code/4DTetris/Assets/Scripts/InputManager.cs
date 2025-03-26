@@ -41,6 +41,9 @@ public class InputManager : MonoBehaviour
         rightArrow = rightArrowButton.GetComponentInChildren<TextMeshProUGUI>();
         upArrow = upArrowButton.GetComponentInChildren<TextMeshProUGUI>();
         downArrow = downArrowButton.GetComponentInChildren<TextMeshProUGUI>();
+
+        planeIndicator.gameObject.SetActive(false);
+
     }
     void Update()
     {
@@ -80,10 +83,7 @@ public class InputManager : MonoBehaviour
             bool go = GameObject.Find("GameManager").GetComponent<GameStateManager>().gameOver;
             if (go)
             {
-                GameObject.Find("GameManager").GetComponent<GameStateManager>().gameOver = false;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                Time.timeScale = 1;
-
+                GameObject.Find("GameManager").GetComponent<GameStateManager>().RestartGame();
             }
         }
 

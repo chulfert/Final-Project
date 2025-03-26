@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static HighScoreManager;
 
 public class GameStateManager : MonoBehaviour
@@ -24,18 +25,17 @@ public class GameStateManager : MonoBehaviour
 
         rulesPanel = GameObject.Find("RulesPanel");
 
-        highScores.gameObject.SetActive(false);
         List<HighScoreEntry> scores = HighScoreManager.Instance.GetHighScores();
         highScores.text = "High Scores:\n";
         if (scores.Count > 0)
         {
-            highScores.gameObject.SetActive(true);
             int num = 0;
             foreach (HighScoreEntry entry in scores)
             {
                 highScores.text += num.ToString() + ". " + entry.playerName + ": " + entry.score + "\n";
             }
         }
+        highScores.gameObject.SetActive(false);
 
     }
 
@@ -65,6 +65,32 @@ public class GameStateManager : MonoBehaviour
             HighScoreManager.Instance.SubmitScore(score);
         Time.timeScale = 0;
         gameOver = true;
+    }
+
+    public void RestartGame()
+    {
+        // Reset time scale first
+        Time.timeScale = 1.0f;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // Reset the board
+        GameObject board = GameObject.Find("Board");
+        if (board != null)
+        {
+            BoardState boardState = board.GetComponent<BoardState>();
+            if (boardState != null)
+            {
+                boardState.ResetBoard();
+            }
+        }
+
+        // Reset game state
+        gameOver = false;
+        score = 0;
+        gameOverIndicator.gameObject.SetActive(false);
+
+        // Spawn a new polynomino to start the game
+        //GameObject.Find("GameManager").GetComponent<PolyManager>().SpawnNewPolynomino();
     }
 
     public void AddScore(int points)

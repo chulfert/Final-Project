@@ -287,18 +287,15 @@ public class BoardState : MonoBehaviour
     private Vector3Int WorldToBoardIndex(Vector3 pos)
     {
         Vector3 ext = GetBoardExtends();
-        int x = Mathf.FloorToInt(pos.x) + Mathf.FloorToInt(ext.x / 2f);
-        int y = Mathf.FloorToInt(pos.y) + Mathf.FloorToInt(ext.y / 2f);
-        int z = Mathf.FloorToInt(pos.z) - 1;  // assuming z remains as is.
+        if(Mathf.Approximately(pos.x, 0.0f)) pos.x = 0.0f;
+        if (Mathf.Approximately(pos.y, 0.0f)) pos.y = 0.0f;
+        if (Mathf.Approximately(pos.z, 0.0f)) pos.z = 0.0f;
+
+
+        int x = Mathf.CeilToInt(pos.x + ext.x / 2f);
+        int y = Mathf.CeilToInt(pos.y + ext.y / 2f);
+        int z = Mathf.CeilToInt(pos.z) - 1;
         return new Vector3Int(x, y, z);
-
-
-        /*Vector3 boardOrigin = GetBoardOrigin();
-        // Subtract the board origin and divide by cube size (assume uniform scaling)
-        int x = Mathf.RoundToInt((pos.x - boardOrigin.x) / current_polynomino.cubeSize) - 1;
-        int y = Mathf.RoundToInt((pos.y - boardOrigin.y) / current_polynomino.cubeSize) - 1;
-        int z = Mathf.RoundToInt((pos.z - boardOrigin.z) / current_polynomino.cubeSize) - 1;
-        return new Vector3Int(x, y, z);*/
     }
 
     private Vector3 BoardIndexToWorld(Vector3Int index)
@@ -308,11 +305,10 @@ public class BoardState : MonoBehaviour
         float y = (index.y - ext.y / 2f);
         float z = index.z + 1;
         return new Vector3(x, y, z);
-
+        
         /*
         Vector3 boardOrigin = GetBoardOrigin();
-        return new Vector3(index.x * current_polynomino.cubeSize + boardOrigin.x + 1, index.y * current_polynomino.cubeSize + boardOrigin.y + 1, index.z * current_polynomino.cubeSize + boardOrigin.z + 1);
-        */
+        return new Vector3(index.x * current_polynomino.cubeSize + boardOrigin.x + 1, index.y * current_polynomino.cubeSize + boardOrigin.y + 1, index.z * current_polynomino.cubeSize + boardOrigin.z + 1);*/
     }
 
     private bool CheckValidBoardPosition(Vector3Int index)
@@ -361,5 +357,38 @@ public class BoardState : MonoBehaviour
         return mod;
 
 
+    }
+
+    public void ResetBoard()
+    {
+        // Clear all existing cubes
+        for (int z = 0; z < board.Count; z++)
+        {
+            for (int x = 0; x < board[z].cells.GetLength(0); x++)
+            {
+                for (int y = 0; y < board[z].cells.GetLength(1); y++)
+                {
+                    if (board[z].cells[x, y].cube != null)
+                    {
+                        Destroy(board[z].cells[x, y].cube);
+
+                        // Reset the cell state
+                        Cell cell = board[z].cells[x, y];
+                        cell.state = CellState.Empty;
+                        cell.cube = null;
+                        board[z].cells[x, y] = cell;
+                    }
+                }
+            }
+        }
+
+        // Ensure we have new random colors for each layer
+        colors.Clear();
+        for (int i = 0; i < roomRenderer.sizeZ; i++)
+        {
+            colors.Add(new Color(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f)));
+        }
+
+        Debug.Log("Board has been reset");
     }
 }
