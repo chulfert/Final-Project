@@ -1,0 +1,1145 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.28)  26 MAR 2025 16:24
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/chulf/Desktop/Final Project/Final/final_report.tex"
+(c:/Users/chulf/Desktop/Final Project/Final/final_report.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2021-11-22> (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count183
+\c@section=\count184
+\c@subsection=\count185
+\c@subsubsection=\count186
+\c@paragraph=\count187
+\c@subparagraph=\count188
+\c@figure=\count189
+\c@table=\count190
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count191
+\Gm@cntv=\count192
+\c@Gm@tempcnt=\count193
+\Gm@bindingoffset=\dimen139
+\Gm@wd@mp=\dimen140
+\Gm@odd@mp=\dimen141
+\Gm@even@mp=\dimen142
+\Gm@layoutwidth=\dimen143
+\Gm@layoutheight=\dimen144
+\Gm@layouthoffset=\dimen145
+\Gm@layoutvoffset=\dimen146
+\Gm@dimlist=\toks17
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 332.
+Package: cite 2015/02/27  v 5.5
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen147
+\Gin@req@width=\dimen148
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen149
+\WF@size=\dimen150
+\c@WF@wrappedlines=\count194
+\WF@box=\box50
+\WF@everypar=\toks18
+Package: wrapfig 2003/01/31  v 3.6
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen151
+\Hy@linkcounter=\count195
+\Hy@pagecounter=\count196
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel languages
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count197
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count198
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen152
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count199
+\Field@Width=\dimen153
+\Fld@charsize=\dimen154
+Package hyperref Info: Hyper figures OFF on input line 6076.
+Package hyperref Info: Link nesting OFF on input line 6081.
+Package hyperref Info: Hyper index ON on input line 6084.
+Package hyperref Info: backreferencing OFF on input line 6091.
+Package hyperref Info: Link coloring OFF on input line 6096.
+Package hyperref Info: Link coloring with OCG OFF on input line 6101.
+Package hyperref Info: PDF/A mode OFF on input line 6106.
+LaTeX Info: Redefining \ref on input line 6146.
+LaTeX Info: Redefining \pageref on input line 6150.
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count266
+\c@Item=\count267
+\c@Hfootnote=\count268
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count269
+\c@bookmark@seq@number=\count270
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
+)
+\Hy@SectionHShift=\skip49
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen155
+\captionmargin@=\dimen156
+\captionwidth=\dimen157
+\caption@tempdima=\dimen158
+\caption@indent=\dimen159
+\caption@parindent=\dimen160
+\caption@hangindent=\dimen161
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count271
+\c@continuedfloat=\count272
+Package caption Info: hyperref package is loaded.
+Package caption Info: wrapfig package is loaded.
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count273
+\float@exts=\toks19
+\float@box=\box51
+\@float@everytoks=\toks20
+\@floatcapt=\box52
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2021/03/06 v0.5t Insert pages of external PDF documents (AM)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count274
+\calc@Bcount=\count275
+\calc@Adimen=\dimen162
+\calc@Bdimen=\dimen163
+\calc@Askip=\skip50
+\calc@Bskip=\skip51
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count276
+\calc@Cskip=\skip52
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
+\ESO@tempdima=\dimen164
+\ESO@tempdimb=\dimen165
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+))
+\AM@pagewidth=\dimen166
+\AM@pageheight=\dimen167
+\AM@fboxrule=\dimen168
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2021/03/06 v0.5t Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count277
+\AM@pagebox=\box53
+\AM@global@opts=\toks21
+\AM@pagecnt=\count278
+\AM@toc@title=\toks22
+\c@AM@survey=\count279
+\AM@templatesizebox=\box54
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2021-12-14 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count280
+\l__pdf_internal_box=\box55
+) (./final_report.aux)
+\openout1 = `final_report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(e:/LatexLive/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count281
+\scratchdimen=\dimen169
+\scratchbox=\box56
+\nofMPsegments=\count282
+\nofMParguments=\count283
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count284
+\MPscratchDim=\dimen170
+\MPnumerator=\count285
+\makeMPintoPDFobject=\count286
+\everyMPtoPDFconversion=\toks24
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package hyperref Info: Link coloring OFF on input line 16.
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (e:/LatexLive/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count287
+)
+LaTeX Info: Redefining \ref on input line 16.
+LaTeX Info: Redefining \pageref on input line 16.
+LaTeX Info: Redefining \nameref on input line 16.
+\@outlinefile=\write3
+\openout3 = `final_report.out'.
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: End \AtBeginDocument code.
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+ (e:/LatexLive/texlive/2021/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 19.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 19.
+
+
+LaTeX Warning: No \author given.
+
+[1
+
+{e:/LatexLive/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+\tf@toc=\write4
+\openout4 = `final_report.toc'.
+
+
+
+LaTeX Warning: File `polynominoes.png' not found on input line 48.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:48: Package pdftex.def Error: File `polynominoes.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.48 ...ics[width=0.6\textwidth]{polynominoes.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Citation `polyominoes' on page 2 undefined on input line 52.
+
+
+LaTeX Warning: Citation `polyominoes' on page 2 undefined on input line 52.
+
+
+LaTeX Warning: Citation `polyominoes' on page 2 undefined on input line 54.
+
+
+LaTeX Warning: Reference `fig:poly' on page 2 undefined on input line 54.
+
+[2]
+
+LaTeX Warning: Citation `tiling1' on page 3 undefined on input line 58.
+
+
+LaTeX Warning: Citation `tiling2' on page 3 undefined on input line 58.
+
+
+LaTeX Warning: Citation `tetris_np' on page 3 undefined on input line 59.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--64
+
+ []
+
+
+LaTeX Warning: File `frac4d.png' not found on input line 75.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:75: Package pdftex.def Error: File `frac4d.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75 ...egraphics[width=0.6\textwidth]{frac4d.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[3]
+
+LaTeX Warning: Reference `fig:frac4d' on page 4 undefined on input line 80.
+
+
+LaTeX Warning: File `4dtris.png' not found on input line 88.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:88: Package pdftex.def Error: File `4dtris.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 ...egraphics[width=0.6\textwidth]{4dtris.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 2418) in paragraph at lines 89--89
+[]\OT1/cmr/m/n/10 Figure 3: |4DTris in ac-tion. Still from a video on youtube, posted by the au-tor Si-mon Las-zlo,
+ []
+
+[4]
+
+LaTeX Warning: Citation `rucker' on page 5 undefined on input line 105.
+
+
+LaTeX Warning: File `Dali_Crucifixion_hypercube.jpg' not found on input line 112.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:112: Package pdftex.def Error: File `Dali_Crucifixion_hypercube.jpg' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.112 ...extwidth]{Dali_Crucifixion_hypercube.jpg}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[5]
+
+LaTeX Warning: Citation `geo_alg' on page 6 undefined on input line 116.
+
+
+LaTeX Warning: Citation `cliff_alg' on page 6 undefined on input line 117.
+
+
+LaTeX Warning: Citation `rot_n_1' on page 6 undefined on input line 121.
+
+[6]
+
+LaTeX Warning: Citation `4d_vis_1' on page 7 undefined on input line 131.
+
+
+LaTeX Warning: Citation `4d_vis_2' on page 7 undefined on input line 131.
+
+
+LaTeX Warning: Citation `4d_vis_3' on page 7 undefined on input line 133.
+
+[7]
+
+LaTeX Warning: Citation `flow' on page 8 undefined on input line 143.
+
+
+LaTeX Warning: Citation `flow_2' on page 8 undefined on input line 153.
+
+
+LaTeX Warning: Citation `COOPER197520' on page 8 undefined on input line 157.
+
+
+LaTeX Warning: Citation `CORBALLIS1997100' on page 8 undefined on input line 157.
+
+
+LaTeX Warning: Citation `Kornhaber_2020' on page 8 undefined on input line 157.
+
+
+LaTeX Warning: Citation `Lau_zhu' on page 8 undefined on input line 157.
+
+[8] [9]
+
+LaTeX Warning: File `classes.png' not found on input line 204.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:204: Package pdftex.def Error: File `classes.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.204 ...degraphics[width=\textwidth]{classes.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[10]
+
+LaTeX Warning: File `gantt.png' not found on input line 225.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:225: Package pdftex.def Error: File `gantt.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.225 ...ludegraphics[width=\textwidth]{gantt.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[11] [12] [13]
+
+LaTeX Warning: File `./Dev/HyperCube1.png' not found on input line 288.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:288: Package pdftex.def Error: File `./Dev/HyperCube1.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.288 ...idth=0.6\textwidth]{./Dev/HyperCube1.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[14]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 356.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 356.
+ [15]
+
+LaTeX Warning: File `./Dev/play_with_pointers.png' not found on input line 373.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:373: Package pdftex.def Error: File `./Dev/play_with_pointers.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.373 ...\textwidth]{./Dev/play_with_pointers.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[16]
+
+LaTeX Warning: File `./Dev/pieces piling up.png' not found on input line 398.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:398: Package pdftex.def Error: File `./Dev/pieces piling up.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.398 ....6\textwidth]{./Dev/pieces piling up.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `./Dev/bottom working.png' not found on input line 406.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:406: Package pdftex.def Error: File `./Dev/bottom working.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.406 ...=0.6\textwidth]{./Dev/bottom working.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (92.76083pt too wide) in paragraph at lines 435--435
+[]        \OT1/cmtt/m/n/10 // Check the hypercubes of the polynominoe, calculate the position in the board grid and set it to filled[] 
+ []
+
+
+Overfull \hbox (119.0106pt too wide) in paragraph at lines 435--435
+[]            \OT1/cmtt/m/n/10 Vector3 pos3 = new Vector3(x - (int)(GetBoardExtends().x / 2), y - (int)(GetBoardExtends().x / 2), z + 1);[] 
+ []
+
+
+Overfull \hbox (92.76083pt too wide) in paragraph at lines 435--435
+[]            \OT1/cmtt/m/n/10 go.transform.localScale = new Vector3(polynomino.cubeSize, polynomino.cubeSize, polynomino.cubeSize);[] 
+ []
+
+[17]
+
+LaTeX Warning: Reference `fig:input' on page 18 undefined on input line 440.
+
+[18]
+
+LaTeX Warning: Reference `fig:voc' on page 19 undefined on input line 460.
+
+
+LaTeX Warning: Reference `tab:input' on page 19 undefined on input line 460.
+
+
+LaTeX Warning: File `./Dev/voc1.png' not found on input line 465.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:465: Package pdftex.def Error: File `./Dev/voc1.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.465 ...hics[width=0.3\textwidth]{./Dev/voc1.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `./Dev/voc2.png' not found on input line 466.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:466: Package pdftex.def Error: File `./Dev/voc2.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.466 ...hics[width=0.3\textwidth]{./Dev/voc2.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `./Dev/voc3.png' not found on input line 467.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:467: Package pdftex.def Error: File `./Dev/voc3.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.467 ...hics[width=0.3\textwidth]{./Dev/voc3.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `./Dev/voc4.png' not found on input line 468.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:468: Package pdftex.def Error: File `./Dev/voc4.png' not found: using draft setting.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.468 ...hics[width=0.3\textwidth]{./Dev/voc4.png}
+                                                  
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[19]
+No file final_report.bbl.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Package pdfpages Error: Cannot find file `4d_tetris_questionnaire.pdf'.
+
+See the pdfpages package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+This error message was generated by an \errmessage
+command, so I can't give any explicit help.
+Pretend that you're Hercule Poirot: Examine all clues,
+and deduce the truth by order and method.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Package pdfpages Error: Cannot find file `1'.
+
+See the pdfpages package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+(That was another \errmessage.)
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Undefined control sequence.
+\AM@checkpagenumber #1->\ifnum #1>\AM@pagecount 
+                                                \relax \ifthenelse {\boolean...
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing number, treated as zero.
+<to be read again> 
+                   \relax 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Package pdfpages Error: Page 1 of `\AM@currentdocname ' does not exist.
+
+See the pdfpages package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+You have set a wrong page number in the `pages' option. Document 
+`\AM@currentdocname ' does not have 1 pages.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: LaTeX Error: File `\AM@currentdocname ' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Arithmetic overflow.
+<recently read> \calc@Acount 
+                             
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+I can't carry out that multiplication or division,
+since the result is out of range.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Arithmetic overflow.
+<recently read> \calc@Acount 
+                             
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+I can't carry out that multiplication or division,
+since the result is out of range.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: LaTeX Error: File `\AM@currentdocname ' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[20]
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: LaTeX Error: File `\AM@currentdocname ' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: LaTeX Error: File `\AM@currentdocname ' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Missing endcsname inserted.
+<to be read again> 
+                   AM@currentdocname 
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: Use of ??? doesn't match its definition.
+<argument> ???  
+                ! LaTeX3 Error: AM@currentdocname invalid in file name. Lost: .
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+If you say, e.g., `\def\a1{...}', then you must always
+put `1' after `\a', since control sequence names are
+made up of letters only. The macro here has not been
+followed by the required stuff, so I'm ignoring it.
+
+
+c:/Users/chulf/Desktop/Final Project/Final/final_report.tex:498: LaTeX Error: File `\AM@currentdocname ' not found.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.498 \includepdf{4d_tetris_questionnaire.pdf}
+                                              
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[21] (./final_report.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `final_report.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `final_report.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  F072D3AFDBD1B2A4EE35EAA37438411A;5883.
+ ) 
+Here is how much of TeX's memory you used:
+ 12104 strings out of 478353
+ 200721 string characters out of 5847090
+ 502410 words of memory out of 5000000
+ 29920 multiletter control sequences out of 15000+600000
+ 408188 words of font info for 43 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 61i,14n,87p,1366b,472s stack positions out of 5000i,500n,10000p,200000b,80000s
+{e:/LatexLive/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><e:/LatexLive/texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on final_report.pdf (21 pages, 149644 bytes).
+PDF statistics:
+ 281 PDF objects out of 1000 (max. 8388607)
+ 241 compressed objects within 3 object streams
+ 140 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

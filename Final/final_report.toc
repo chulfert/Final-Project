@@ -1,0 +1,67 @@
+\contentsline {section}{\numberline {1}Overview of the Project}{2}{section.1}%
+\contentsline {section}{\numberline {2}Project Template Used}{2}{section.2}%
+\contentsline {section}{\numberline {3}Motivation}{2}{section.3}%
+\contentsline {section}{\numberline {4}Existing work}{2}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Tetris}{2}{subsection.4.1}%
+\contentsline {paragraph}{Introduction}{2}{section*.2}%
+\contentsline {paragraph}{Gameplay}{2}{section*.3}%
+\contentsline {paragraph}{Mathematics}{3}{section*.5}%
+\contentsline {paragraph}{User Interface}{3}{section*.8}%
+\contentsline {paragraph}{Conclusion}{3}{section*.9}%
+\contentsline {subsection}{\numberline {4.2}Frac 4D}{4}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}4DTris}{4}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}BlockOut}{4}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5} TODO }{5}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}This project}{5}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Literature}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The Fourth Dimension}{5}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Geometric algebra for computer science}{6}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}An Introduction to Clifford Algebras and Spinors}{6}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}On Rotations in Space of Four Dimensions}{6}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Conclusion}{7}{subsection.5.5}%
+\contentsline {section}{\numberline {6}Visualization}{7}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Illuminating the fourth dimension}{7}{subsection.6.1}%
+\contentsline {section}{\numberline {7}Domain and Users of the Project}{8}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Gamers}{8}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Research}{8}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Justification of Design Choices}{8}{section.8}%
+\contentsline {subsection}{\numberline {8.1}4D}{8}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Gameplay}{9}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}User Interface}{9}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Scoring}{9}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Art Style}{9}{subsection.8.5}%
+\contentsline {section}{\numberline {9}Overall Structure of the Project}{9}{section.9}%
+\contentsline {subsection}{\numberline {9.1}GameManager}{9}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}HyperCube}{9}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Piece}{9}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Block}{9}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}Level}{9}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}User Interface}{10}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}InputManager}{10}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}AudioManager}{10}{subsection.9.8}%
+\contentsline {section}{\numberline {10}Important Technologies and Methods}{11}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Unity}{11}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}C\#}{11}{subsection.10.2}%
+\contentsline {section}{\numberline {11}Plan of Work}{12}{section.11}%
+\contentsline {section}{\numberline {12}Testing and Evaluation Plan}{13}{section.12}%
+\contentsline {section}{\numberline {13}Prototype}{13}{section.13}%
+\contentsline {paragraph}{Description}{13}{section*.18}%
+\contentsline {paragraph}{Rotations}{13}{section*.19}%
+\contentsline {paragraph}{Basic movement}{14}{section*.20}%
+\contentsline {paragraph}{Conclusion}{14}{section*.21}%
+\contentsline {section}{\numberline {14}Implementation}{14}{section.14}%
+\contentsline {paragraph}{Hypercubes}{14}{figure.caption.23}%
+\contentsline {paragraph}{Polynominoes}{15}{section*.24}%
+\contentsline {paragraph}{Input manager}{16}{section*.25}%
+\contentsline {paragraph}{BoardState}{16}{section*.28}%
+\contentsline {paragraph}{Room Renderer}{18}{section*.31}%
+\contentsline {paragraph}{PolyManager}{18}{section*.32}%
+\contentsline {paragraph}{Conclusion}{18}{section*.33}%
+\contentsline {section}{\numberline {15}Evaluation}{19}{section.15}%
+\contentsline {paragraph}{Voice of Customer}{19}{section*.34}%
+\contentsline {paragraph}{Prototype Testing}{19}{section*.36}%
+\contentsline {paragraph}{Unit testing}{20}{section*.37}%
+\contentsline {paragraph}{Gameplay testing}{20}{section*.38}%
+\contentsline {section}{\numberline {16}Appendix}{20}{section.16}%
+\contentsline {paragraph}{Testing}{20}{section*.39}%
+\contentsline {subparagraph}{Voice of Customer}{20}{section*.40}%
