@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{pifont}
+\usepackage{float}
+\title{4D Tetris - Voice of Customer Questionnaire}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{multicols}{2}
+
+    \renewcommand{\labelitemi}{\textsc{\ding{111}}}
+
+\begin{enumerate}
+    \item \textbf{Is the idea of a 4D Tetris game interesting?}
+    \begin{itemize}
+        \item Very Interesting
+        \item Somewhat Interesting
+        \item Neutral
+        \item Not Very Interesting
+        \item Not at All Interesting
+    \end{itemize}
+
+    \item \textbf{Are the keybindings too complicated? (see back)}
+    \begin{itemize}
+        \item Too Complicated
+        \item Slightly Complicated
+        \item Just Right
+        \item Too Simple
+    \end{itemize}
+
+    \item \textbf{Is the chosen graphical style appropriate?}
+    \begin{itemize}
+        \item Yes
+        \item No, should be more colorful
+        \item No, should be more minimalistic
+        \item No, should be more complex
+    \end{itemize}
+
+    \item \textbf{Does the concept sound interesting?}
+    \begin{itemize}
+        \item Very Exciting
+        \item Somewhat Exciting
+        \item Neutral
+        \item Not Exciting
+    \end{itemize}
+    \newcolumn
+    \item \textbf{How would you like level progression to go?}
+    \begin{itemize}
+        \item Faster Speed
+        \item More Complicated Pieces
+        \item Additional Mechanics
+        \item Other
+    \end{itemize}
+
+    \item \textbf{How much prior experience do you have with Tetris?}
+    \begin{itemize}
+        \item None
+        \item Casual (Played occasionally)
+        \item Experienced (Plays often)
+        \item Expert (Plays competitively or deeply understands mechanics)
+    \end{itemize}
+
+    \item \textbf{Would you prefer a tutorial to understand 4D mechanics?}
+    \begin{itemize}
+        \item Yes, a step-by-step tutorial
+        \item Yes, but a quick explanation is fine
+        \item No, I'd rather figure it out
+    \end{itemize}
+
+    \item \textbf{What kind of graphical style do you prefer?}
+    \begin{itemize}
+        \item Classic retro (pixel-based, minimal shading)
+        \item Neon futuristic (glowing edges, cyberpunk aesthetic)
+        \item Abstract minimalism (clean lines, geometric shapes)
+        \item Other \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+    \end{itemize}
+\end{enumerate}
+\end{multicols}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Modifier & LEFT & UP & RIGHT& DOWN\\
+    \hline
+     & Move left & Move up & Move right & Move down\\
+    A & XY- & XZ+ & XY+ & XZ-\\
+    S & XW- & YZ+ & XW+ & YZ-\\
+    D & YW- & ZW+ & YW+ & ZW-\\
+    \hline
+    \end{tabular}
+    \caption{Input Layout: The arrow keys are used to move the piece, the A, S, D keys are used to modify the plane of rotation.}
+    \label{tab:input}
+\end{table}
+\end{document}

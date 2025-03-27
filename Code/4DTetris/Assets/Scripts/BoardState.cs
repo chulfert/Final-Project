@@ -197,7 +197,7 @@ public class BoardState : MonoBehaviour
             }
             if (full)
             {
-                ClearLayer(i);
+                ClearLayer(i); // should rather return a list of ints and clear them somewhere else
             }
         }
 
@@ -213,7 +213,10 @@ public class BoardState : MonoBehaviour
 
         // Find the GameMananger and update the score
         int score = board[0].cells.GetLength(0) * board[0].cells.GetLength(1) * 100;
-        GameObject.Find("GameManager").GetComponent<GameStateManager>().AddScore(100);
+        GameObject go = GameObject.Find("GameManager");
+        if(go)
+            go.GetComponent<GameStateManager>().AddScore(score);
+
         // destroy the full layer and move everything at a lower Z towards z by 1, spawn a new layer at the top
         for (int x = 0; x < board[layer].cells.GetLength(0); x++)
         {
@@ -253,7 +256,9 @@ public class BoardState : MonoBehaviour
                 }
             }
         }
-
+        // Resort the colors
+        colors.RemoveAt(layer);
+        colors.Add(new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)));
 
     }
     public void ClearFalling()
@@ -280,7 +285,6 @@ public class BoardState : MonoBehaviour
         if (!CheckValidBoardPosition(pos)) return;
         board[pos.z].cells[pos.x, pos.y].state = CellState.Falling;
     }
-
     public Vector3Int WorldToBoardIndex(Vector3 pos)
     {
         Vector3 ext = GetBoardExtends();
@@ -295,7 +299,6 @@ public class BoardState : MonoBehaviour
         int z = Mathf.CeilToInt(z_round) - 1;
         return new Vector3Int(x, y, z);
     }
-
     public Vector3 BoardIndexToWorld(Vector3Int index)
     {
         Vector3 ext = GetBoardExtends();
@@ -305,7 +308,7 @@ public class BoardState : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    private bool CheckValidBoardPosition(Vector3Int index)
+    public bool CheckValidBoardPosition(Vector3Int index)
     {
         if (index.z < 0 || index.z >= board.Count)
             return false;
@@ -340,11 +343,11 @@ public class BoardState : MonoBehaviour
         {
             mod.y = GetBoardExtends().y - index.y - 1;
         }
-        if (index.z < 0)
+        if (index.z < -1)
         {
             mod.z = -index.z;
         }
-        if (index.z >= GetBoardExtends().z)
+        if (index.z >= GetBoardExtends().z - 1)
         {
             mod.z = GetBoardExtends().z - index.z - 1;
         }

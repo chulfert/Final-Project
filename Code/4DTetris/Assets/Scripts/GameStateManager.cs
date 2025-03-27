@@ -29,10 +29,11 @@ public class GameStateManager : MonoBehaviour
         highScores.text = "High Scores:\n";
         if (scores.Count > 0)
         {
-            int num = 0;
+            int num = 1;
             foreach (HighScoreEntry entry in scores)
             {
                 highScores.text += num.ToString() + ". " + entry.playerName + ": " + entry.score + "\n";
+                num++;
             }
         }
         highScores.gameObject.SetActive(false);
@@ -90,7 +91,7 @@ public class GameStateManager : MonoBehaviour
         gameOverIndicator.gameObject.SetActive(false);
 
         // Spawn a new polynomino to start the game
-        //GameObject.Find("GameManager").GetComponent<PolyManager>().SpawnNewPolynomino();
+        GameObject.Find("GameManager").GetComponent<PolyManager>().Init();
     }
 
     public void AddScore(int points)

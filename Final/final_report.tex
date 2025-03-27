@@ -8,6 +8,7 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{setspace}
+\usepackage{pdfpages}
 
 \title{Final Report}
 \date{\today}
@@ -432,8 +433,8 @@ The locking mechanism itself is done by removing the polynomino from the game an
         GameObject.Find("GameManager").GetComponent<PolyManager>().SpawnNewPolynomino();
     }
 \end{verbatim}
-To make it easier to indentify layers we currently colour the cube according to their z position, however in future iterations this will be changed to predefined colours.
-This class is also in charge of clearing layers and updating the score. 
+To make it easier to indentify layers we color each cube in a layer the same color. The colors differ by layer and are assigned randomly at creation time of the board.
+
 
 \paragraph{Room Renderer}
 This class simply defines the size of the playing field and, for now renders a wireframe as seen in \ref{fig:input}. It also checkes the board for falling cubes and instantiates rectangles in all four side walls. This help to identify the shape of the object 
@@ -450,6 +451,8 @@ Functionally we have a prototype that spawns random pieces, lets them fall down 
 Currently little unit testing has been done, this is mainly due to the fact that I was still figuring out the 'how' and unit testing without knowing the actual inputs and outputs that are required is somewhat futile. This will be done during refactor.
 The visuals will also need a major overhaul, but this is planned for the next sprint.
 Overall I feel confident that the project will be completed in time and to a satisfactory level. The main challenge is that I identified is playtesting, as the speed and the size of the board need to align with the limited time of 3 minutes that are available for the prototype.
+
+
 
 \section{Evaluation}
 \paragraph{Voice of Customer}
@@ -481,7 +484,17 @@ This second round of user testing was very informal, but very informative. Havin
 
 \paragraph{Unit testing}
 As mentioned above, this was not yet done. Due to my own lack of understanding how to solve the problems it felt constructed to unit test, and I was unaware of many of the actual edge cases. The plan is to do user testing during the refactor, since i now know how it can work, and will work on optimizaztion and decoupling this could be a good place for unit testing.
+
+\paragraph{Gameplay testing}
+Gameplay testing was done during the final week of development, with simultanous bug-fixing. The target audience consisted of 5 people, again all with academic background, but different previous exposure to video game. 
+
+
 \bibliographystyle{acm}
 \bibliography{references}
+
+\section{Appendix}
+\paragraph{Testing}
+\subparagraph{Voice of Customer}
+\includepdf{4d_tetris_questionnaire.pdf}
 
 \end{document}

@@ -186,6 +186,7 @@ public class RoomRenderer : MonoBehaviour
             return;
         }
         fillMat.SetPass(0);
+        fillMat.color = Color.yellow;
 
         // Retrieve the falling cubes (grid coordinates) from the Board.
         GameObject board = GameObject.Find("Board");

@@ -1,7 +1,17 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
+
+[Serializable]
+public class KeyIndicator
+{
+    public string key;
+    public GameObject upIndicator;
+    public GameObject downIndicator;
+}
 
 public class InputManager : MonoBehaviour
 {
@@ -18,6 +28,10 @@ public class InputManager : MonoBehaviour
     private TextMeshProUGUI rightArrow;
     private TextMeshProUGUI upArrow;
     private TextMeshProUGUI downArrow;
+
+
+    [Header("Key Indicators")]
+    public List<KeyIndicator> keyIndicators = new List<KeyIndicator>();
 
     bool lineCleared = false;
     float lineClearCounter = 0.0f;
@@ -96,6 +110,7 @@ public class InputManager : MonoBehaviour
             if (go && !lineCleared)
             {
                 GameObject.Find("GameManager").GetComponent<GameStateManager>().RestartGame();
+                return;
             }
         }
 
@@ -104,10 +119,22 @@ public class InputManager : MonoBehaviour
         {
             planeIndicator.text = "Movement";
 
+            for(int i = 0; i < 3; i++) // Not so smart, dont want to reset the arrow key, think of something else
+            {
+                KeyIndicator ki = keyIndicators[i];
+                ki.upIndicator.SetActive(true);
+                ki.downIndicator.SetActive(false);
+            }
+
             leftArrow.text = "Left";
             rightArrow.text = "Right";
             upArrow.text = "Up";
             downArrow.text = "Down";
+
+            ChangeKeyText("left", "Left");
+            ChangeKeyText("right", "Right");
+            ChangeKeyText("up", "Up");
+            ChangeKeyText("down", "Down");
 
             Vector3 currentPos = polynomino.transform.position;
             // W => +y
@@ -142,6 +169,14 @@ public class InputManager : MonoBehaviour
             rightArrow.text = "XY+";
             upArrow.text = "XZ+";
             downArrow.text = "XZ-";
+
+            ChangeKeyText("left", "XY-");
+            ChangeKeyText("right", "XY+");
+            ChangeKeyText("up", "XZ+");
+            ChangeKeyText("down", "XZ-");
+
+            PressKeyViz("a");
+
             // Shift + A/d rotates around XY plane
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 polynomino.addRotation(Polynomino4D.RotationAxis.XY, false);
@@ -162,6 +197,14 @@ public class InputManager : MonoBehaviour
             upArrow.text = "YZ+";
             downArrow.text = "YZ-";
 
+            ChangeKeyText("left", "XW-");
+            ChangeKeyText("right", "XW+");
+            ChangeKeyText("up", "YZ+");
+            ChangeKeyText("down", "YZ-");
+
+
+            PressKeyViz("s");
+
             // ctrl + A/d rotates around Xw plane
             if (Input.GetKeyDown(KeyCode.LeftArrow))
                 polynomino.addRotation(Polynomino4D.RotationAxis.XW, false);
@@ -180,6 +223,14 @@ public class InputManager : MonoBehaviour
             rightArrow.text = "YW+";
             upArrow.text = "ZW+";
             downArrow.text = "ZW-";
+
+            ChangeKeyText("left", "YW-");
+            ChangeKeyText("right", "YW+");
+            ChangeKeyText("up", "ZW+");
+            ChangeKeyText("down", "ZW-");
+
+
+            PressKeyViz("d");
 
             // alt + A/d rotates around Yw plane
             if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -217,13 +268,96 @@ public class InputManager : MonoBehaviour
             keyWasDown[3] = false;
         }
 
-        //every 10 seconds, move the polynomino down
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+            PressKeyViz("left");
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            PressKeyViz("right");
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            PressKeyViz("up");
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            PressKeyViz("down");
+        if (!Input.GetKey(KeyCode.LeftArrow))
+            ReleaseKeyViz("left");
+        if (!Input.GetKey(KeyCode.RightArrow))
+            ReleaseKeyViz("right");
+        if (!Input.GetKey(KeyCode.UpArrow))
+            ReleaseKeyViz("up");
+        if (!Input.GetKey(KeyCode.DownArrow))
+            ReleaseKeyViz("down");
+
+        //every 10 seconds, move the polynomino down probly should not be done here, but it works for now........TODO!!
         if (Time.time - lastFall >= 1)
         {
             polynomino.addMovement(Polynomino4D.MovementAxis.Z, true);
             lastFall = Time.time;
         }
         
+    }
+
+    private void PressKeyViz(string key)
+    {
+        for (int i = 0; i < keyIndicators.Count; i++)
+        {
+            KeyIndicator ki = keyIndicators[i];
+            if (ki.key == key)
+            {
+                ki.upIndicator.SetActive(false);
+                ki.downIndicator.SetActive(true);
+            }
+        }
+    }
+
+    private void ReleaseKeyViz(string key)
+    {
+        for (int i = 0; i < keyIndicators.Count; i++)
+        {
+            KeyIndicator ki = keyIndicators[i];
+            if (ki.key == key)
+            {
+                ki.upIndicator.SetActive(true);
+                ki.downIndicator.SetActive(false);
+            }
+        }
+    }
+
+    private void PressKeyVizText(string key, string text)
+    {
+        for (int i = 0; i < keyIndicators.Count; i++)
+        {
+            KeyIndicator ki = keyIndicators[i];
+            if (ki.key == key)
+            {
+                ki.upIndicator.SetActive(false);
+                ki.downIndicator.SetActive(true);
+                ki.downIndicator.GetComponentInChildren<TextMeshProUGUI>().text = text;
+            }
+        }
+    }
+
+    private void ReleaseKeyVizeText(string key, string text)
+    {
+        for (int i = 0; i < keyIndicators.Count; i++)
+        {
+            KeyIndicator ki = keyIndicators[i];
+            if (ki.key == key)
+            {
+                ki.upIndicator.SetActive(true);
+                ki.downIndicator.SetActive(false);
+                ki.upIndicator.GetComponentInChildren<TextMeshProUGUI>().text = text;
+            }
+        }
+    } 
+    
+    private void ChangeKeyText(string key, string text)
+    {
+        for (int i = 0; i < keyIndicators.Count; i++)
+        {
+            KeyIndicator ki = keyIndicators[i];
+            if (ki.key == key)
+            {
+                ki.upIndicator.GetComponentInChildren<TextMeshProUGUI>().text = text;
+            }
+        }
     }
 
 }

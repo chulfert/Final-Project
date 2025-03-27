@@ -12,9 +12,14 @@ public class PolyManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Init();
+
+    }
+
+    public void Init()
+    {
         board = GameObject.Find("Board");
         SpawnNewPolynomino();
-
     }
 
     // Update is called once per frame
@@ -30,6 +35,7 @@ public class PolyManager : MonoBehaviour
     }
     public Polynomino4D getCurrentPoly()
     {
+
         return currentPolynomino.GetComponent<Polynomino4D>();
     }
 }

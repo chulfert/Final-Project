@@ -193,7 +193,7 @@ public class Polynomino4D : MonoBehaviour
             targetPosition = newPosition;
             foreach (var hc in hypercubes)
             {
-                if (!hc.IsVisible()) continue;
+                //if (!hc.IsVisible()) continue;
                 Vector3 pos = hc.GetPosition3D();
                 Vector3 targetPos = pos + targetPosition;
                 board.GetComponent<BoardState>().SetFalling(targetPos);
